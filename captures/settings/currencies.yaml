@@ -1,0 +1,15 @@
+# Screens of src/content/docs/settings/currencies.md, replayed by "npm run capture".
+page: settings/currencies
+login: admin
+shots:
+  - name: list
+    url: /admin/configuration/currencies
+    waitFor: '[data-testid="datatable-currencies-table"]'
+    highlight: '[data-testid="datatable-currencies-table"] thead th:nth-child(6), [data-testid="currency-update-rates-button"]'
+  - name: edit
+    url: /admin/configuration/currencies
+    waitFor: '[data-testid="datatable-currencies-table"]'
+    actions:
+      - click: '[data-testid="datatable-currencies-table"] [data-bs-target="#currency-edit-modal-2"]'
+      - waitFor: '#currency-edit-modal-2.show [data-testid="currency-edit-form-2"]'
+    highlight: '#currency-edit-modal-2 input[name$="[rate]"]'
