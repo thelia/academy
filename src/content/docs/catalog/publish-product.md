@@ -15,6 +15,7 @@ sources:
   - thelia-templates/default-twig:components/DataTable/cells/toggle.html.twig:13
   - thelia-templates/default-twig:catalog/product/edit.html.twig:135
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:281
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:590
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:331
   - thelia/thelia:core/lib/Thelia/Action/Product.php:524
   - thelia/thelia:core/lib/Thelia/Action/Product.php:1143
@@ -39,6 +40,10 @@ Un produit hors ligne reste dans votre catalogue, mais vos clients ne peuvent pl
 ![Colonne En ligne de la liste des produits](../../../assets/captures/fr/catalog/publish-product/list.png)
 
 Le changement est immédiat : il n'y a ni confirmation ni bouton **Enregistrer**. Pour revenir en arrière, cliquez à nouveau sur la pastille.
+
+Sur cette capture, le produit **TAB-CHENE-01**, créé pour l'exemple, est hors ligne : sa pastille est un rond gris vide. La liste affiche les titres dans la langue par défaut de la boutique, ici l'anglais.
+
+![Un produit hors ligne dans la liste, avec son rond gris](../../../assets/captures/fr/catalog/publish-product/offline.png)
 
 ## Méthode 2 : depuis la fiche du produit
 
