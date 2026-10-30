@@ -1,0 +1,24 @@
+# Screens of src/content/docs/getting-started/two-factor.md, replayed by "npm run capture".
+# The setup screen is only displayed: no code is typed and no button is clicked, so the account stays unprotected.
+page: getting-started/two-factor
+login: admin
+shots:
+  - name: top-bar
+    url: /admin
+    waitFor: '[data-testid="bo-top-nav"]'
+    clip: '[data-testid="bo-top-nav"]'
+    highlight: '[data-testid="bo-top-nav-account-security"]'
+  - name: security
+    url: /admin/account/two-factor
+    waitFor: '[data-testid="account-two-factor-page"]'
+    clip: '[data-testid="account-two-factor-page"]'
+    highlight: '[data-testid="account-two-factor-enable"]'
+  - name: setup
+    url: /admin/two-factor/setup
+    waitFor: '[data-testid="two-factor-qr"] svg'
+    highlight: '[data-testid="two-factor-qr"]'
+  - name: required
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: '.card:has([name="thelia_configuration_store[admin_two_factor_required]"])'
+    highlight: '[name="thelia_configuration_store[admin_two_factor_required]"]'
