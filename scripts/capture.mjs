@@ -66,6 +66,8 @@ async function shoot(page, shot, locale, output) {
 			'*, *::before, *::after { transition: none !important; animation: none !important; caret-color: transparent !important; }',
 			// Symfony debug toolbar of a dev install: never part of what a merchant sees.
 			'.sf-toolbar, .sf-minitoolbar { display: none !important; }',
+			// Version number of the capture instance: the pages state the version they apply to in their front matter.
+			'[data-testid="bo-thelia-version"] { visibility: hidden !important; }',
 			...(shot.hide ?? []).map((selector) => `${selector} { visibility: hidden !important; }`),
 			...(shot.highlight ? [`${shot.highlight} { outline: 4px solid #f26041 !important; outline-offset: 4px !important; }`] : []),
 		].join('\n'),
@@ -75,13 +77,21 @@ async function shoot(page, shot, locale, output) {
 	else await page.screenshot({ path: output, fullPage: Boolean(shot.fullPage) });
 }
 
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/usr/bin/google-chrome' });
+// One browser per locale: the native controls (file input button…) follow the browser language, not the page locale.
+const browsers = new Map();
+async function browserFor(locale) {
+	if (!browsers.has(locale)) {
+		const language = locale === 'fr' ? 'fr-FR' : 'en-US';
+		browsers.set(locale, await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/usr/bin/google-chrome', args: [`--lang=${language}`], env: { ...process.env, LANG: `${language.replace('-', '_')}.UTF-8`, LANGUAGE: language.replace('-', '_') } }));
+	}
+	return browsers.get(locale);
+}
 let failures = 0;
 try {
 	for (const file of files) {
 		const manifest = YAML.parse(readFileSync(file, 'utf8'));
 		for (const locale of locales) {
-			const context = await browser.newContext({
+			const context = await (await browserFor(locale)).newContext({
 				viewport: manifest.viewport ?? { width: 1440, height: 900 },
 				locale: locale === 'fr' ? 'fr-FR' : 'en-US',
 				ignoreHTTPSErrors: true,
@@ -106,6 +116,6 @@ try {
 		}
 	}
 } finally {
-	await browser.close();
+	for (const browser of browsers.values()) await browser.close();
 }
 process.exit(failures > 0 ? 1 : 0);
