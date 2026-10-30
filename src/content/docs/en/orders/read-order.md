@@ -1,5 +1,5 @@
 ---
-translatedFrom: 577ce16c8fe1
+translatedFrom: 882ab865e260
 title: Read an order's details
 description: Find in an order what the customer bought, where to send it, what they paid and how the shipment is going.
 sidebar:
@@ -31,6 +31,8 @@ sources:
   - thelia-templates/default-twig:order/detail.html.twig:615
   - thelia-templates/default-twig:order/_address_card.html.twig:1
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:25
+  - thelia-templates/default-twig:order/_shipments_tab.html.twig:48
+  - thelia-templates/default-twig:order/_shipments_tab.html.twig:59
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1565
   - thelia/thelia:core/lib/Thelia/Model/Order.php:147
@@ -104,6 +106,15 @@ Each address shows the title (**Misses**), the name, the street address, the zip
 
 The **Shipments** block lists the parcels declared for this order, with their state. As long as no parcel is declared, it shows **Nothing has left yet.** The **New shipment** block is used to declare a parcel: see [Ship an order](/en/orders/ship-order/).
 
+The next screenshot shows another order, ORD000000000005, shipped for this example. Each parcel has one line that gives:
+
+- its reference, **ORD000000000005-1**, and the date it left (**Shipped on** …);
+- its status, **Shipped**;
+- the carrier, with the tracking number below it;
+- the products in the parcel, with their quantity.
+
+![Shipped parcel in the Shipments tab](../../../../assets/captures/en/orders/read-order/shipments-shipped.png)
+
 ## Step 6: read the right-hand column
 
 The **Totals** block summarizes the amounts.
@@ -133,6 +144,10 @@ Depending on the order, other blocks are added: **Coupons** if the customer used
 At the very bottom of the left column, the **History** block keeps track of what happened on the order, most recent first. The **Add a note** field lets you write a comment there.
 
 ![Order history](../../../../assets/captures/en/orders/read-order/history.png)
+
+On this order, the block is empty (counter at 0). On ORD000000000005, shipped for this example, it has six lines. Each one says what happened, who did it and when, for example **Status changed from Processing to Sent** or **Tracking reference set to 6A12345678901**.
+
+![History of a shipped order](../../../../assets/captures/en/orders/read-order/history-shipped.png)
 
 ## The result
 

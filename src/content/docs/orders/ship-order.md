@@ -116,3 +116,7 @@ Le nouveau numéro est aussi reporté sur le premier colis de la commande.
 ## Le résultat
 
 La commande est **Envoyée** et l'onglet **Expéditions** liste le colis avec son transporteur et son numéro de suivi. Un colis parti est marqué **Expédiée** avec sa date. Quand un lien de suivi existe, le numéro est cliquable.
+
+La capture montre une autre commande, ORD000000000005, expédiée pour l'exemple avec le numéro `6A12345678901` : son colis est **Expédiée**, avec **Custom Delivery** comme transporteur.
+
+![Colis expédié avec son numéro de suivi](../../../assets/captures/fr/orders/ship-order/shipped.png)

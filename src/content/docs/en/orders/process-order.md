@@ -1,5 +1,5 @@
 ---
-translatedFrom: 7f5a3e17a4c5
+translatedFrom: a81970aa7676
 title: Move an order forward (change its status)
 description: Change an order's status, for example from Paid to Sent, and know what that change triggers.
 sidebar:
@@ -67,9 +67,13 @@ If the parcel is leaving, the tutorial [Ship an order and enter the tracking num
 
 ## Step 4: check the history
 
-Further down the page, the history block keeps one line per status change. In the screenshot, it is empty: **Nothing has been recorded on this order yet.**
+Further down the page, the history block keeps one line per event on the order, including each status change. In the first screenshot, it is empty: **Nothing has been recorded on this order yet.**
 
 ![Order history](../../../../assets/captures/en/orders/process-order/history.png)
+
+The second screenshot shows another order, ORD000000000005, shipped for this example: the status change appears on the line **Status changed from Processing to Sent**, with the author and the date.
+
+![History of a shipped order](../../../../assets/captures/en/orders/process-order/history-shipped.png)
 
 ## Which statuses are offered
 
