@@ -1,0 +1,29 @@
+# Screens of src/content/docs/payment-delivery/enable-delivery.md, replayed by "npm run capture".
+page: payment-delivery/enable-delivery
+login: admin
+shots:
+  - name: modules
+    url: /admin/modules
+    waitFor: '[data-testid="modules-list"]'
+    actions:
+      - click: 'label[for="modules-type-delivery"]'
+      - waitFor: '[data-testid="module-row-CustomDelivery"]'
+    highlight: '[data-testid="module-toggle-CustomDelivery"]'
+  - name: hub
+    url: /admin/configuration
+    waitFor: 'a[href$="/admin/configuration/shipping_zones"]'
+    highlight: 'a[href$="/admin/configuration/shipping_zones"]'
+  - name: zones-list
+    url: /admin/configuration/shipping_zones
+    waitFor: '[data-testid="shipping-zones-page"]'
+    clip: '[data-testid="shipping-zones-page"]'
+    highlight: '[data-testid="shipping-zones-page"] table tbody tr:nth-child(2) td:nth-child(3) a'
+  - name: attach
+    url: /admin/configuration/shipping_zones/update/14
+    waitFor: '[data-testid="shipping-zones-add-area-form"]'
+    actions:
+      - select:
+          selector: '#bo-shipping-zones-area-id'
+          value: '1'
+    clip: '[data-testid="shipping-zones-edit-page"]'
+    highlight: '[data-testid="shipping-zones-add-area-form"]'
