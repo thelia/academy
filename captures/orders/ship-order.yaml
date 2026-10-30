@@ -1,6 +1,7 @@
 # Screens of src/content/docs/orders/ship-order.md, replayed by "npm run capture".
 page: orders/ship-order
 login: admin
+prepare: [shipped-order]
 shots:
   - name: shipments-tab
     url: /admin/order/update/2
@@ -26,3 +27,11 @@ shots:
       - waitFor: '#tab-bill.show [data-testid="order-delivery-ref-form"]'
     clip: '#tab-bill .card:has([data-testid="order-delivery-ref-form"])'
     highlight: '[data-testid="order-delivery-ref-form"]'
+  - name: shipped
+    url: /admin/order/update/5
+    waitFor: '[data-testid="order-tab-shipments"]'
+    actions:
+      - click: '[data-testid="order-tab-shipments"]'
+      - waitFor: '#tab-shipments.show [data-testid^="order-shipment-row-"]'
+    clip: '[data-testid="order-shipments-card"]'
+    highlight: '[data-testid^="order-shipment-row-"] .badge'

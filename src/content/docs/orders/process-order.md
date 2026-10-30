@@ -66,9 +66,13 @@ Si le colis part, le tutoriel [Expédier une commande et saisir le suivi du coli
 
 ## Étape 4 : vérifier dans l'historique
 
-Plus bas sur la page, le bloc d'historique garde une ligne par changement de statut. Sur la capture, il est vide : **Rien n'a encore été enregistré sur cette commande.**
+Plus bas sur la page, le bloc d'historique garde une ligne par événement de la commande, dont chaque changement de statut. Sur la première capture, il est vide : **Rien n'a encore été enregistré sur cette commande.**
 
 ![Historique d'une commande](../../../assets/captures/fr/orders/process-order/history.png)
+
+La seconde capture montre une autre commande, ORD000000000005, expédiée pour l'exemple : le changement de statut y apparaît sur la ligne **Statut : Traitement → Envoyée**, avec l'auteur et la date.
+
+![Historique d'une commande expédiée](../../../assets/captures/fr/orders/process-order/history-shipped.png)
 
 ## Quels statuts sont proposés
 

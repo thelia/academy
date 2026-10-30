@@ -1,6 +1,7 @@
 # Screens of src/content/docs/orders/read-order.md, replayed by "npm run capture".
 page: orders/read-order
 login: admin
+prepare: [shipped-order]
 shots:
   - name: detail
     url: /admin/order/update/4
@@ -44,4 +45,15 @@ shots:
   - name: history
     url: /admin/order/update/4
     waitFor: '[data-testid="order-history-card"]'
+    clip: '[data-testid="order-history-card"]'
+  - name: shipments-shipped
+    url: /admin/order/update/5
+    waitFor: '[data-testid="order-tab-shipments"]'
+    actions:
+      - click: '[data-testid="order-tab-shipments"]'
+      - waitFor: '#tab-shipments.show [data-testid^="order-shipment-row-"]'
+    clip: '[data-testid="order-shipments-card"]'
+  - name: history-shipped
+    url: /admin/order/update/5
+    waitFor: '[data-testid="order-history-timeline"]'
     clip: '[data-testid="order-history-card"]'

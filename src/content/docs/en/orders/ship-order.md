@@ -1,5 +1,5 @@
 ---
-translatedFrom: 4b4446092e65
+translatedFrom: 9050991bbdef
 title: Ship an order and enter the tracking number
 description: Record that a parcel has left with its tracking number, and know what the customer receives.
 sidebar:
@@ -117,3 +117,7 @@ The new number is also copied to the order's first parcel.
 ## The result
 
 The order is **Sent** and the **Shipments** tab lists the parcel with its carrier and tracking number. A parcel that has left is marked **Shipped** with its date. When a tracking link exists, the number is clickable.
+
+The screenshot shows another order, ORD000000000005, shipped for this example with the number `6A12345678901`: its parcel is **Shipped**, with **Custom Delivery** as the carrier.
+
+![Shipped parcel with its tracking number](../../../../assets/captures/en/orders/ship-order/shipped.png)

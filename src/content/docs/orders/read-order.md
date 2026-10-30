@@ -30,6 +30,8 @@ sources:
   - thelia-templates/default-twig:order/detail.html.twig:615
   - thelia-templates/default-twig:order/_address_card.html.twig:1
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:25
+  - thelia-templates/default-twig:order/_shipments_tab.html.twig:48
+  - thelia-templates/default-twig:order/_shipments_tab.html.twig:59
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1565
   - thelia/thelia:core/lib/Thelia/Model/Order.php:147
@@ -103,6 +105,15 @@ Chaque adresse affiche le titre (**Madame**), le nom, l'adresse, le code postal 
 
 Le bloc **Expéditions** liste les colis déclarés pour cette commande, avec leur état. Tant qu'aucun colis n'est déclaré, il affiche **Rien n'est encore parti.** Le bloc **Nouvelle expédition** sert à déclarer un colis : voir [Expédier une commande](/orders/ship-order/).
 
+La capture suivante montre une autre commande, ORD000000000005, expédiée pour l'exemple. Une ligne par colis donne :
+
+- sa référence, **ORD000000000005-1**, et la date de départ (**Expédiée le** …) ;
+- son état, **Expédiée** ;
+- le transporteur, avec le numéro de suivi dessous ;
+- les produits du colis, avec leur quantité.
+
+![Colis expédié dans l'onglet Expéditions](../../../assets/captures/fr/orders/read-order/shipments-shipped.png)
+
 ## Étape 6 : lire la colonne de droite
 
 Le bloc **Totaux** résume les montants.
@@ -132,6 +143,10 @@ Selon la commande, d'autres blocs s'ajoutent : **Codes promo** si le client en a
 Tout en bas de la colonne de gauche, le bloc **Historique** garde la trace de ce qui s'est passé sur la commande, la plus récente en premier. Le champ **Ajouter une note** permet d'y écrire un commentaire.
 
 ![Historique de la commande](../../../assets/captures/fr/orders/read-order/history.png)
+
+Sur cette commande, le bloc est vide (compteur à 0). Sur ORD000000000005, expédiée pour l'exemple, il compte six lignes. Chacune dit ce qui s'est passé, qui l'a fait et quand, par exemple **Statut : Traitement → Envoyée** ou **Référence de suivi : 6A12345678901**.
+
+![Historique d'une commande expédiée](../../../assets/captures/fr/orders/read-order/history-shipped.png)
 
 ## Le résultat
 
