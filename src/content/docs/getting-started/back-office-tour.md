@@ -13,6 +13,7 @@ sources:
   - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:53
   - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:91
   - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:69
+  - thelia-templates/default-twig:src/Repository/ProductRepository.php:148
   - thelia-templates/default-twig:src/DTO/Dashboard/DateRange.php:64
   - thelia-templates/default-twig:src/Service/Search/SearchResultsPresenter.php:38
   - thelia-modules/HookAdminHome:Hook/AdminHook.php:48
@@ -47,7 +48,7 @@ De haut en bas :
 - **Les indicateurs** : chiffre d'affaires, commandes, panier moyen et nouveaux clients. Le pourcentage compare la période choisie à la période précédente de même durée.
 - **Les graphiques** : l'évolution du chiffre d'affaires jour par jour et la répartition des commandes par statut.
 
-Plus bas, faites défiler la page pour voir les **Commandes récentes**, les **Meilleures ventes** et le **Stock faible** (produits à 5 unités ou moins).
+Plus bas, faites défiler la page pour voir les **Commandes récentes**, les **Meilleures ventes** et le **Stock faible** (les 5 produits les plus bas parmi ceux à 5 unités ou moins).
 
 ## Étape 3 : se repérer dans le menu
 
