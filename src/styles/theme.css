@@ -1,0 +1,139 @@
+/*
+ * Thelia 2026 charter, read from the "Maquettes Thelia 2026" Figma file
+ * (Design System page: atoms/colours, atoms/variables-colours, text styles).
+ * Palette tokens first, then the semantic tokens of the mock-up, then the
+ * mapping onto Starlight variables. Change a colour here, never in a page.
+ */
+:root {
+	/* Palette */
+	--th-cosmic-abyss-100: #ecedf8;
+	--th-cosmic-abyss-300: #4a4fc4;
+	--th-cosmic-abyss-600: #2b2f8f;
+	--th-cosmic-abyss-700: #22256f;
+	--th-cosmic-abyss-800: #191b52;
+	--th-lunar-dust-0: #ffffff;
+	--th-lunar-dust-50: #fefcf8;
+	--th-lunar-dust-100: #e6e7ef;
+	--th-lunar-dust-150: #e1e3ee;
+	--th-lunar-dust-300: #c4c6dc;
+	--th-lunar-dust-400: #8a8da6;
+	--th-lunar-dust-600: #4c4f66;
+	--th-lunar-dust-900: #221b52;
+	--th-lunar-dust-950: #1c1646;
+	--th-solar-glow-50: #ffe8de;
+	--th-solar-glow-500: #f26041;
+	--th-cosmic-latte-100: #f0e6da;
+	--th-exoplanet-50: #e7f4ec;
+	--th-exoplanet-700: #1b6e45;
+	--th-red-giant-50: #fbeaea;
+	--th-red-giant-700: #b3262e;
+	--th-quasar-50: #fff3d6;
+	--th-quasar-700: #7a5200;
+
+	/* Semantic tokens (Figma names) */
+	--th-text-primary: var(--th-lunar-dust-900);
+	--th-text-secondary: var(--th-lunar-dust-600);
+	--th-text-link: var(--th-cosmic-abyss-600);
+	--th-text-link-hover: var(--th-cosmic-abyss-800);
+	--th-text-on-dark: var(--th-lunar-dust-0);
+	--th-text-on-dark-secondary: var(--th-lunar-dust-300);
+	--th-surface-page: var(--th-lunar-dust-50);
+	--th-surface-alt: var(--th-cosmic-latte-100);
+	--th-surface-card: var(--th-lunar-dust-0);
+	--th-surface-dark: var(--th-lunar-dust-950);
+	--th-surface-tint: var(--th-cosmic-abyss-100);
+	--th-surface-accent: var(--th-solar-glow-500);
+	--th-border-default: var(--th-lunar-dust-150);
+	--th-radius-card: 24px;
+
+	--sl-font: 'Hanken Grotesk Variable', var(--sl-font-system);
+	--th-font-heading: 'Bricolage Grotesque Variable', var(--sl-font-system);
+}
+
+/* Light theme: the mock-up's own colours. */
+:root[data-theme='light'] {
+	--sl-color-white: var(--th-text-primary);
+	--sl-color-gray-1: var(--th-text-primary);
+	--sl-color-gray-2: var(--th-lunar-dust-600);
+	--sl-color-gray-3: var(--th-lunar-dust-600);
+	--sl-color-gray-4: var(--th-lunar-dust-400);
+	--sl-color-gray-5: var(--th-lunar-dust-150);
+	--sl-color-gray-6: var(--th-cosmic-latte-100);
+	--sl-color-gray-7: var(--th-lunar-dust-50);
+	--sl-color-black: var(--th-surface-page);
+
+	--sl-color-accent-low: var(--th-cosmic-abyss-100);
+	--sl-color-accent: var(--th-cosmic-abyss-600);
+	--sl-color-accent-high: var(--th-cosmic-abyss-800);
+
+	--sl-color-text: var(--th-text-primary);
+	--sl-color-text-accent: var(--th-text-link);
+	--sl-color-bg: var(--th-surface-page);
+	--sl-color-bg-nav: var(--th-surface-page);
+	--sl-color-bg-sidebar: var(--th-surface-page);
+	--sl-color-bg-inline-code: var(--th-surface-tint);
+	--sl-color-hairline-light: var(--th-border-default);
+	--sl-color-hairline: var(--th-border-default);
+
+	--sl-color-green-low: var(--th-exoplanet-50);
+	--sl-color-green-high: var(--th-exoplanet-700);
+	--sl-color-red-low: var(--th-red-giant-50);
+	--sl-color-red-high: var(--th-red-giant-700);
+	--sl-color-orange-low: var(--th-quasar-50);
+	--sl-color-orange-high: var(--th-quasar-700);
+	--sl-color-blue-low: var(--th-cosmic-abyss-100);
+	--sl-color-blue-high: var(--th-cosmic-abyss-700);
+}
+
+/* Dark theme: the mock-up's dark band (footer, dark headers). */
+:root:not([data-theme='light']) {
+	--sl-color-white: var(--th-text-on-dark);
+	--sl-color-gray-1: var(--th-lunar-dust-150);
+	--sl-color-gray-2: var(--th-text-on-dark-secondary);
+	--sl-color-gray-3: var(--th-lunar-dust-300);
+	--sl-color-gray-4: var(--th-lunar-dust-400);
+	--sl-color-gray-5: var(--th-cosmic-abyss-700);
+	--sl-color-gray-6: var(--th-cosmic-abyss-800);
+	--sl-color-black: var(--th-surface-dark);
+
+	--sl-color-accent-low: var(--th-cosmic-abyss-800);
+	--sl-color-accent: var(--th-cosmic-abyss-300);
+	--sl-color-accent-high: var(--th-cosmic-abyss-100);
+
+	--sl-color-bg: var(--th-surface-dark);
+	--sl-color-bg-nav: var(--th-surface-dark);
+	--sl-color-bg-sidebar: var(--th-surface-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.site-title,
+.sl-markdown-content :is(h1, h2, h3, h4, h5) {
+	font-family: var(--th-font-heading);
+	letter-spacing: -0.01em;
+}
+
+/* Links stay underlined (Figma: text/link "always underlined"). */
+.sl-markdown-content a:not(.card-grid a, .sl-link-card a) {
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+.sl-markdown-content a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* Screenshots: framed like the mock-up's cards. */
+.sl-markdown-content img {
+	border: 1px solid var(--sl-color-hairline);
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgb(34 27 82 / 0.08);
+}
+
+/* Visible focus on every interactive element (RGAA 4.1.2). */
+:focus-visible {
+	outline: 3px solid var(--th-surface-accent);
+	outline-offset: 2px;
+}

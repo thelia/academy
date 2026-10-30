@@ -1,0 +1,31 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const { locale } = Astro.locals.starlightRoute;
+const editorPage = `/${locale ? `${locale}/` : ''}openstudio/`;
+const label =
+	locale === 'en'
+		? { lead: 'Thelia is developed and maintained by', more: 'About the publisher' }
+		: { lead: 'Thelia est développé et maintenu par', more: 'À propos de l’éditeur' };
+---
+
+<Default />
+<p class="publisher">
+	{label.lead} <a href="https://www.openstudio.fr">OpenStudio</a> · <a href={editorPage}>{label.more}</a>
+</p>
+
+<style>
+	.publisher {
+		margin-top: 2rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--sl-color-hairline);
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+		text-align: center;
+	}
+	.publisher a {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+</style>
