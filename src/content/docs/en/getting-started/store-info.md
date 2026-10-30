@@ -1,5 +1,5 @@
 ---
-translatedFrom: 8098525208b1
+translatedFrom: ca22b915583b
 title: Fill in your store information
 description: Enter the store name, address, e-mail addresses and logo in the back office.
 sidebar:
@@ -33,6 +33,9 @@ sources:
   - thelia-templates/email:email-layout.html.twig:386
   - thelia-templates/email:email-layout.html.twig:422
   - thelia-templates/flexy:base.html.twig:69
+  - thelia-templates/email:order_shipped.html.twig:7
+  - thelia/thelia:core/lib/Thelia/Domain/Order/EventListener/SendShippingEmailListener.php:104
+  - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
 ---
 
 This screen holds your store's identity: its name, address, e-mail addresses and logo. This information is used in the e-mails sent to your customers and on your documents: fill it in first.
@@ -79,7 +82,7 @@ A number in the wrong format, or a SIRET with a wrong check digit, is rejected w
 
 1. In **Store email address**, enter the store's contact address, for example `contact@oak-workshop.com`. It is also the sender address of all e-mails sent by the store: your customers see it as the sender. Messages from the store's contact form arrive at this address.
 2. In **Email addresses of notification recipients**, enter the addresses that receive the store's alerts, for example `orders@oak-workshop.com`. For several addresses, separate them with commas.
-3. Leave **Send the customer an email when their order is shipped** ticked if you want to tell your customers about the shipment. Untick it if you notify them another way.
+3. Leave **Send the customer an email when their order is shipped** ticked if you want Thelia to tell your customers about the shipment. Untick it if you notify them another way. A delivery module can send its own e-mail, which this box does not control.
 
 The notification recipients receive the message announcing each new order. An empty field is rejected: enter at least one address.
 
@@ -88,7 +91,7 @@ The notification recipients receive the message announcing each new order. An em
 ![Media block](../../../../assets/captures/en/getting-started/store-info/media.png)
 
 1. In **Store logo**, click **Choose File** and choose your logo (PNG, JPEG, GIF, WebP or SVG). It appears at the top of the e-mails sent to customers.
-2. In **Banner**, choose a wide image. It appears in the body of the e-mails sent to customers.
+2. In **Banner**, choose a wide image. It appears in the body of the order confirmation e-mail and of the newsletter subscription confirmation e-mail, not in the other e-mails.
 
 Both fields are optional. Once the file is chosen, a preview of the image appears next to the field, or below it for the banner.
 

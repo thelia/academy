@@ -32,6 +32,9 @@ sources:
   - thelia-templates/email:email-layout.html.twig:386
   - thelia-templates/email:email-layout.html.twig:422
   - thelia-templates/flexy:base.html.twig:69
+  - thelia-templates/email:order_shipped.html.twig:7
+  - thelia/thelia:core/lib/Thelia/Domain/Order/EventListener/SendShippingEmailListener.php:104
+  - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
 ---
 
 Cet écran regroupe l'identité de votre boutique : son nom, son adresse, ses adresses e-mail et son logo. Ces informations servent dans les e-mails envoyés à vos clients et sur vos documents : remplissez-les en premier.
@@ -78,7 +81,7 @@ Un numéro au mauvais format, ou un SIRET dont la clé de contrôle est fausse, 
 
 1. Dans **Adresse e-mail du magasin**, saisissez l'adresse de contact de la boutique, par exemple `contact@atelier-du-bois.fr`. C'est aussi l'adresse d'expédition de tous les e-mails envoyés par la boutique : vos clients la voient comme expéditeur. Les messages du formulaire de contact de la boutique arrivent à cette adresse.
 2. Dans **Adresses e-mail des destinataires de notifications**, saisissez les adresses qui reçoivent les alertes de la boutique, par exemple `commandes@atelier-du-bois.fr`. Pour plusieurs adresses, séparez-les par des virgules.
-3. Laissez cochée **Envoyer un e-mail au client quand sa commande est expédiée** si vous voulez prévenir vos clients de l'expédition. Décochez-la si vous les prévenez autrement.
+3. Laissez cochée **Envoyer un e-mail au client quand sa commande est expédiée** si vous voulez que Thelia prévienne vos clients de l'expédition. Décochez-la si vous les prévenez autrement. Un module de livraison peut envoyer son propre e-mail, que cette case ne commande pas.
 
 Les destinataires de notifications reçoivent le message qui annonce chaque nouvelle commande. Un champ vide est refusé : saisissez au moins une adresse.
 
@@ -87,7 +90,7 @@ Les destinataires de notifications reçoivent le message qui annonce chaque nouv
 ![Bloc Média](../../../assets/captures/fr/getting-started/store-info/media.png)
 
 1. Dans **Logo du magasin**, cliquez sur **Choisir un fichier** et choisissez votre logo (PNG, JPEG, GIF, WebP ou SVG). Il s'affiche en haut des e-mails envoyés aux clients.
-2. Dans **Bannière**, choisissez une image large. Elle s'affiche dans le corps des e-mails envoyés aux clients.
+2. Dans **Bannière**, choisissez une image large. Elle s'affiche dans le corps de l'e-mail de confirmation de commande et de celui de confirmation d'inscription à la newsletter, pas dans les autres e-mails.
 
 Ces deux champs sont facultatifs. Une fois le fichier choisi, un aperçu de l'image s'affiche à côté du champ, ou dessous pour la bannière.
 
