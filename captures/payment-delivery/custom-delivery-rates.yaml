@@ -1,0 +1,32 @@
+# Screens of src/content/docs/payment-delivery/custom-delivery-rates.md, replayed by "npm run capture".
+page: payment-delivery/custom-delivery-rates
+login: admin
+shots:
+  - name: modules
+    url: /admin/modules
+    waitFor: '[data-testid="modules-list"]'
+    actions:
+      - click: 'label[for="modules-type-delivery"]'
+      - waitFor: '[data-testid="module-row-CustomDelivery"]'
+    clip: '[data-testid="module-row-CustomDelivery"]'
+    highlight: '[data-testid="module-row-CustomDelivery"] [data-testid="datatable-action-config"] i'
+  - name: configure
+    url: /admin/module/CustomDelivery
+    waitFor: '[data-testid="module-configure-page"] #customdelivery-form'
+    clip: '.card:has(#customdelivery-form)'
+    highlight: '#customdelivery-form select'
+  - name: slices
+    url: /admin/module/CustomDelivery
+    waitFor: '#slices table'
+    actions:
+      - fill:
+          selector: '#slices table:first-of-type tr.js-slice-new .js-slice-price-max'
+          value: '50'
+      - fill:
+          selector: '#slices table:first-of-type tr.js-slice-new .js-slice-weight-max'
+          value: '2'
+      - fill:
+          selector: '#slices table:first-of-type tr.js-slice-new .js-slice-price'
+          value: '5,90'
+    clip: '#slices .table-responsive'
+    highlight: '#slices table tr.js-slice-new'
