@@ -1,0 +1,13 @@
+# Screens of src/content/docs/orders/process-order.md, replayed by "npm run capture".
+page: orders/process-order
+login: admin
+shots:
+  - name: header
+    url: /admin/order/update/1
+    waitFor: '[data-testid="order-status-form"]'
+    clip: '[data-testid="order-detail-page"] > div:first-child'
+    highlight: '[data-testid="order-status-form"]'
+  - name: history
+    url: /admin/order/update/1
+    waitFor: '[data-testid="order-history-card"]'
+    clip: '[data-testid="order-history-card"]'
