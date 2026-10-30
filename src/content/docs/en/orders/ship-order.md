@@ -1,5 +1,5 @@
 ---
-translatedFrom: 3563e7a7fd07
+translatedFrom: 4b4446092e65
 title: Ship an order and enter the tracking number
 description: Record that a parcel has left with its tracking number, and know what the customer receives.
 sidebar:
@@ -32,6 +32,12 @@ sources:
   - thelia-templates/default-twig:src/Form/Configuration/ConfigStoreType.php:171
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:127-129
   - thelia-templates/email:order_shipped.html.twig:26-38
+  - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
+  - thelia/thelia:core/lib/Thelia/Domain/Shipping/Service/OrderShipmentManager.php:230
+  - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderTrackingUrlResolver.php:57
+  - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderTrackingUrlResolver.php:207
+  - thelia-templates/default-twig:src/Controller/Configuration/ShippingZoneController.php:150
+  - thelia-templates/default-twig:configuration/shipping-zone/edit.html.twig:66
 ---
 
 A shipment is one parcel leaving your premises, with its carrier and tracking number. You record it so that the order moves to **Sent** and your customer knows the parcel is on its way.
@@ -82,7 +88,7 @@ The **Cancel** button on that line drops the draft: its products go back to **Le
 - When all the products have left, the order moves to **Sent**.
 - If some remain to be sent, it moves to **Partially shipped**, provided that status exists in the store.
 - A **Canceled** or **Refunded** order cannot be shipped.
-- If you move the order to **Sent** yourself from the status list, Thelia automatically records a parcel with everything that remains, and the parcels in **Draft** leave too. To give the parcel a tracking number, create the shipment here instead of changing the status.
+- If you move the order to **Sent** yourself from the status list, the parcels in **Draft** leave first, each as a separate parcel, then Thelia records everything that remains in a single parcel, which takes over the order's tracking reference. To give the parcel a tracking number, create the shipment here instead of changing the status.
 
 ## What the customer receives
 
@@ -93,9 +99,9 @@ When the order enters the **Sent** status, the customer receives a shipping e-ma
 - the tracking number of the first parcel, if one was entered;
 - a tracking link, if there is a number and the carrier provides one.
 
-The tracking link depends on the carrier: it only appears if the delivery method provides a tracking address. Without it, the customer receives the number without a link.
+The tracking link needs a number and a tracking address. The delivery module builds the address itself or, otherwise, you enter it for that delivery method in **Shipping configuration**, in the **Tracking address** field, with `%ID%` in place of the number. Without an address, the customer receives the number without a link.
 
-This e-mail goes out when the order moves to **Sent**. It is not sent again if you correct the tracking number afterwards. To not send it, untick **Send the customer an email when their order is shipped** in [Store information](/en/getting-started/store-info/).
+This e-mail goes out when the order moves to **Sent**. It is not sent again if you correct the tracking number afterwards. To not send it, untick **Send the customer an email when their order is shipped** in [Store information](/en/getting-started/store-info/). This turns off Thelia's e-mail, not the one a delivery module might send on its own.
 
 ## Correct the tracking number later
 

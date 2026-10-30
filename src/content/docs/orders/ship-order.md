@@ -31,6 +31,12 @@ sources:
   - thelia-templates/default-twig:src/Form/Configuration/ConfigStoreType.php:171
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:127-129
   - thelia-templates/email:order_shipped.html.twig:26-38
+  - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
+  - thelia/thelia:core/lib/Thelia/Domain/Shipping/Service/OrderShipmentManager.php:230
+  - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderTrackingUrlResolver.php:57
+  - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderTrackingUrlResolver.php:207
+  - thelia-templates/default-twig:src/Controller/Configuration/ShippingZoneController.php:150
+  - thelia-templates/default-twig:configuration/shipping-zone/edit.html.twig:66
 ---
 
 Une expédition correspond à un colis qui part de chez vous, avec son transporteur et son numéro de suivi. Vous l'enregistrez pour que la commande passe à **Envoyée** et que votre client sache que son colis est en route.
@@ -81,7 +87,7 @@ Le bouton **Annuler** de cette ligne abandonne le brouillon : ses produits revie
 - Quand tous les produits sont partis, la commande passe à **Envoyée**.
 - S'il en reste à envoyer, elle passe à **Partiellement expédiée**, à condition que ce statut existe dans la boutique.
 - Une commande **Annulée** ou **Remboursé** ne peut pas être expédiée.
-- Si vous passez vous-même la commande à **Envoyée** dans la liste des statuts, Thelia enregistre d'office un colis avec tout ce qui reste, et les colis en **Brouillon** partent aussi. Pour donner un numéro de suivi au colis, créez l'expédition ici plutôt que de changer le statut.
+- Si vous passez vous-même la commande à **Envoyée** dans la liste des statuts, les colis en **Brouillon** partent d'abord, chacun comme un colis distinct, puis Thelia enregistre tout le reste en un seul colis, qui reprend la référence de suivi de la commande. Pour donner un numéro de suivi au colis, créez l'expédition ici plutôt que de changer le statut.
 
 ## Ce que reçoit le client
 
@@ -92,9 +98,9 @@ Quand la commande entre dans le statut **Envoyée**, le client reçoit un e-mail
 - le numéro de suivi du premier colis, s'il a été saisi ;
 - un lien de suivi, s'il y a un numéro et que le transporteur en fournit un.
 
-Le lien de suivi dépend du transporteur : il n'apparaît que si le mode de livraison fournit une adresse de suivi. Sans elle, le client reçoit le numéro sans lien.
+Le lien de suivi demande un numéro et une adresse de suivi. Le module de livraison la construit lui-même ou, sinon, vous la saisissez pour ce mode de livraison dans **Configuration du transport**, dans le champ **Adresse de suivi**, avec `%ID%` à la place du numéro. Sans adresse, le client reçoit le numéro sans lien.
 
-Cet e-mail part au passage à **Envoyée**. Il n'est pas renvoyé si vous corrigez ensuite le numéro de suivi. Pour ne pas l'envoyer, décochez **Envoyer un e-mail au client quand sa commande est expédiée** dans [Informations de la boutique](/getting-started/store-info/).
+Cet e-mail part au passage à **Envoyée**. Il n'est pas renvoyé si vous corrigez ensuite le numéro de suivi. Pour ne pas l'envoyer, décochez **Envoyer un e-mail au client quand sa commande est expédiée** dans [Informations de la boutique](/getting-started/store-info/). Cela coupe l'e-mail de Thelia, pas celui qu'un module de livraison enverrait de lui-même.
 
 ## Corriger le numéro de suivi plus tard
 
