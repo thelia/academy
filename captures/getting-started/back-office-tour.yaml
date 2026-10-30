@@ -1,0 +1,15 @@
+# Screens of src/content/docs/getting-started/back-office-tour.md, replayed by "npm run capture".
+page: getting-started/back-office-tour
+login: admin
+shots:
+  - name: login
+    login: none
+    url: /admin/login
+    waitFor: '[data-testid="login-form"]'
+  - name: dashboard
+    url: /admin
+    waitFor: '[data-testid="bo-dashboard"]'
+  - name: top-bar
+    url: /admin
+    waitFor: '[data-testid="bo-top-nav"]'
+    clip: '[data-testid="bo-top-nav"]'
