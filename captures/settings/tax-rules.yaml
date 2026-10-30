@@ -1,0 +1,53 @@
+# Screens of src/content/docs/settings/tax-rules.md, replayed by "npm run capture".
+page: settings/tax-rules
+login: admin
+shots:
+  - name: list
+    url: /admin/configuration/taxes_rules
+    waitFor: '[data-testid="taxes-rules-page"]'
+    clip: '[data-testid="taxes-section"]'
+    highlight: '[data-testid="tax-create-button"]'
+  - name: list-rules
+    url: /admin/configuration/taxes_rules
+    waitFor: '[data-testid="taxes-rules-page"]'
+    clip: '[data-testid="tax-rules-section"]'
+    highlight: '[data-testid="tax-rule-create-button"]'
+  - name: tax-modal
+    url: /admin/configuration/taxes_rules
+    waitFor: '[data-testid="tax-create-button"]'
+    actions:
+      - click: '[data-testid="tax-create-button"]'
+      - waitFor: '#tax-create-modal.show'
+      - select:
+          selector: '#thelia_tax_creation_type'
+          value: 'Thelia-Domain-Taxation-TaxEngine-TaxType-PricePercentTaxType'
+    clip: '#tax-create-modal .modal-content'
+    highlight: '#tax-create-modal .tax-requirement:not([style*="none"]) input'
+  - name: rule-taxes
+    url: /admin/configuration/taxes_rules/update/1?edit_language_id=1
+    waitFor: '[data-testid="tax-rule-edit-page"]'
+    actions:
+      - click: '#tax-rule-tab-taxes'
+      - waitFor: '#tax-rule-pane-taxes.show [data-testid="tax-rule-matrix-apply"]'
+      - select:
+          selector: '[data-testid="tax-rule-matrix-country-selector"]'
+          value: '64-0'
+    clip: '#tax-rule-pane-taxes .card:has([data-testid="tax-rule-matrix-groups"])'
+  - name: rule-country
+    url: /admin/configuration/taxes_rules/update/1?edit_language_id=1
+    waitFor: '[data-testid="tax-rule-edit-page"]'
+    actions:
+      - click: '#tax-rule-tab-taxes'
+      - waitFor: '#tax-rule-pane-taxes.show [data-testid="tax-rule-matrix-apply"]'
+      - select:
+          selector: '[data-testid="tax-rule-matrix-country-selector"]'
+          value: '64-0'
+    clip: '#tax-rule-pane-taxes .card:has(#tax-rule-configuration-selector)'
+  - name: product-modal
+    url: /admin/products
+    waitFor: '[data-testid="product-create-button"]'
+    actions:
+      - click: '[data-testid="product-create-button"]'
+      - waitFor: '#product-create-modal.show'
+    clip: '#product-create-modal .modal-content'
+    highlight: '#product-create-modal select[name$="[tax_rule]"]'
