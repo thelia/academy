@@ -1,6 +1,7 @@
 # Screens of src/content/docs/payment-delivery/enable-delivery.md, replayed by "npm run capture".
 page: payment-delivery/enable-delivery
 login: admin
+prepare: [zone-without-carrier]
 shots:
   - name: modules
     url: /admin/modules
@@ -27,3 +28,7 @@ shots:
           value: '1'
     clip: '[data-testid="shipping-zones-edit-page"]'
     highlight: '[data-testid="shipping-zones-add-area-form"]'
+  - name: warning
+    url: /admin/configuration/shipping_zones
+    waitFor: '[data-testid="shipping-zones-page"]'
+    clip: '[data-testid="shipping-zones-page"] .alert-warning'

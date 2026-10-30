@@ -12,6 +12,7 @@ sources:
   - thelia-templates/default-twig:module/list.html.twig:113
   - thelia-templates/default-twig:module/list.html.twig:192
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:73
+  - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:82
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:184
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:135
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:165
@@ -42,7 +43,7 @@ Un moyen de paiement est la façon dont vos clients règlent leur commande, par 
 1. Dans le menu de gauche, cliquez sur **Modules**.
 2. Dans le sous-menu, cliquez sur **Modules**.
 
-La page **Gestion des modules** liste tous les modules de la boutique. Sous le titre, une ligne donne le total, par exemple « 16 modules · 16 actifs · 0 inactifs ».
+La page **Gestion des modules** liste tous les modules de la boutique. Sous le titre, une ligne donne le total, par exemple « 16 modules · 15 actifs · 1 inactifs ».
 
 ![Liste des modules de la boutique](../../../assets/captures/fr/payment-delivery/enable-payment/modules-list.png)
 
@@ -53,17 +54,21 @@ Un module peut servir à autre chose qu'à payer : livrer, ajouter une fonction 
 1. Cliquez sur **Paiement**, dans la rangée de boutons à gauche sous le champ de recherche.
 2. Regardez la rangée de boutons à droite : **Actif** est sélectionné d'office. Les modules désactivés sont donc cachés. Cliquez sur **Tous** ou sur **Inactif** pour les voir.
 
-![Les trois moyens de paiement de la boutique](../../../assets/captures/fr/payment-delivery/enable-payment/payment-filter.png)
+![Les moyens de paiement actifs de la boutique](../../../assets/captures/fr/payment-delivery/enable-payment/payment-filter.png)
+
+Sur la capture, deux moyens de paiement sont actifs : **Cheque** et **PayzenEmbedded**. **FreeOrder** n'y figure pas : il a été désactivé pour l'exemple (dans la boutique de démonstration, il est actif). Avec **Inactif**, il apparaît, interrupteur gris :
+
+![FreeOrder, moyen de paiement désactivé, dans le filtre Inactif](../../../assets/captures/fr/payment-delivery/enable-payment/payment-inactive.png)
 
 Dans la boutique de démonstration, trois moyens de paiement sont installés :
 
 - **Cheque** : le client paie par chèque. Ce moyen est proposé quand le total de la commande est supérieur à 0.
-- **FreeOrder** : « Commande gratuite ». Il est proposé quand le total de la commande est exactement 0, par exemple après un code promo qui couvre tout. Il marque alors la commande comme payée, sans que le client ait à payer quoi que ce soit.
+- **FreeOrder** : « There's nothing to pay for this order » (la liste affiche les titres des modules dans la langue par défaut de la boutique, ici l'anglais). Il est proposé quand le total de la commande est exactement 0, par exemple après un code promo qui couvre tout. Il marque alors la commande comme payée, sans que le client ait à payer quoi que ce soit.
 - **PayzenEmbedded** : paiement par carte bancaire, avec le prestataire de paiement PayZen. Il demande un compte chez ce prestataire. Il n'est proposé qu'une fois réglé (voir l'étape 4), et quand le total de la commande est compris entre les montants minimum et maximum réglés. Tant qu'il n'est pas en mode production, seuls les visiteurs dont l'adresse IP est autorisée dans ses réglages le voient.
 
 ## Étape 3 : activer ou désactiver un module
 
-Chaque ligne a un interrupteur. Quand il est vert et allumé, comme sur la capture, le module est actif.
+Chaque ligne a un interrupteur. Quand il est vert et allumé, comme sur la capture, le module est actif. Un interrupteur gris et éteint, comme celui de **FreeOrder** ci-dessus, signale un module désactivé.
 
 1. Repérez la ligne du moyen de paiement, par exemple **Cheque**.
 2. Cliquez sur l'interrupteur à droite de la ligne.

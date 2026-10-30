@@ -1,6 +1,7 @@
 # Screens of src/content/docs/payment-delivery/enable-payment.md, replayed by "npm run capture".
 page: payment-delivery/enable-payment
 login: admin
+prepare: [disabled-module]
 shots:
   - name: modules-list
     url: /admin/modules
@@ -12,6 +13,15 @@ shots:
       - click: 'label[for="modules-type-payment"]'
       - waitFor: '[data-testid="module-row-Cheque"]'
     highlight: 'label[for="modules-type-payment"]'
+    clip: '[data-testid="modules-page"]'
+  - name: payment-inactive
+    url: /admin/modules
+    waitFor: '[data-testid="modules-list"]'
+    actions:
+      - click: 'label[for="modules-type-payment"]'
+      - click: 'label[for="modules-status-0"]'
+      - waitFor: '[data-testid="module-row-FreeOrder"]'
+    highlight: 'label[for="modules-status-0"], [data-testid="module-toggle-FreeOrder"]'
     clip: '[data-testid="modules-page"]'
   - name: toggle
     url: /admin/modules
