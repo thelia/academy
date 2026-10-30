@@ -1,0 +1,33 @@
+# Screens of src/content/docs/catalog/add-product-images.md, replayed by "npm run capture".
+page: catalog/add-product-images
+login: admin
+shots:
+  - name: images-tab
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1'
+      en: '/admin/products/update?product_id=4&edit_language_id=2'
+    waitFor: '[data-testid="product-edit-page"]'
+    actions:
+      - click: '[data-testid="product-tab-images"]'
+      - waitFor: '#tab-images.show [data-testid="bo-file-upload-form-image"]'
+    highlight: '[data-testid="product-tab-images"]'
+  - name: upload-form
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1&current_tab=images'
+      en: '/admin/products/update?product_id=4&edit_language_id=2&current_tab=images'
+    waitFor: '#tab-images.show [data-testid="bo-file-upload-form-image"]'
+    highlight: '[data-testid="bo-file-upload-form-image"]'
+    clip: '#tab-images .card:has([data-testid="bo-file-upload-form-image"])'
+  - name: image-list
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1&current_tab=images'
+      en: '/admin/products/update?product_id=4&edit_language_id=2&current_tab=images'
+    waitFor: '#tab-images.show [data-testid="bo-file-list-grid"]'
+    clip: '#tab-images .card:has([data-testid="bo-file-list-grid"])'
+  - name: alt-text
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1&current_tab=images'
+      en: '/admin/products/update?product_id=4&edit_language_id=2&current_tab=images'
+    waitFor: '#tab-images.show [data-testid="bo-file-list-grid"]'
+    highlight: '[data-testid^="bo-file-alt-input-"]'
+    clip: '#tab-images [data-bo-file-list-target="item"]'
