@@ -1,0 +1,24 @@
+# Screens of src/content/docs/catalog/create-category.md, replayed by "npm run capture".
+page: catalog/create-category
+login: admin
+shots:
+  - name: list
+    url: /admin/categories
+    waitFor: '[data-testid="categories-page"]'
+    highlight: '[data-testid="category-create-button"]'
+  - name: modal
+    url: /admin/categories
+    waitFor: '[data-testid="categories-page"]'
+    actions:
+      - click: '[data-testid="category-create-button"]'
+      - waitFor: '#category-create-modal.show [data-testid="category-create-submit"]'
+    clip: '#category-create-modal .modal-content'
+  - name: result
+    url:
+      fr: '/admin/categories/update?category_id=1&edit_language_id=1'
+      en: '/admin/categories/update?category_id=1&edit_language_id=2'
+    waitFor: '[data-testid="category-edit-form"]'
+  - name: subcategory
+    url: /admin/categories?category_id=1
+    waitFor: '[data-testid="categories-page"]'
+    highlight: '[data-testid="category-create-button"]'
