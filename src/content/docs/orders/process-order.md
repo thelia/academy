@@ -29,6 +29,8 @@ sources:
   - thelia/thelia:setup/insert.sql:85
   - thelia/thelia:setup/insert.sql:15520
   - thelia-templates/default-twig:src/Form/Configuration/ConfigStoreType.php:171
+  - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
+  - thelia/thelia:core/lib/Thelia/Domain/Shipping/Service/OrderShipmentManager.php:230
 ---
 
 Le statut d'une commande dit où elle en est : à payer, payée, en préparation, expédiée. Vous le changez à la main au fil du traitement, pour que vous et votre client sachiez où en est la commande.
@@ -81,8 +83,8 @@ Ce réglage n'est pas décrit ici : si un statut dont vous avez besoin manque, d
 ## Ce que déclenche le changement
 
 - **Historique :** chaque changement est inscrit dans l'historique de la commande.
-- **E-mail au client :** quand la commande passe à **Envoyée**, le client reçoit un e-mail d'expédition, sauf si la case **Envoyer un e-mail au client quand sa commande est expédiée** est décochée dans [Informations de la boutique](/getting-started/store-info/). Les détails sont dans [Expédier une commande et saisir le suivi du colis](/orders/ship-order/).
-- **Expédition :** au passage à **Envoyée**, tout ce qui reste à expédier est enregistré comme parti, en un colis qui reprend la référence de suivi de la commande. Pour saisir le numéro de suivi d'abord, passez par l'onglet **Expéditions** (voir le même tutoriel).
+- **E-mail au client :** quand la commande passe à **Envoyée**, Thelia envoie au client un e-mail d'expédition, sauf si la case **Envoyer un e-mail au client quand sa commande est expédiée** est décochée dans [Informations de la boutique](/getting-started/store-info/). Un module de livraison peut envoyer le sien, que cette case ne commande pas. Les détails sont dans [Expédier une commande et saisir le suivi du colis](/orders/ship-order/).
+- **Expédition :** au passage à **Envoyée**, les colis en **Brouillon** partent d'abord, chacun comme un colis distinct. Tout ce qui reste à expédier part ensuite en un seul colis, qui reprend la référence de suivi de la commande. Pour saisir le numéro de suivi d'abord, passez par l'onglet **Expéditions** (voir le même tutoriel).
 - **Numéro de facture :** avec le réglage livré par défaut, une commande qui passe à un statut payé (**Payée**, **Traitement**, **Envoyée** ou **Partiellement expédiée**) sans numéro de facture en reçoit un.
 - **Stock :** Thelia compte comme payée une commande **Payée**, **Traitement**, **Envoyée** ou **Partiellement expédiée**. Quand elle quitte ces statuts, par exemple pour **Annulée**, ses produits sont remis en stock. Quand la commande revient ensuite à un statut payé, ils sont de nouveau retirés du stock.
 

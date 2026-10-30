@@ -32,6 +32,7 @@ sources:
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:25
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1565
+  - thelia/thelia:core/lib/Thelia/Model/Order.php:147
 ---
 
 Une commande rassemble tout ce qu'il faut pour préparer un colis : les produits achetés, les adresses, le paiement et la livraison. Ce tutoriel vous guide dans cet écran bloc par bloc, avec la commande de démonstration ORD000000000004.
@@ -57,7 +58,7 @@ De haut en bas :
 - une pastille avec le statut (ici **Payée**) et la date à laquelle le client a commandé ;
 - la liste **Statut des commandes** et le bouton **Mettre à jour**, qui servent à faire avancer la commande : voir [Faire avancer une commande](/orders/process-order/) ;
 - les deux flèches, qui ouvrent la commande précédente ou la suivante ;
-- les boutons **Facture**, présent une fois la commande payée, et **Bon de livraison** : voir [Imprimer la facture et le bon de livraison](/orders/print-documents/) ;
+- les boutons **Facture**, présent sur une commande payée, même annulée ou remboursée depuis, et **Bon de livraison** : voir [Imprimer la facture et le bon de livraison](/orders/print-documents/) ;
 - le bouton **Annuler la commande**, qui n'apparaît que si la commande peut encore être annulée.
 
 ## Étape 3 : lire les produits commandés

@@ -1,5 +1,5 @@
 ---
-translatedFrom: e60c6826e23f
+translatedFrom: 577ce16c8fe1
 title: Read an order's details
 description: Find in an order what the customer bought, where to send it, what they paid and how the shipment is going.
 sidebar:
@@ -33,6 +33,7 @@ sources:
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:25
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1565
+  - thelia/thelia:core/lib/Thelia/Model/Order.php:147
 ---
 
 An order gathers everything you need to prepare a parcel: the products bought, the addresses, the payment and the delivery. This tutorial walks you through the screen block by block, using the demo order ORD000000000004.
@@ -58,7 +59,7 @@ From top to bottom:
 - a badge with the status (here **Paid**) and the date the customer ordered;
 - the **Order status** list and the **Update** button, used to move the order forward: see [Move an order forward](/en/orders/process-order/);
 - the two arrows, which open the previous or the next order;
-- the **Invoice** button, present once the order is paid, and the **Delivery slip** button: see [Print the invoice and the delivery slip](/en/orders/print-documents/);
+- the **Invoice** button, present on a paid order, even if it was canceled or refunded since, and the **Delivery slip** button: see [Print the invoice and the delivery slip](/en/orders/print-documents/);
 - the **Cancel order** button, which only appears if the order can still be canceled.
 
 ## Step 3: read the ordered products

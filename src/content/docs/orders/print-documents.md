@@ -35,6 +35,7 @@ sources:
   - thelia-templates/pdf:delivery.html.twig:146
   - thelia-templates/pdf:delivery.html.twig:161
   - thelia-templates/pdf:translations/pdf.fr_FR.php:28
+  - thelia/thelia:setup/update/sql/3.0.0-alpha1.sql:282
 ---
 
 La facture est le document que vous remettez au client pour une commande payée. Le bon de livraison l'accompagne dans le colis. Ce tutoriel montre où les afficher, les imprimer et les enregistrer en PDF.
@@ -89,7 +90,7 @@ Sur une commande **Non payée**, il n'y a que le bon de livraison.
 
 La date de facture est posée au moment où la commande passe pour la première fois à un statut payé. Une commande payée a donc toujours sa facture.
 
-Le numéro de facture est attribué à ce moment-là, dans l'ordre : `2026-000001`, `2026-000002`, et ainsi de suite. Chaque année commence une nouvelle série à `000001`. Cette numérotation est active sur une boutique installée neuve.
+Le numéro de facture est attribué à ce moment-là, dans l'ordre : `2026-000001`, `2026-000002`, et ainsi de suite. Chaque année commence une nouvelle série à `000001`. Cette numérotation est active sur une boutique installée neuve. Elle est inactive sur une boutique migrée depuis Thelia 2.
 
 Quand une commande payée n'a pas de numéro de facture enregistré, le PDF en fabrique un à partir du numéro de commande. C'est le cas des commandes de démonstration : la facture de ORD000000000004 porte le numéro `FA000000000004`.
 

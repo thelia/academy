@@ -1,5 +1,5 @@
 ---
-translatedFrom: cc9816d879c0
+translatedFrom: 7f5a3e17a4c5
 title: Move an order forward (change its status)
 description: Change an order's status, for example from Paid to Sent, and know what that change triggers.
 sidebar:
@@ -30,6 +30,8 @@ sources:
   - thelia/thelia:setup/insert.sql:85
   - thelia/thelia:setup/insert.sql:15520
   - thelia-templates/default-twig:src/Form/Configuration/ConfigStoreType.php:171
+  - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
+  - thelia/thelia:core/lib/Thelia/Domain/Shipping/Service/OrderShipmentManager.php:230
 ---
 
 An order's status tells you where it stands: to be paid, paid, being prepared, shipped. You change it by hand as you process the order, so that you and your customer know where the order stands.
@@ -82,8 +84,8 @@ This setting is not described here: if a status you need is missing, ask the per
 ## What the change triggers
 
 - **History:** each change is recorded in the order's history.
-- **E-mail to the customer:** when the order moves to **Sent**, the customer receives a shipping e-mail, unless the **Send the customer an email when their order is shipped** box is unticked in [Store information](/en/getting-started/store-info/). The details are in [Ship an order and enter the tracking number](/en/orders/ship-order/).
-- **Shipment:** when the order moves to **Sent**, everything left to ship is recorded as sent, in one parcel that takes over the order's tracking reference. To enter the tracking number first, use the **Shipments** tab (see the same tutorial).
+- **E-mail to the customer:** when the order moves to **Sent**, Thelia sends the customer a shipping e-mail, unless the **Send the customer an email when their order is shipped** box is unticked in [Store information](/en/getting-started/store-info/). A delivery module can send its own, which this box does not control. The details are in [Ship an order and enter the tracking number](/en/orders/ship-order/).
+- **Shipment:** when the order moves to **Sent**, the parcels in **Draft** leave first, each as a separate parcel. Everything left to ship then leaves in a single parcel, which takes over the order's tracking reference. To enter the tracking number first, use the **Shipments** tab (see the same tutorial).
 - **Invoice number:** with the default setting, an order that moves to a paid status (**Paid**, **Processing**, **Sent** or **Partially shipped**) without an invoice number gets one.
 - **Stock:** Thelia counts an order as paid when it is **Paid**, **Processing**, **Sent** or **Partially shipped**. When it leaves these statuses, for example for **Canceled**, its products are put back in stock. When the order later returns to a paid status, they are taken out of stock again.
 

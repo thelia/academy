@@ -1,5 +1,5 @@
 ---
-translatedFrom: b8b44f8e69cf
+translatedFrom: 75637c212c54
 title: Print the invoice and the delivery slip
 description: Display, print or download as PDF an order's invoice and its delivery slip.
 sidebar:
@@ -36,6 +36,7 @@ sources:
   - thelia-templates/pdf:delivery.html.twig:146
   - thelia-templates/pdf:delivery.html.twig:161
   - thelia-templates/pdf:translations/pdf.fr_FR.php:28
+  - thelia/thelia:setup/update/sql/3.0.0-alpha1.sql:282
 ---
 
 The invoice is the document you give the customer for a paid order. The delivery slip goes with it in the parcel. This tutorial shows where to display them, print them and save them as PDF.
@@ -90,7 +91,7 @@ On a **Not paid** order, there is only the delivery slip.
 
 The invoice date is set the first time the order moves to a paid status. A paid order therefore always has its invoice.
 
-The invoice number is assigned at that moment, in sequence: `2026-000001`, `2026-000002`, and so on. Each year starts a new series at `000001`. This numbering is active on a freshly installed store.
+The invoice number is assigned at that moment, in sequence: `2026-000001`, `2026-000002`, and so on. Each year starts a new series at `000001`. This numbering is active on a freshly installed store. It is inactive on a store migrated from Thelia 2.
 
 When a paid order has no recorded invoice number, the PDF builds one from the order number. This is the case for the demo orders: the invoice of ORD000000000004 carries the number `FA000000000004`.
 
