@@ -1,0 +1,22 @@
+# Screens of src/content/docs/orders/print-documents.md, replayed by "npm run capture".
+page: orders/print-documents
+login: admin
+shots:
+  - name: order
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-invoice-link"]'
+    highlight: '[data-testid="order-actions"]'
+  - name: invoice
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-actions"]'
+    clip: '[data-testid="order-actions"]'
+    highlight: '.btn-group:has([data-testid="order-invoice-link"])'
+  - name: delivery
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-actions"]'
+    clip: '[data-testid="order-actions"]'
+    highlight: '.btn-group:has([data-testid="order-delivery-link"])'
+  - name: unpaid
+    url: /admin/order/update/9
+    waitFor: '[data-testid="order-delivery-link"]'
+    clip: '[data-testid="order-actions"]'
