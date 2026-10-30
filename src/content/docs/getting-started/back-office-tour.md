@@ -3,7 +3,7 @@ title: Découvrir le back-office
 description: Se connecter à l'administration de la boutique et lire le tableau de bord.
 sidebar:
   order: 1
-thelia: '3.4'
+thelia: '3.3'
 verified: 2026-10-30
 sources:
   - capture:getting-started/back-office-tour
@@ -58,7 +58,7 @@ La barre du haut contient les outils disponibles sur toutes les pages :
 ![Barre du haut du back-office](../../../assets/captures/fr/getting-started/back-office-tour/top-bar.png)
 
 - le champ **Rechercher...** pour retrouver un produit, une rubrique, une marque, un contenu, un client ou une commande ;
-- la version de Thelia installée (ici v3.4.0), à indiquer quand vous demandez de l'aide ;
+- la version de Thelia installée, à indiquer quand vous demandez de l'aide ;
 - la **langue de l'interface** : cliquez sur le drapeau pour passer le back-office dans une autre langue ;
 - l'œil : **Voir le site**, ouvre votre boutique dans un nouvel onglet ;
 - le bouclier : **Sécurité du compte** ;
