@@ -1,0 +1,32 @@
+# Screens of src/content/docs/payment-delivery/create-shipping-zone.md, replayed by "npm run capture".
+page: payment-delivery/create-shipping-zone
+login: admin
+shots:
+  - name: configuration-hub
+    url: /admin/configuration
+    waitFor: '[data-testid="configuration-page"]'
+    highlight: '[data-testid="configuration-link-admin.configuration.shipping-configuration.default"]'
+  - name: zones-list
+    url: /admin/configuration/shipping_configuration
+    waitFor: '[data-testid="shipping-configuration-page"]'
+    highlight: '[data-testid="shipping-configuration-create-btn"]'
+  - name: create-modal
+    url: /admin/configuration/shipping_configuration
+    waitFor: '[data-testid="shipping-configuration-page"]'
+    actions:
+      - click: '[data-testid="shipping-configuration-create-btn"]'
+      - waitFor: '#shipping-configuration-create-modal.show input[type="text"]'
+    highlight: '#shipping-configuration-create-modal.show input[type="text"]'
+    clip: '#shipping-configuration-create-modal .modal-content'
+  - name: zone-edit
+    url: /admin/configuration/shipping_configuration/update/1
+    waitFor: '[data-testid="shipping-configuration-edit-page"]'
+    actions:
+      - waitFor: '[data-testid="shipping-configuration-countries-added"] tr'
+    highlight: '.card:has([data-testid="shipping-configuration-remove-countries-form"])'
+  - name: add-countries
+    url: /admin/configuration/shipping_configuration/update/1
+    waitFor: '[data-testid="shipping-configuration-edit-page"]'
+    actions:
+      - waitFor: '[data-testid="shipping-configuration-countries-added"] tr'
+    highlight: '[data-testid="shipping-configuration-add-country-form"]'
