@@ -1,0 +1,22 @@
+# Screens of src/content/docs/catalog/publish-product.md, replayed by "npm run capture".
+page: catalog/publish-product
+login: admin
+shots:
+  - name: list
+    url: /admin/products
+    waitFor: '[data-testid="datatable-products-table"]'
+    highlight: '[data-testid="datatable-visible-toggle"]'
+  - name: bulk
+    url: /admin/products
+    waitFor: '[data-testid="datatable-products-table"]'
+    actions:
+      - click: '[data-testid="datatable-select-1"]'
+      - click: '[data-testid="datatable-select-2"]'
+      - waitFor: '[data-testid="product-bulk-toolbar"]:not([hidden])'
+    clip: '[data-testid="product-bulk-toolbar"]'
+  - name: card
+    url:
+      fr: '/admin/products/update?product_id=1&edit_language_id=1'
+      en: '/admin/products/update?product_id=1&edit_language_id=2'
+    waitFor: '[data-testid="product-edit-form"]'
+    highlight: '#tab-general .form-check:has([name$="[visible]"])'
