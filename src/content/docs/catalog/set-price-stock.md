@@ -43,6 +43,8 @@ sources:
   - thelia/thelia:core/lib/Thelia/Model/Product.php:183
   - thelia/thelia:core/lib/Thelia/Model/CartItem.php:159
   - thelia/thelia:core/lib/Thelia/Action/ProductSaleElement.php:134
+  - thelia/thelia:core/lib/Thelia/Action/Cart.php:595
+  - thelia/thelia:core/lib/Thelia/Action/Sale.php:87
 ---
 
 Le prix et le stock d'un produit se règlent dans un seul onglet de la fiche. Ce tutoriel vous y conduit et vous dit où se trouve la TVA. Ces réglages décident de ce que le client paie et du moment où le produit n'est plus disponible.
@@ -72,7 +74,7 @@ Le tableau a une ligne par combinaison.
 1. Dans la ligne de la combinaison, cliquez dans la colonne **Prix**.
 2. Saisissez le nouveau prix, par exemple `950`.
 3. Pour une promotion, saisissez le prix réduit dans **Prix promo**, par exemple `899`.
-4. Faites défiler le tableau vers la droite, puis cochez la case de la colonne **Promo**. Sans cette case, le client paie le **Prix**, pas le **Prix promo**.
+4. Faites défiler le tableau vers la droite, puis cochez la case de la colonne **Promo**. Sans cette case, le client paie le **Prix**, pas le **Prix promo**. Une promotion programmée dans **Outils**, **Promotions** coche elle-même cette case.
 
 Le prix saisi est un prix hors taxes (HT), c'est-à-dire avant l'ajout de la TVA. Le tableau n'a pas de colonne TTC (toutes taxes comprises) : le client verra le prix HT augmenté de la taxe de la règle de taxe du produit. Si la boutique a plusieurs devises, le prix saisi est celui de la devise choisie dans **Prix dans la devise**, en haut du tableau.
 

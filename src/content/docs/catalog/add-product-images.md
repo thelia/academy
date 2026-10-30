@@ -32,6 +32,8 @@ sources:
   - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:577
   - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:730
   - thelia/thelia:core/lib/Thelia/Domain/Media/AltTextResolver.php:21
+  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:710
+  - thelia-templates/default-twig:file/image-edit.html.twig:108
 ---
 
 Les images sont les photos de votre produit : sans elles, le client ne voit que du texte. Ce tutoriel montre comment en ajouter, les classer et décrire chacune.
@@ -73,7 +75,9 @@ Il n'existe pas de réglage « image principale ». Sur la boutique, la vignette
 
 ## Étape 4 : renseigner le texte alternatif
 
-Le texte alternatif décrit l'image avec des mots. Un lecteur d'écran (le logiciel qui lit la page à voix haute pour une personne malvoyante) le prononce à la place de la photo, sur la page du produit. S'il est vide, la boutique utilise le **Titre** de l'image, puis le nom du produit. Sous une image sans description, l'écran affiche **Pas de texte alternatif**.
+Le texte alternatif décrit l'image avec des mots. Un lecteur d'écran (le logiciel qui lit la page à voix haute pour une personne malvoyante) le prononce à la place de la photo, sur la page du produit. S'il est vide, la boutique utilise le **Titre** de l'image, puis le nom du produit, sauf pour une image cochée **Image décorative** : son texte reste vide.
+
+Sous une image sans description, l'écran affiche **Pas de texte alternatif**.
 
 ![Champ Texte alternatif d'une image](../../../assets/captures/fr/catalog/add-product-images/alt-text.png)
 

@@ -1,5 +1,5 @@
 ---
-translatedFrom: df1040e816b6
+translatedFrom: bd7c41a21be3
 title: Add images to a product
 description: Upload photos to a product page, choose their order and fill in their alternative text.
 sidebar:
@@ -33,6 +33,8 @@ sources:
   - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:577
   - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:730
   - thelia/thelia:core/lib/Thelia/Domain/Media/AltTextResolver.php:21
+  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:710
+  - thelia-templates/default-twig:file/image-edit.html.twig:108
 ---
 
 Images are your product's photos: without them, the customer only sees text. This tutorial shows how to add them, sort them and describe each one.
@@ -74,7 +76,9 @@ There is no "main image" setting. On the store, the product's thumbnail in lists
 
 ## Step 4: fill in the alternative text
 
-The alternative text describes the image in words. A screen reader (software that reads the page aloud for a visually impaired person) speaks it in place of the photo, on the product page. If it is empty, the store uses the image's **Title**, then the product name. Under an image with no description, the screen shows **No alternative text**.
+The alternative text describes the image in words. A screen reader (software that reads the page aloud for a visually impaired person) speaks it in place of the photo, on the product page. If it is empty, the store uses the image's **Title**, then the product name, except for an image ticked **Decorative image**: its text stays empty.
+
+Under an image with no description, the screen shows **No alternative text**.
 
 ![Alternative text field of an image](../../../../assets/captures/en/catalog/add-product-images/alt-text.png)
 
