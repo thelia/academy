@@ -1,0 +1,26 @@
+# Screens of src/content/docs/catalog/create-product.md, replayed by "npm run capture".
+page: catalog/create-product
+login: admin
+shots:
+  - name: list
+    url: /admin/products
+    waitFor: '[data-testid="products-page"]'
+    highlight: '[data-testid="product-create-button"]'
+  - name: modal
+    url: /admin/products
+    waitFor: '[data-testid="products-page"]'
+    actions:
+      - click: '[data-testid="product-create-button"]'
+      - waitFor: '#product-create-modal.show [data-testid="product-create-submit"]'
+    clip: '#product-create-modal .modal-content'
+  - name: result
+    url:
+      fr: '/admin/products/update?product_id=1&edit_language_id=1'
+      en: '/admin/products/update?product_id=1&edit_language_id=2'
+    waitFor: '[data-testid="product-edit-form"]'
+  - name: tabs
+    url:
+      fr: '/admin/products/update?product_id=1&edit_language_id=1'
+      en: '/admin/products/update?product_id=1&edit_language_id=2'
+    waitFor: '[data-testid="product-tab-general"]'
+    clip: '.bo-tab-bar'
