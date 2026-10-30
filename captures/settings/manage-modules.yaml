@@ -1,0 +1,43 @@
+# Screens of src/content/docs/settings/manage-modules.md, replayed by "npm run capture".
+page: settings/manage-modules
+login: admin
+prepare: [disabled-module]
+shots:
+  - name: list
+    url: /admin/modules
+    waitFor: '[data-testid="module-row-Cheque"]'
+    highlight: '[data-testid="modules-summary"]'
+  - name: filters
+    url: /admin/modules
+    waitFor: '[data-testid="module-row-Cheque"]'
+    clip: '[data-testid="modules-toolbar"]'
+    highlight: '[data-testid="modules-toolbar"]'
+  - name: toggle
+    url: /admin/modules
+    waitFor: '[data-testid="module-row-Cheque"]'
+    actions:
+      - fill: { selector: '[data-testid="modules-search"]', value: 'Cheque' }
+    highlight: '[data-testid="module-toggle-Cheque"]'
+  - name: inactive
+    url: /admin/modules
+    waitFor: '[data-testid="module-row-FreeOrder"]'
+    actions:
+      - waitFor: '.bo-segmented__count:not(:empty)'
+      - click: 'label[for="modules-status-0"]'
+    highlight: '[data-testid="module-toggle-FreeOrder"]'
+  - name: configure-button
+    url: /admin/modules
+    waitFor: '[data-testid="module-row-Cheque"]'
+    actions:
+      - fill: { selector: '[data-testid="modules-search"]', value: 'Cheque' }
+    highlight: '[data-testid="module-row-Cheque"] .bo-module-row__name'
+  - name: configure-page
+    url: /admin/module/Cheque
+    waitFor: main
+  - name: install-open
+    url: /admin/modules
+    waitFor: '[data-testid="module-install-open"]'
+    actions:
+      - click: '[data-testid="module-install-open"]'
+      - waitFor: '#module-install-modal.show [data-testid="module-install-file"]'
+    clip: '[data-testid="module-install-form"]'

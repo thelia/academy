@@ -1,0 +1,9 @@
+# Screens of src/content/docs/settings/clear-cache.md, replayed by "npm run capture".
+page: settings/clear-cache
+login: admin
+shots:
+  - name: buttons
+    url: /admin/configuration/advanced
+    waitFor: '[data-testid="advanced-config-page"]'
+    clip: '[data-testid="advanced-config-page"]'
+    highlight: '[data-testid="advanced-flush-cache"], [data-testid="advanced-flush-assets"], [data-testid="advanced-flush-images"]'
