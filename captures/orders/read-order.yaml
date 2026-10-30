@@ -1,0 +1,47 @@
+# Screens of src/content/docs/orders/read-order.md, replayed by "npm run capture".
+page: orders/read-order
+login: admin
+shots:
+  - name: detail
+    url: /admin/order/update/4
+    waitFor: '#tab-cart.show table'
+  - name: header
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-status-badge"]'
+    clip: '[data-testid="order-detail-page"] > div:first-child'
+  - name: products
+    url: /admin/order/update/4
+    waitFor: '#tab-cart.show table'
+    clip: '#tab-cart'
+  - name: products-end
+    url: /admin/order/update/4
+    waitFor: '#tab-cart.show table'
+    actions:
+      - hover: '[data-testid="datatable-order-items-cell-line_ttc"]'
+    clip: '.table-responsive:has([data-testid="datatable-order-items-table"])'
+  - name: billing
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-tab-bill"]'
+    actions:
+      - click: '[data-testid="order-tab-bill"]'
+      - waitFor: '#tab-bill.show'
+    clip: '#tab-bill'
+  - name: shipments
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-tab-shipments"]'
+    actions:
+      - click: '[data-testid="order-tab-shipments"]'
+      - waitFor: '#tab-shipments.show'
+    clip: '#tab-shipments'
+  - name: totals
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-totals"]'
+    clip: '[data-testid="order-totals"]'
+  - name: payment
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-payment"]'
+    clip: '[data-testid="order-payment"]'
+  - name: history
+    url: /admin/order/update/4
+    waitFor: '[data-testid="order-history-card"]'
+    clip: '[data-testid="order-history-card"]'
