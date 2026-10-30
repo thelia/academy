@@ -1,5 +1,5 @@
 ---
-translatedFrom: 31b073bf58ea
+translatedFrom: 21bc40244a8b
 title: Set the price, VAT and stock of a product
 description: Change a product's price before tax, sale price and stock quantity, and see where VAT is set.
 sidebar:
@@ -31,6 +31,8 @@ sources:
   - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:10
   - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:14
   - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:29
+  - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:44
+  - thelia-templates/default-twig:src/Service/Product/CombinationsTabContextBuilder.php:147
   - thelia-templates/default-twig:src/Controller/Catalog/ProductAdvancedController.php:299
   - thelia-templates/default-twig:src/Controller/Catalog/ProductAdvancedController.php:312
   - thelia-templates/default-twig:src/Controller/Catalog/ProductAdvancedController.php:667
@@ -109,16 +111,18 @@ This is the case of a product created with the **Create a new product** window, 
 - **Stock quantity**;
 - **Sale price excluding taxes**, **Sale price including taxes** and the **On sale** box.
 
+![Form of a product without combinations, with the excl. tax and incl. tax fields](../../../../assets/captures/en/catalog/set-price-stock/default-form.png)
+
 You enter one of the two prices and the other is calculated:
 
-1. First choose the **Tax rule**, for example `Default Tax Rule`.
+1. Check the **Tax rule**: it is already the product's rule, **Default Tax Rule** in the screenshot. Change it if it is not the right one.
 2. Enter the price in **Product price excluding taxes**, for example `25`, then click in another field: **Product price including taxes** fills in.
 3. Or enter the price in **Product price including taxes**: the price before tax then fills in.
 4. In **Stock quantity**, enter the number of units available, for example `20`.
 5. For a sale, enter **Sale price excluding taxes** and tick **On sale**.
 6. Click **Save**, at the bottom of the form.
 
-Without a tax rule chosen, nothing is calculated. The calculation uses the store's default country. Only the price before tax is saved; the price including tax is a helper calculation. The demo has no product in this case, so this part has no screenshot.
+Without a tax rule chosen, nothing is calculated. The calculation uses the store's default country. Only the price before tax is saved; the price including tax is a helper calculation. In the screenshot, `59` excluding tax gives `70.800000` including tax: the field shows six decimals.
 
 ## The result
 

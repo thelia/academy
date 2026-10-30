@@ -1,6 +1,7 @@
 # Screens of src/content/docs/catalog/set-price-stock.md, replayed by "npm run capture".
 page: catalog/set-price-stock
 login: admin
+prepare: [offline-product]
 shots:
   - name: pricing-tab
     url:
@@ -26,3 +27,15 @@ shots:
     waitFor: '#tab-pse.show [data-testid="combinations-table"]'
     highlight: 'input[name="quantity[]"]'
     clip: '[data-testid="product-combinations-section"]'
+  - name: default-form
+    url:
+      fr: '/admin/products/update?product_id={{offline_product_id}}&edit_language_id=1&current_tab=pse'
+      en: '/admin/products/update?product_id={{offline_product_id}}&edit_language_id=2&current_tab=pse'
+    waitFor: '#tab-pse.show [data-testid="default-pse-form"]'
+    actions:
+      - click: '#default_pse_price'
+      - click: '#default_pse_quantity'
+      - click: '[data-testid="default-pse-form"] > p'
+      - waitFor: '#default_pse_price_with_tax'
+    highlight: '#default_pse_price, #default_pse_price_with_tax'
+    clip: '[data-testid="default-pse-form"]'

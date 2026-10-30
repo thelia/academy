@@ -1,11 +1,17 @@
 # Screens of src/content/docs/catalog/publish-product.md, replayed by "npm run capture".
 page: catalog/publish-product
 login: admin
+prepare: [offline-product]
 shots:
   - name: list
     url: /admin/products
     waitFor: '[data-testid="datatable-products-table"]'
     highlight: '[data-testid="datatable-visible-toggle"]'
+  - name: offline
+    url: '/admin/products?q=TAB-CHENE-01'
+    waitFor: '[data-testid="datatable-products-table"]'
+    highlight: '[data-testid="datatable-visible-toggle"]'
+    clip: '[data-testid="datatable-products-table"]'
   - name: bulk
     url: /admin/products
     waitFor: '[data-testid="datatable-products-table"]'

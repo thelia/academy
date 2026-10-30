@@ -30,6 +30,8 @@ sources:
   - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:10
   - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:14
   - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:29
+  - thelia-templates/default-twig:assets/controllers/bo-pse-price-with-tax_controller.js:44
+  - thelia-templates/default-twig:src/Service/Product/CombinationsTabContextBuilder.php:147
   - thelia-templates/default-twig:src/Controller/Catalog/ProductAdvancedController.php:299
   - thelia-templates/default-twig:src/Controller/Catalog/ProductAdvancedController.php:312
   - thelia-templates/default-twig:src/Controller/Catalog/ProductAdvancedController.php:667
@@ -108,16 +110,18 @@ C'est le cas d'un produit créé avec la fenêtre **Créer un nouveau produit**,
 - **Quantité en stock** ;
 - **Prix promo HT**, **Prix promo TTC** et la case **En promotion**.
 
+![Formulaire d'un produit sans combinaison, avec les champs HT et TTC](../../../assets/captures/fr/catalog/set-price-stock/default-form.png)
+
 Vous saisissez l'un des deux prix et l'autre se calcule :
 
-1. Choisissez d'abord la **Règle de taxe**, par exemple `Règle de taxes par défaut`.
+1. Vérifiez la **Règle de taxe** : elle est déjà celle du produit, **Default Tax Rule** sur la capture (la liste affiche les noms dans la langue par défaut de la boutique, ici l'anglais). Changez-la si ce n'est pas la bonne.
 2. Saisissez le prix dans **Prix du produit Hors Taxes**, par exemple `25`, puis cliquez dans un autre champ : **Prix du produit taxes incluses** se remplit.
 3. Ou saisissez le prix dans **Prix du produit taxes incluses** : le prix HT se remplit à son tour.
 4. Dans **Quantité en stock**, saisissez le nombre d'unités disponibles, par exemple `20`.
 5. Pour une promotion, saisissez **Prix promo HT** et cochez **En promotion**.
 6. Cliquez sur **Enregistrer**, en bas du formulaire.
 
-Sans règle de taxe choisie, rien ne se calcule. Le calcul utilise le pays par défaut de la boutique. Seul le prix HT est enregistré ; le prix TTC est un calcul d'aide. La démonstration n'a aucun produit dans ce cas : cette partie n'a donc pas de capture.
+Sans règle de taxe choisie, rien ne se calcule. Le calcul utilise le pays par défaut de la boutique. Seul le prix HT est enregistré ; le prix TTC est un calcul d'aide. Sur la capture, `59` en HT donne `70,800000` en TTC : le champ affiche six décimales.
 
 ## Le résultat
 
