@@ -4,6 +4,18 @@ Le lecteur gère une boutique. Il ne connaît ni Thelia ni le vocabulaire du e-c
 
 `npm run check` contrôle les règles marquées ✓.
 
+## Être didactique
+
+Le lecteur découvre. Chaque page doit pouvoir se suivre sans aide.
+
+- Dire d'abord à quoi sert la tâche, en une phrase et avec un exemple de boutique : « Une catégorie regroupe des produits, par exemple Chaussures ou T-shirts. »
+- Des mots simples, ceux du quotidien. Un mot technique ou e-commerce n'apparaît que s'il est à l'écran, et il est expliqué la première fois.
+- Une idée par phrase, une action par étape. Si une étape demande deux clics, ce sont deux lignes.
+- Montrer plutôt que décrire : une capture à chaque écran nouveau, l'élément à cliquer encadré (`highlight`).
+- Donner un exemple concret pour chaque champ à remplir (« Titre : T-shirt coton bio »).
+- Prévenir les erreurs courantes en une ligne, au moment où elles arrivent, pas dans un bloc à la fin.
+- Finir par ce que le lecteur voit quand c'est réussi, et où le retrouver.
+
 ## Une page
 
 - Une page = une tâche. Le titre commence par un verbe à l'infinitif : « Créer un produit », pas « Les produits ».
