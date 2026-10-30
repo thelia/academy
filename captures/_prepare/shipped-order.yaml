@@ -1,0 +1,13 @@
+# Order 5 (ORD000000000005, "processing" in the demo data) shipped: one parcel with a tracking number, and a filled history.
+done:
+  url: '/admin/order/update/5'
+  selector: '[data-testid^="order-shipment-row-"]'
+steps:
+  - url: '/admin/order/update/5'
+    actions:
+      - click: '[data-testid="order-tab-shipments"]'
+      - waitFor: '#tab-shipments.show [data-testid="order-shipment-form"]'
+      - fill: { selector: '#shipment-delivery-ref', value: '6A12345678901' }
+      - check: '#shipment-ship-now'
+      - click: '[data-testid="order-shipment-submit"]'
+      - waitFor: '#tab-shipments.show [data-testid^="order-shipment-row-"]'

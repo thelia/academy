@@ -8,7 +8,11 @@
 //
 // Needs a Thelia install with demo data (--with-demo). Chrome or Chromium must be installed;
 // CHROME_PATH points to it when it is not /usr/bin/google-chrome.
-import { mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs';
+//
+// A manifest may list in `prepare` the states the demo data lacks (a product without combination,
+// a disabled module…). Each one is described once in captures/_prepare/<state>.yaml, created through
+// the back office before the shots, and skipped when it already exists: replaying is safe.
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { chromium } from 'playwright-core';
 import YAML from 'yaml';
@@ -25,6 +29,7 @@ const locales = options.locale ? String(options.locale).split(',') : LOCALES;
 function manifests(dir) {
 	return readdirSync(dir).flatMap((name) => {
 		const path = join(dir, name);
+		if (name.startsWith('_')) return [];
 		if (statSync(path).isDirectory()) return manifests(path);
 		return name.endsWith('.yaml') ? [path] : [];
 	});
@@ -54,7 +59,50 @@ async function runAction(page, action) {
 	if (action.hover) await page.locator(action.hover).first().hover();
 	if (action.fill) await page.locator(action.fill.selector).first().fill(String(action.fill.value));
 	if (action.select) await page.locator(action.select.selector).first().selectOption(String(action.select.value));
+	if (action.check) await page.locator(action.check).first().check();
+	if (action.uncheck) await page.locator(action.uncheck).first().uncheck();
 	if (action.waitFor) await page.locator(action.waitFor).first().waitFor();
+	if (action.waitForUrl) await page.waitForURL(new RegExp(action.waitForUrl));
+}
+
+// "{{name}}" in a manifest is replaced by the value a prepared state saved under that name.
+function withVars(value, vars) {
+	if (typeof value === 'string') {
+		return value.replace(/\{\{(\w+)\}\}/g, (_, name) => {
+			if (!(name in vars)) throw new Error(`{{${name}}} is not saved by any prepared state of this run`);
+			return vars[name];
+		});
+	}
+	if (Array.isArray(value)) return value.map((item) => withVars(item, vars));
+	if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, withVars(item, vars)]));
+	return value;
+}
+
+// The `done` selector on the `done` page says the state exists. Missing, the steps create it
+// (they may save forms), then the check runs again. `vars` are read on the `done` page.
+async function prepareState(page, name, state, vars) {
+	const isDone = async () => {
+		await page.goto(urlFor(state.done.url, 'fr'));
+		if (state.done.waitFor) await page.locator(state.done.waitFor).first().waitFor();
+		return (await page.locator(state.done.selector).count()) > 0;
+	};
+	if (await isDone()) {
+		console.log(`kept  ${name}`);
+	} else {
+		for (const step of state.steps) {
+			await page.goto(urlFor(step.url, 'fr'));
+			for (const action of step.actions ?? []) await runAction(page, action);
+		}
+		if (!(await isDone())) throw new Error(`still missing after its steps`);
+		console.log(`made  ${name}`);
+	}
+	for (const [key, source] of Object.entries(state.vars ?? {})) {
+		const element = page.locator(source.selector).first();
+		const text = source.attribute ? await element.getAttribute(source.attribute) : await element.textContent();
+		const match = String(text ?? '').match(new RegExp(source.pattern ?? '^[\\s\\S]*$'));
+		if (!match) throw new Error(`${key}: "${text}" does not match ${source.pattern}`);
+		vars[key] = (match[1] ?? match[0]).trim();
+	}
 }
 
 async function shoot(page, shot, locale, output) {
@@ -86,10 +134,46 @@ async function browserFor(locale) {
 	}
 	return browsers.get(locale);
 }
+const PREPARE_DIR = join(CAPTURES_SRC, '_prepare');
+const states = Object.fromEntries(
+	(existsSync(PREPARE_DIR) ? readdirSync(PREPARE_DIR).filter((name) => name.endsWith('.yaml')).sort() : []).map((name) => [
+		name.slice(0, -'.yaml'.length),
+		YAML.parse(readFileSync(join(PREPARE_DIR, name), 'utf8')),
+	]),
+);
+const parsed = files.map((file) => ({ file, manifest: YAML.parse(readFileSync(file, 'utf8')) }));
+const needed = new Set(parsed.flatMap(({ manifest }) => manifest.prepare ?? []));
+for (const name of needed) if (!states[name]) throw new Error(`prepare: "${name}" has no file captures/_prepare/${name}.yaml`);
+
 let failures = 0;
 try {
-	for (const file of files) {
-		const manifest = YAML.parse(readFileSync(file, 'utf8'));
+	const vars = {};
+	if (needed.size > 0) {
+		const context = await (await browserFor('fr')).newContext({ viewport: { width: 1440, height: 900 }, locale: 'fr-FR', ignoreHTTPSErrors: true });
+		const page = await context.newPage();
+		// A confirmation box ("Are you sure?") must be accepted, not dismissed, for the state to be saved.
+		page.on('dialog', (dialog) => dialog.accept());
+		await adminLogin(page);
+		// In file name order, so a state can use what an earlier one saved.
+		for (const name of Object.keys(states).filter((key) => needed.has(key))) {
+			try {
+				await prepareState(page, name, withVars(states[name], vars), vars);
+			} catch (error) {
+				failures += 1;
+				console.log(`FAIL  prepare ${name}: ${error.message.split('\n')[0]}`);
+			}
+		}
+		await context.close();
+	}
+	for (const { file, manifest: raw } of parsed) {
+		let manifest;
+		try {
+			manifest = withVars(raw, vars);
+		} catch (error) {
+			failures += 1;
+			console.log(`FAIL  ${relative(process.cwd(), file)}: ${error.message}`);
+			continue;
+		}
 		for (const locale of locales) {
 			const context = await (await browserFor(locale)).newContext({
 				viewport: manifest.viewport ?? { width: 1440, height: 900 },
