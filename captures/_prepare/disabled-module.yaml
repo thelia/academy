@@ -1,0 +1,9 @@
+# FreeOrder switched off with its switch on the modules page.
+done:
+  url: '/admin/modules'
+  selector: '[data-testid="module-row-FreeOrder"][data-active="0"]'
+steps:
+  - url: '/admin/modules'
+    actions:
+      - click: '[data-testid="module-toggle-FreeOrder"]'
+      - waitFor: '[data-testid="module-row-FreeOrder"][data-active="0"]'

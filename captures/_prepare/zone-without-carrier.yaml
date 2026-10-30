@@ -1,0 +1,11 @@
+# A delivery zone created with a name only, no country: no carrier takes it.
+done:
+  url: '/admin/configuration/shipping_configuration'
+  selector: '[data-testid="datatable-shipping-configuration-row"]:has-text("Suisse")'
+steps:
+  - url: '/admin/configuration/shipping_configuration'
+    actions:
+      - click: '[data-testid="shipping-configuration-create-btn"]'
+      - fill: { selector: '#shipping-configuration-create-modal input[type="text"]', value: 'Suisse' }
+      - click: '#shipping-configuration-create-modal button[type="submit"]'
+      - waitFor: '[data-testid="datatable-shipping-configuration-row"]:has-text("Suisse")'

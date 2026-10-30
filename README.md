@@ -22,6 +22,7 @@ npm run build    # static site in dist/, internal links validated
 | `src/content/docs/<section>/<page>.md` | French pages (the reference) |
 | `src/content/docs/en/<section>/<page>.md` | English translations, same path |
 | `captures/<section>/<page>.yaml` | screens of a page, replayed by `npm run capture` |
+| `captures/_prepare/<state>.yaml` | states the demo data lacks (an offline product, a disabled module…), created through the back office before the shots; see [its README](captures/_prepare/README.md) |
 | `src/assets/captures/<fr\|en>/…` | the PNG files produced from those manifests |
 | `sidebar.config.mjs` | sections and their order; a section shows up once its folder exists |
 | `src/styles/theme.css` | Thelia 2026 charter (colours, fonts) |

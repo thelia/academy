@@ -1,0 +1,31 @@
+# A product made with the "Créer un nouveau produit" window (so without combination), left offline.
+# The title is saved in French, then in English (bug default-twig#171: creation uses the edit language of the session).
+done:
+  url: '/admin/products?q=TAB-CHENE-01'
+  selector: '[data-testid="bo-product-ref-link"]'
+steps:
+  # Opening any product sheet in French makes French the edit language of the session.
+  - url: '/admin/products/update?product_id=1&edit_language_id=1'
+  - url: '/admin/products'
+    actions:
+      - click: '[data-testid="product-create-button"]'
+      - waitFor: '#product-create-modal.show [data-testid="product-create-submit"]'
+      - fill: { selector: '#product-create-modal [name="thelia_product_creation[ref]"]', value: 'TAB-CHENE-01' }
+      - fill: { selector: '#product-create-modal [name="thelia_product_creation[title]"]', value: 'Tabouret en chêne' }
+      - select: { selector: '#product-create-modal [name="thelia_product_creation[default_category]"]', value: '4' }
+      - uncheck: '#product-create-modal [name="thelia_product_creation[visible]"]'
+      - fill: { selector: '#product-create-modal [name="thelia_product_creation[price]"]', value: '59' }
+      - fill: { selector: '#product-create-modal [name="thelia_product_creation[quantity]"]', value: '12' }
+      - click: '[data-testid="product-create-submit"]'
+      - waitFor: '[data-testid="product-edit-form"]'
+      - click: '[data-testid="bo-language-switcher-en"]'
+      - waitForUrl: 'edit_language_id=2'
+      - waitFor: '[data-testid="product-edit-form"]'
+      - fill: { selector: '[name="thelia_product_modification[title]"]', value: 'Oak stool' }
+      - click: '[data-testid="product-edit-save-stay"]'
+      - waitFor: '[data-testid="product-edit-form"]'
+vars:
+  offline_product_id:
+    selector: '[data-testid="bo-product-ref-link"]'
+    attribute: href
+    pattern: 'product_id=(\d+)'
