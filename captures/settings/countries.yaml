@@ -1,0 +1,18 @@
+# Screens of src/content/docs/settings/countries.md, replayed by "npm run capture".
+page: settings/countries
+login: admin
+shots:
+  # At 1440 px the table is wider than the screen: hovering a cell of the last
+  # columns scrolls the table to the right, as the reader is told to do.
+  - name: list
+    url: /admin/configuration/countries
+    waitFor: '[data-testid="datatable-countries-table"]'
+    actions:
+      - hover: '[data-testid="datatable-countries-row"]:first-child [data-testid="datatable-countries-cell-default"]'
+    highlight: '[data-testid="countries-without-zone-alert"], [data-testid="datatable-countries-row"]:first-child [data-testid="datatable-countries-cell-visible"], [data-testid="datatable-countries-row"]:first-child [data-testid="datatable-countries-cell-default"]'
+  - name: edit
+    url:
+      fr: '/admin/configuration/countries/update/64?edit_language_id=1'
+      en: '/admin/configuration/countries/update/64?edit_language_id=2'
+    waitFor: '[data-testid="country-edit-page"] form'
+    highlight: '[data-testid="country-edit-page"] .form-switch'

@@ -1,0 +1,35 @@
+# Screens of src/content/docs/settings/languages.md, replayed by "npm run capture".
+page: settings/languages
+login: admin
+shots:
+  - name: list
+    url: /admin/configuration/languages
+    waitFor: '[data-testid="datatable-languages"]'
+    highlight: '[data-testid="lang-create-button"]'
+  - name: create-form
+    url: /admin/configuration/languages
+    waitFor: '[data-testid="lang-create-button"]'
+    actions:
+      - click: '[data-testid="lang-create-button"]'
+      - waitFor: '#lang-create-modal.show [name="thelia_language_create[title]"]'
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[title]"]', value: 'Português' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[code]"]', value: 'pt' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[locale]"]', value: 'pt_PT' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[date_time_format]"]', value: 'd/m/Y H:i:s' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[date_format]"]', value: 'd/m/Y' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[time_format]"]', value: 'H:i:s' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[decimal_separator]"]', value: ',' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[thousands_separator]"]', value: ' ' }
+      - fill: { selector: '#lang-create-modal [name="thelia_language_create[decimals]"]', value: '2' }
+    clip: '#lang-create-modal .modal-content'
+  - name: parameters
+    url: /admin/configuration/languages
+    waitFor: '[data-testid="lang-default-behavior-form"]'
+    clip: '[data-testid="languages-page"] .row.g-4'
+  - name: edit-language
+    url:
+      fr: '/admin/products/update?product_id=1&edit_language_id=1'
+      en: '/admin/products/update?product_id=1&edit_language_id=2'
+    waitFor: '[data-testid="bo-language-switcher"]'
+    clip: '[data-testid="bo-language-switcher"]'
+    highlight: '[data-testid="bo-language-switcher"]'
