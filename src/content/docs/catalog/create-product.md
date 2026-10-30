@@ -28,6 +28,7 @@ sources:
   - thelia-templates/default-twig:catalog/product/edit.html.twig:229
   - thelia-templates/default-twig:catalog/product/edit.html.twig:383
   - thelia-templates/default-twig:catalog/product/_related_tab.html.twig
+  - thelia-templates/default-twig:catalog/product/_create_modal.html.twig:29
 ---
 
 Un produit est un article que vous vendez, avec sa référence, son titre, son prix et sa catégorie. Ce tutoriel crée la fiche d'un produit avec un premier prix. Les photos, et le détail du prix et du stock, se règlent ensuite dans leurs propres pages.
@@ -53,10 +54,10 @@ Champs obligatoires :
 
 1. Dans **Référence produit**, saisissez un code que vous choisissez pour retrouver le produit, par exemple `TSHIRT-BIO-01`.
 2. Dans **Titre du produit**, saisissez le nom affiché aux clients, par exemple `T-shirt coton bio`.
-3. Dans **Catégorie par défaut**, choisissez le rayon du produit, par exemple `Vêtements`. La liste affiche d'abord la première catégorie du catalogue : changez-la si ce n'est pas la bonne.
+3. Dans **Catégorie par défaut**, choisissez le rayon du produit, par exemple `Vêtements`. La liste présélectionne la catégorie d'où vous avez ouvert la fenêtre, ou, depuis la liste des produits, la première catégorie créée : changez-la si ce n'est pas la bonne.
 4. Dans **Prix de base HT**, saisissez le prix hors taxes, par exemple `25`. « HT » veut dire hors taxes : le prix avant la TVA.
 5. Dans **Devise**, gardez la devise proposée.
-6. Dans **Règle de taxe**, choisissez la TVA du produit. La première de la liste est la règle par défaut, créée à l'installation.
+6. Dans **Règle de taxe**, choisissez la TVA du produit. Les règles sont listées dans l'ordre de leur création : la première est celle créée à l'installation, qui reste la règle par défaut tant que vous ne l'avez pas changée.
 
 Champs facultatifs :
 

@@ -1,5 +1,5 @@
 ---
-translatedFrom: 155006c1a7f8
+translatedFrom: 31b073bf58ea
 title: Set the price, VAT and stock of a product
 description: Change a product's price before tax, sale price and stock quantity, and see where VAT is set.
 sidebar:
@@ -44,6 +44,8 @@ sources:
   - thelia/thelia:core/lib/Thelia/Model/Product.php:183
   - thelia/thelia:core/lib/Thelia/Model/CartItem.php:159
   - thelia/thelia:core/lib/Thelia/Action/ProductSaleElement.php:134
+  - thelia/thelia:core/lib/Thelia/Action/Cart.php:595
+  - thelia/thelia:core/lib/Thelia/Action/Sale.php:87
 ---
 
 A product's price and stock are set in a single tab of its page. This tutorial takes you there and shows where the VAT is. These settings decide what the customer pays and when the product is no longer available.
@@ -73,7 +75,7 @@ The table has one line per combination.
 1. In the combination's line, click in the **Price** column.
 2. Enter the new price, for example `950`.
 3. For a sale, enter the reduced price in **Sale price**, for example `899`.
-4. Scroll the table to the right, then tick the box in the **Promo** column. Without this box, the customer pays the **Price**, not the **Sale price**.
+4. Scroll the table to the right, then tick the box in the **Promo** column. Without this box, the customer pays the **Price**, not the **Sale price**. A sale scheduled in **Tools**, **Sales** ticks this box itself.
 
 The price you enter is a price before tax (excl. tax), that is, before VAT is added. The table has no column for the price including tax: the customer will see the price before tax plus the tax of the product's tax rule. If the store has several currencies, the price entered is the one for the currency chosen in **Prices in currency**, at the top of the table.
 

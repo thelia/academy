@@ -1,5 +1,5 @@
 ---
-translatedFrom: aab6790bd5e0
+translatedFrom: 14bab250b315
 title: Create a product
 description: Add a product to the catalog with its reference, title, category and base price.
 sidebar:
@@ -29,6 +29,7 @@ sources:
   - thelia-templates/default-twig:catalog/product/edit.html.twig:229
   - thelia-templates/default-twig:catalog/product/edit.html.twig:383
   - thelia-templates/default-twig:catalog/product/_related_tab.html.twig
+  - thelia-templates/default-twig:catalog/product/_create_modal.html.twig:29
 ---
 
 A product is an item you sell, with its reference, title, price and category. This tutorial creates a product page with a first price. Photos, and the details of price and stock, are set later on their own pages.
@@ -54,10 +55,10 @@ Required fields:
 
 1. In **Product reference**, enter a code of your choice to find the product again, for example `ORGANIC-TSHIRT-01`.
 2. In **Product title**, enter the name shown to customers, for example `Organic cotton T-shirt`.
-3. In **Default product category**, choose the department of the product, for example `Clothing`. The list first shows the first category of the catalog: change it if it is not the right one.
+3. In **Default product category**, choose the department of the product, for example `Clothing`. The list preselects the category you opened the window from or, from the product list, the first category created: change it if it is not the right one.
 4. In **Base price (excluding taxes)**, enter the price before taxes, for example `25`. This is the price before VAT.
 5. In **Price currency**, keep the proposed currency.
-6. In **Tax rule**, choose the product's VAT. The first one in the list is the default rule, created at installation.
+6. In **Tax rule**, choose the product's VAT. The rules are listed in the order they were created: the first one is the rule created at installation, which stays the default rule until you change it.
 
 Optional fields:
 
