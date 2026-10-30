@@ -62,13 +62,13 @@ The **Taxes and Tax rules** list holds the rules. The **Default** badge marks th
 
 1. In the **Taxes and Tax rules** list, click the pencil on the **Default Tax Rule** row.
 2. Click the **Taxes** tab.
-3. In **Choose a country**, choose **France métropolitaine**.
+3. In **Choose a country**, choose **France metropolitan**.
 
 Choosing the country selects the configuration that covers it: here **Configuration #1 (1 Countries)**.
 
 ![Choosing the configuration and the country](../../../../assets/captures/en/settings/tax-rules/rule-country.png)
 
-Further down, the **Taxes configuration** block shows the tax applied: **TVA française à 20%** is in the left column. **TVA française à 10%** is in **Available taxes**, so it is not applied.
+Further down, the **Taxes configuration** block shows the tax applied: **French 20% VAT** is in the left column. **French 10% VAT** is in **Available taxes**, so it is not applied.
 
 ![Taxes applied by the rule](../../../../assets/captures/en/settings/tax-rules/rule-taxes.png)
 
@@ -108,7 +108,7 @@ The tax is not applied to any product until it is placed in a rule.
 ## Step 5: put a tax in a rule
 
 1. Open the rule with the pencil, then the **Taxes** tab.
-2. In **Choose a country**, choose the country concerned, for example **France métropolitaine**.
+2. In **Choose a country**, choose the country concerned, for example **France metropolitan**.
 3. Drag the tax from **Available taxes** to **Manage the tax rules application order**. Dropped on an existing group (the **Drop tax here** area), it joins that group. Dropped on **Drop tax here to create a tax group**, it forms a new group, placed below.
 4. Click **Apply**.
 5. In the **Update tax rule taxes** window, click **Save tax rule taxes**.

@@ -24,7 +24,9 @@ shots:
     clip: '#tax-create-modal .modal-content'
     highlight: '#tax-create-modal .tax-requirement:not([style*="none"]) input'
   - name: rule-taxes
-    url: /admin/configuration/taxes_rules/update/1?edit_language_id=1
+    url:
+      fr: '/admin/configuration/taxes_rules/update/1?edit_language_id=1'
+      en: '/admin/configuration/taxes_rules/update/1?edit_language_id=2'
     waitFor: '[data-testid="tax-rule-edit-page"]'
     actions:
       - click: '#tax-rule-tab-taxes'
@@ -34,7 +36,9 @@ shots:
           value: '64-0'
     clip: '#tax-rule-pane-taxes .card:has([data-testid="tax-rule-matrix-groups"])'
   - name: rule-country
-    url: /admin/configuration/taxes_rules/update/1?edit_language_id=1
+    url:
+      fr: '/admin/configuration/taxes_rules/update/1?edit_language_id=1'
+      en: '/admin/configuration/taxes_rules/update/1?edit_language_id=2'
     waitFor: '[data-testid="tax-rule-edit-page"]'
     actions:
       - click: '#tax-rule-tab-taxes'
