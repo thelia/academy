@@ -1,5 +1,5 @@
 ---
-translatedFrom: d4c918e2e693
+translatedFrom: 3a343c2c0203
 title: Discover the back office
 description: Log in to the store administration and read the dashboard.
 sidebar:
@@ -39,7 +39,7 @@ From top to bottom:
 - **The indicators**: revenue, orders, average order and new customers. The percentage compares the selected period with the previous period of the same length.
 - **The charts**: daily revenue trend and the split of orders by status.
 
-Further down, scroll to see **Recent orders**, **Top selling products** and **Low stock** (the 5 lowest among products with 5 units or fewer).
+Further down, scroll to see **Recent orders**, **Top selling products** and **Low stock** (the 5 lowest stocks among those with 5 units or fewer, one line per product variant).
 
 ## Step 3: find your way in the menu
 
