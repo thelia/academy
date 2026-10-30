@@ -1,0 +1,33 @@
+# Screens of src/content/docs/getting-started/dashboard-stats.md, replayed by "npm run capture".
+page: getting-started/dashboard-stats
+login: admin
+shots:
+  - name: kpis
+    url: /admin
+    waitFor: '[data-testid="dashboard-kpis"]'
+    clip: '[data-testid="dashboard-kpis"]'
+  - name: revenue-chart
+    url: /admin
+    waitFor: '[data-testid="dashboard-kpis"]'
+    clip: '.card:has(canvas[data-bo-chart-type-value="line"])'
+    highlight: '.card:has(canvas[data-bo-chart-type-value="line"]) .card-header span'
+  - name: top-products
+    url: /admin
+    waitFor: '[data-testid="dashboard-top-product"]'
+    clip: '.card:has([data-testid="dashboard-top-product"])'
+  - name: sales-block
+    url: /admin
+    waitFor: '#block-sales-statistics'
+    clip: '#block-sales-statistics'
+  - name: month-chart
+    url: /admin
+    # The chart data is cached without the language, and a refresh still answers the cached data
+    # (it is rebuilt on the next request): refresh twice so the title follows the capture language.
+    actions:
+      - waitFor: '.card.dashboard #jqplot canvas'
+      - click: '.js-stats-refresh'
+      - waitFor: '.js-stats-refresh:not([disabled])'
+      - click: '.js-stats-refresh'
+      - waitFor: '.js-stats-refresh:not([disabled])'
+    waitFor: '.card.dashboard #jqplot'
+    clip: '.card.dashboard'
