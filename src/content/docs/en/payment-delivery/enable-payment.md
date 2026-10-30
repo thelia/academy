@@ -1,5 +1,5 @@
 ---
-translatedFrom: 325e1a6b8beb
+translatedFrom: a837ea5c1225
 title: Enable a payment method
 description: Choose which of the installed payment modules your customers can use to pay for an order.
 sidebar:
@@ -13,6 +13,7 @@ sources:
   - thelia-templates/default-twig:module/list.html.twig:113
   - thelia-templates/default-twig:module/list.html.twig:192
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:73
+  - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:82
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:184
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:135
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:165
@@ -43,7 +44,7 @@ A payment method is the way your customers pay for their order, for example by c
 1. In the left menu, click **Modules**.
 2. In the submenu, click **Modules**.
 
-The **Modules management** page lists every module in the store. Under the title, a line gives the total, for example "16 modules · 16 active · 0 inactive".
+The **Modules management** page lists every module in the store. Under the title, a line gives the total, for example "16 modules · 15 active · 1 inactive".
 
 ![List of the store's modules](../../../../assets/captures/en/payment-delivery/enable-payment/modules-list.png)
 
@@ -54,7 +55,11 @@ A module can do something other than take payments: deliver orders, or add a fea
 1. Click **Payment**, in the row of buttons on the left under the search field.
 2. Look at the row of buttons on the right: **Active** is selected by default, so disabled modules are hidden. Click **All** or **Inactive** to see them.
 
-![The store's three payment methods](../../../../assets/captures/en/payment-delivery/enable-payment/payment-filter.png)
+![The store's active payment methods](../../../../assets/captures/en/payment-delivery/enable-payment/payment-filter.png)
+
+In the screenshot, two payment methods are active: **Cheque** and **PayzenEmbedded**. **FreeOrder** is not listed: it was disabled for this example (it is enabled in the demo store). With **Inactive**, it shows up with a gray switch:
+
+![FreeOrder, a disabled payment method, in the Inactive filter](../../../../assets/captures/en/payment-delivery/enable-payment/payment-inactive.png)
 
 In the demo store, three payment methods are installed:
 
@@ -64,7 +69,7 @@ In the demo store, three payment methods are installed:
 
 ## Step 3: enable or disable a module
 
-Each row has a switch. When it is green and turned on, as in the screenshot, the module is active.
+Each row has a switch. When it is green and turned on, as in the screenshot, the module is active. A gray, turned-off switch, like the one of **FreeOrder** above, means the module is disabled.
 
 1. Find the row of the payment method, for example **Cheque**.
 2. Click the switch on the right of the row.

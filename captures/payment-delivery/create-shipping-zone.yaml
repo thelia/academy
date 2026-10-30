@@ -1,6 +1,7 @@
 # Screens of src/content/docs/payment-delivery/create-shipping-zone.md, replayed by "npm run capture".
 page: payment-delivery/create-shipping-zone
 login: admin
+prepare: [zone-without-carrier]
 shots:
   - name: configuration-hub
     url: /admin/configuration

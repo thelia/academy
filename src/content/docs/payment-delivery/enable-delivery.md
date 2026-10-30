@@ -60,7 +60,7 @@ L'écran **Configuration du transport** liste chaque mode de livraison et, en fa
 
 ![Liste des modes de livraison et de leurs zones](../../../assets/captures/fr/payment-delivery/enable-delivery/zones-list.png)
 
-Un mode sans zone affiche « Ce module de transport n'est associé à aucune zone de livraison ». Un bandeau **Attention** peut aussi apparaître au-dessus du tableau. Il est expliqué à l'étape 4.
+Un mode sans zone affiche « Ce module de transport n'est associé à aucune zone de livraison ». Sur la capture, un bandeau **Attention** apparaît au-dessus du tableau : il cite la zone **Suisse**, créée pour l'exemple, qui n'est rattachée à aucun mode de livraison. Il est expliqué à l'étape 4.
 
 ## Étape 3 : rattacher une zone au mode de livraison
 
@@ -79,6 +79,10 @@ La capture montre **VirtualProductDelivery**, seul module de la démonstration s
 ## Étape 4 : comprendre l'avertissement sur les zones non rattachées
 
 Le bandeau apparaît quand au moins une zone n'est rattachée à aucun mode de livraison. Il dit « **Attention**, certaines de vos zones de livraison ne sont rattachées à aucun module de livraison : », suivi de la liste des zones concernées.
+
+![Bandeau Attention qui cite la zone Suisse](../../../assets/captures/fr/payment-delivery/enable-delivery/warning.png)
+
+La zone **Suisse** de la capture n'a aucun pays : le bandeau la cite quand même, car il ne regarde que le rattachement aux modes de livraison.
 
 Pour un client dont le pays n'appartient qu'à ces zones, aucun mode de livraison n'est proposé pour des produits physiques : la boutique ne propose un mode que si la zone du pays de livraison lui est rattachée. Pour corriger, rattachez la zone à un mode de livraison comme à l'étape 3. Le nom de la zone dans le bandeau ouvre l'écran de ses pays, pas celui du rattachement.
 

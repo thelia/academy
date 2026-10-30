@@ -1,5 +1,5 @@
 ---
-translatedFrom: fe92cfcecc55
+translatedFrom: aa7f531851b2
 title: Enable a delivery method and attach zones to it
 description: Enable a delivery method, then tell it which zones it delivers to, so your customers can choose it.
 sidebar:
@@ -61,7 +61,7 @@ The **Shipping configuration** screen lists each delivery method and, next to it
 
 ![List of delivery methods and their zones](../../../../assets/captures/en/payment-delivery/enable-delivery/zones-list.png)
 
-A method with no zone shows "There are no shipping zones attached to this module." A **Warning** banner may also appear above the table. It is explained in step 4.
+A method with no zone shows "There are no shipping zones attached to this module." In the screenshot, a **Warning** banner appears above the table: it lists the zone **Suisse**, created for this example and not attached to any delivery method. It is explained in step 4.
 
 ## Step 3: attach a zone to the delivery method
 
@@ -80,6 +80,10 @@ The screenshot shows **VirtualProductDelivery**, the only demo module without a 
 ## Step 4: understand the warning about unattached zones
 
 The banner appears when at least one zone is attached to no delivery method. It reads "**Warning**, some of your shipping zones are not attached to any delivery module:", followed by the list of the zones concerned.
+
+![Warning banner listing the zone Suisse](../../../../assets/captures/en/payment-delivery/enable-delivery/warning.png)
+
+The **Suisse** zone in the screenshot has no country: the banner lists it anyway, because it only looks at the attachment to delivery methods.
 
 For a customer whose country belongs only to those zones, no delivery method is offered for physical products: the store offers a method only if the zone of the delivery country is attached to it. To fix it, attach the zone to a delivery method as in step 3. The zone name in the banner opens the screen of its countries, not the attachment screen.
 
