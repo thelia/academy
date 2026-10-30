@@ -1,0 +1,28 @@
+# Screens of src/content/docs/catalog/set-price-stock.md, replayed by "npm run capture".
+page: catalog/set-price-stock
+login: admin
+shots:
+  - name: pricing-tab
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1'
+      en: '/admin/products/update?product_id=4&edit_language_id=2'
+    waitFor: '[data-testid="product-edit-page"]'
+    actions:
+      - click: '[data-testid="product-tab-pse"]'
+      - waitFor: '#tab-pse.show [data-testid="combinations-table"]'
+    highlight: '[data-testid="product-tab-pse"]'
+    clip: '.bo-tab-bar'
+  - name: combinations
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1&current_tab=pse'
+      en: '/admin/products/update?product_id=4&edit_language_id=2&current_tab=pse'
+    waitFor: '#tab-pse.show [data-testid="combinations-table"]'
+    highlight: 'input[name="price[]"]'
+    clip: '[data-testid="product-combinations-section"]'
+  - name: stock
+    url:
+      fr: '/admin/products/update?product_id=4&edit_language_id=1&current_tab=pse'
+      en: '/admin/products/update?product_id=4&edit_language_id=2&current_tab=pse'
+    waitFor: '#tab-pse.show [data-testid="combinations-table"]'
+    highlight: 'input[name="quantity[]"]'
+    clip: '[data-testid="product-combinations-section"]'
