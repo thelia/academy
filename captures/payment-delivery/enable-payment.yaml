@@ -1,0 +1,30 @@
+# Screens of src/content/docs/payment-delivery/enable-payment.md, replayed by "npm run capture".
+page: payment-delivery/enable-payment
+login: admin
+shots:
+  - name: modules-list
+    url: /admin/modules
+    waitFor: '[data-testid="modules-list"]'
+  - name: payment-filter
+    url: /admin/modules
+    waitFor: '[data-testid="modules-list"]'
+    actions:
+      - click: 'label[for="modules-type-payment"]'
+      - waitFor: '[data-testid="module-row-Cheque"]'
+    highlight: 'label[for="modules-type-payment"]'
+    clip: '[data-testid="modules-page"]'
+  - name: toggle
+    url: /admin/modules
+    waitFor: '[data-testid="modules-list"]'
+    actions:
+      - click: 'label[for="modules-type-payment"]'
+      - waitFor: '[data-testid="module-row-Cheque"]'
+    highlight: '[data-testid="module-toggle-Cheque"]'
+    clip: '[data-testid="modules-list"]'
+  - name: payzen-config
+    url: /admin/module/PayzenEmbedded
+    waitFor: '#payzen-embedded-connection-body'
+    actions:
+      - click: '.payzen-embedded-connection-toggle'
+      - waitFor: '.payzen-embedded-connection-toggle[aria-expanded="false"]'
+    clip: '.card.mb-3:has(#payzen-embedded-connection-body)'
