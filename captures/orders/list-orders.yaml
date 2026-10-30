@@ -1,0 +1,28 @@
+# Screens of src/content/docs/orders/list-orders.md, replayed by "npm run capture".
+page: orders/list-orders
+login: admin
+shots:
+  - name: menu
+    url: /admin/orders
+    waitFor: '[data-testid="bo-nav-order-count-total"]'
+    clip: '[data-testid="bo-nav-order"]'
+    highlight: '[data-testid="bo-nav-order-count-total"]'
+  - name: list
+    url: /admin/orders
+    waitFor: '[data-testid="orders-page"] table'
+  - name: search
+    url: /admin/orders
+    waitFor: '[data-testid="order-search-form"]'
+    clip: '[data-testid="order-search-form"]'
+    highlight: '[data-testid="order-search-input"]'
+  - name: advanced
+    url: /admin/orders
+    waitFor: '[data-testid="order-advanced-toggle"]'
+    actions:
+      - click: '[data-testid="order-advanced-toggle"]'
+      - waitFor: '#bo-order-advanced.show [data-testid="order-filter-country"]'
+    clip: '[data-testid="order-search-form"]'
+  - name: status-filter
+    url: /admin/orders?status_id=2
+    waitFor: '[data-testid="orders-page"] table'
+    highlight: '[data-testid="order-active-chips"]'
