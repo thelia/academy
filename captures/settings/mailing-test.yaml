@@ -1,0 +1,16 @@
+# Screens of src/content/docs/settings/mailing-test.md, replayed by "npm run capture".
+page: settings/mailing-test
+login: admin
+shots:
+  - name: page
+    url: /admin/configuration/mailingSystem
+    waitFor: '[data-testid="mailing-system-page"]'
+  - name: test-form
+    url: /admin/configuration/mailingSystem
+    waitFor: '[data-testid="mailing-system-test-send"]'
+    actions:
+      - fill:
+          selector: '#test-email'
+          value: 'vous@ma-boutique.fr'
+    clip: '[data-testid="mailing-system-page"] .card:last-of-type'
+    highlight: '#test-email'

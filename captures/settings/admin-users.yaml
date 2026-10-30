@@ -1,0 +1,21 @@
+# Screens of src/content/docs/settings/admin-users.md, replayed by "npm run capture".
+page: settings/admin-users
+login: admin
+shots:
+  - name: list
+    url: /admin/configuration/administrators
+    waitFor: '[data-testid="datatable-administrators"]'
+    clip: '[data-testid="administrators-page"]'
+    highlight: '[data-testid="administrator-create-button"]'
+  - name: create-form
+    url: /admin/configuration/administrators
+    waitFor: '[data-testid="administrator-create-button"]'
+    actions:
+      - click: '[data-testid="administrator-create-button"]'
+      - waitFor: '#administrator-create-modal.show [name="thelia_administrator_create[login]"]'
+      - fill: { selector: '#administrator-create-modal [name="thelia_administrator_create[login]"]', value: 'camille' }
+      - fill: { selector: '#administrator-create-modal [name="thelia_administrator_create[email]"]', value: 'camille@ma-boutique.fr' }
+      - fill: { selector: '#administrator-create-modal [name="thelia_administrator_create[firstname]"]', value: 'Camille' }
+      - fill: { selector: '#administrator-create-modal [name="thelia_administrator_create[lastname]"]', value: 'Martin' }
+      - fill: { selector: '#administrator-create-modal [name="thelia_administrator_create[password]"]', value: 'motdepasse-exemple' }
+    clip: '#administrator-create-modal .modal-content'
