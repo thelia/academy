@@ -1,0 +1,39 @@
+# Screens of src/content/docs/getting-started/store-info.md, replayed by "npm run capture".
+page: getting-started/store-info
+login: admin
+shots:
+  - name: menu
+    url: /admin/configuration
+    waitFor: main
+    fullPage: true
+    highlight: 'a[href$="/admin/configuration/store"]'
+  - name: general
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: '.card:has([name="thelia_configuration_store[store_name]"])'
+    highlight: '[name="thelia_configuration_store[store_name]"]'
+  - name: company
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: '.card:has([name="thelia_configuration_store[store_siret]"])'
+    highlight: '[name="thelia_configuration_store[store_siret]"]'
+  - name: emails
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: '.card:has([name="thelia_configuration_store[store_email]"])'
+    highlight: '[name="thelia_configuration_store[store_email]"]'
+  - name: media
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: '.card:has([name="thelia_configuration_store[logo_file]"])'
+    highlight: '[name="thelia_configuration_store[logo_file]"]'
+  - name: address
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: '.card:has([name="thelia_configuration_store[store_address1]"])'
+    highlight: '[name="thelia_configuration_store[store_address1]"]'
+  - name: save
+    url: /admin/configuration/store
+    waitFor: '[data-testid="config-store-form"]'
+    clip: 'div:has(> [data-testid="config-store-save-stay"])'
+    highlight: '[data-testid="config-store-save-stay"]'
