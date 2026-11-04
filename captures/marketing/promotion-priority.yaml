@@ -1,0 +1,49 @@
+# Screens of src/content/docs/marketing/promotion-priority.md, replayed by "npm run capture".
+page: marketing/promotion-priority
+login: admin
+prepare: [promo-bienvenue, promo-soldes]
+shots:
+  - name: list
+    url: /admin/coupon?order=priority&direction=ASC
+    waitFor: '[data-coupon-label="SOLDES20"]'
+    clip: '[data-testid="datatable-coupons"]'
+    highlight: '[data-testid="datatable-coupons-row"]:has([data-coupon-label="SOLDES20"])'
+  - name: stacking
+    url:
+      fr: '/admin/coupon/update/{{promo_soldes_id}}?edit_language_id=1'
+      en: '/admin/coupon/update/{{promo_soldes_id}}?edit_language_id=2'
+    waitFor: '[data-testid="coupon-stacking"]'
+    clip: '.col-md-3:has([data-testid="coupon-stacking"])'
+    highlight: '[data-testid="coupon-stacking"]'
+  - name: priority
+    url:
+      fr: '/admin/coupon/update/{{promo_soldes_id}}?edit_language_id=1'
+      en: '/admin/coupon/update/{{promo_soldes_id}}?edit_language_id=2'
+    waitFor: '[data-testid="coupon-priority"]'
+    clip: '.mb-3:has(> [data-testid="coupon-priority"])'
+  - name: exclusions
+    url:
+      fr: '/admin/coupon/update/{{promo_bienvenue_id}}?edit_language_id=1'
+      en: '/admin/coupon/update/{{promo_bienvenue_id}}?edit_language_id=2'
+    waitFor: '[data-testid="coupon-excluded-select"]'
+    clip: '.mb-3:has(> label[for="coupon-excluded"])'
+  - name: cart
+    login: none
+    url:
+      fr: '/victoria-1.html'
+      en: '/victoria.html?lang=en_US'
+    actions:
+      - click: 'form[name="thelia_cart_add"] button[type="submit"]'
+      - waitFor: '.AddToCartToast-message'
+      - goto: '/checkout/cart'
+      - click: '.PromoCode [data-slot="accordion-trigger"]'
+      - waitFor: 'input[name="thelia_coupon_code[coupon-code]"]'
+      - fill: { selector: 'input[name="thelia_coupon_code[coupon-code]"]', value: 'BIENVENUE10' }
+      - click: 'form[name="thelia_coupon_code"] button[type="submit"]'
+      - waitFor: '.Summary-discountLine'
+      - waitFor: 'input[name="thelia_coupon_code[coupon-code]"]'
+      - fill: { selector: 'input[name="thelia_coupon_code[coupon-code]"]', value: 'SOLDES20' }
+      - click: 'form[name="thelia_coupon_code"] button[type="submit"]'
+      - waitFor: '[data-summary-excluded-promotion="BIENVENUE10"]'
+    clip: '.Summary'
+    highlight: '[data-summary-excluded-promotion="BIENVENUE10"]'

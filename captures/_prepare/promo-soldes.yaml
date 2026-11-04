@@ -1,0 +1,29 @@
+# Promo code SOLDES20: 20 % off, combines with the others, priority 10, incompatible with BIENVENUE10
+# (state promo-bienvenue, played before: file name order).
+done:
+  url: '/admin/coupon'
+  selector: '[data-coupon-label="SOLDES20"]'
+steps:
+  - url: '/admin/coupon/create?edit_language_id=1'
+    actions:
+      - select: { selector: '#coupon-type', value: 'thelia.coupon.type.remove_x_percent' }
+      - waitFor: '#coupon-percent'
+      - fill: { selector: '#coupon-percent', value: '20' }
+      - fill: { selector: '#coupon-code', value: 'SOLDES20' }
+      - fill: { selector: '#coupon-title', value: 'Soldes : 20 % sur tout le site' }
+      - check: '[data-testid="coupon-stacking-cumulative"]'
+      - fill: { selector: '[data-testid="coupon-priority"]', value: '10' }
+      - select: { selector: '[data-testid="coupon-excluded-select"]', value: '{{promo_bienvenue_id}}' }
+      - click: '[data-testid="coupon-save-stay"]'
+      - waitFor: '[data-testid="coupon-stacking"]'
+      - click: '[data-testid="bo-language-switcher-en"]'
+      - waitForUrl: 'edit_language_id=2'
+      - waitFor: '[data-testid="coupon-stacking"]'
+      - fill: { selector: '#coupon-title', value: 'Sale: 20% off the whole store' }
+      - click: '[data-testid="coupon-save-stay"]'
+      - waitFor: '[data-testid="coupon-stacking"]'
+vars:
+  promo_soldes_id:
+    selector: '[data-coupon-label="SOLDES20"]'
+    attribute: data-coupon-id
+    pattern: '(\d+)'
