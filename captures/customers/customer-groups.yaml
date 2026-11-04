@@ -1,0 +1,70 @@
+# Screens of src/content/docs/customers/customer-groups.md, replayed by "npm run capture".
+# The group "Professionnels" and its member Greta Müller come from captures/_prepare/group-*.yaml.
+page: customers/customer-groups
+login: admin
+prepare: [group-a-pro, group-b-pro-member]
+shots:
+  - name: configuration
+    url: /admin/configuration
+    waitFor: '[data-testid="configuration-page"]'
+    clip: '[data-testid="configuration-section"]:has([data-testid="configuration-link-admin.configuration.customer-groups.default"])'
+    highlight: '[data-testid="configuration-link-admin.configuration.customer-groups.default"]'
+  - name: list
+    url: /admin/configuration/customer-groups
+    waitFor: '[data-testid="datatable-customer-groups-table"]'
+    highlight: '[data-testid="customer-group-create-button"]'
+  # The window is filled as in the example of the page, never sent.
+  - name: create
+    url: /admin/configuration/customer-groups
+    waitFor: '[data-testid="customer-group-create-button"]'
+    actions:
+      - click: '[data-testid="customer-group-create-button"]'
+      - waitFor: '#customer-group-create-modal.show [data-testid="customer-group-create-submit"]'
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[code]"]', value: 'revendeurs' }
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[title]"]', value: 'Revendeurs' }
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[discount]"]', value: '10' }
+      - uncheck: '#customer-group-create-modal [name="thelia_customer_group_creation[display_taxed_price]"]'
+    clip: '#customer-group-create-modal .modal-content'
+  - name: settings
+    url:
+      fr: '/admin/configuration/customer-groups/update/{{pro_group_id}}?edit_language_id=1'
+      en: '/admin/configuration/customer-groups/update/{{pro_group_id}}?edit_language_id=2'
+    waitFor: '[data-testid="customer-group-edit-form"]'
+    clip: '[data-testid="customer-group-edit-page"] .card:has([data-testid="customer-group-edit-form"])'
+  - name: header
+    url:
+      fr: '/admin/configuration/customer-groups/update/{{pro_group_id}}?edit_language_id=1'
+      en: '/admin/configuration/customer-groups/update/{{pro_group_id}}?edit_language_id=2'
+    waitFor: '[data-testid="customer-group-customers"]'
+    highlight: '[data-testid="customer-group-customers"]'
+  - name: registration
+    url:
+      fr: '/admin/configuration/customer-groups/update/{{pro_group_id}}?edit_language_id=1'
+      en: '/admin/configuration/customer-groups/update/{{pro_group_id}}?edit_language_id=2'
+    waitFor: '[data-testid="customer-group-registration-url"]'
+    clip: '[data-testid="customer-group-registration"]'
+    highlight: '[data-testid="customer-group-registration-copy"]'
+  - name: customer
+    url: '/admin/customer/update?customer_id=8'
+    waitFor: '[data-testid="customer-edit-form"]'
+    clip: '.card:has(> .card-body [name="thelia_customer_update[customer_group_id]"])'
+    highlight: '[name="thelia_customer_update[customer_group_id]"]'
+  # Storefront: the same armchair seen by a visitor, then by Greta Müller (demo password "thelia").
+  - name: visitor-price
+    url:
+      fr: '/fauteuils.html?lang=fr_FR'
+      en: '/fauteuils.html?lang=en_US'
+    waitFor: '.ProductCard:has-text("Owen")'
+    clip: '.ProductCard:has-text("Owen")'
+  - name: member-price
+    url: '/customer/login'
+    actions:
+      - fill: { selector: '[name="thelia_customer_login[email]"]', value: 'greta.muller@example.com' }
+      - fill: { selector: '[name="thelia_customer_login[password]"]', value: 'thelia' }
+      - click: 'form[name="thelia_customer_login"] button[type="submit"]'
+      - waitForUrl: '/account'
+      # Signing in switches the shop to the language of the account (English for every demo customer):
+      # the address of the category in each language puts it back.
+      - goto: { fr: '/fauteuils.html', en: '/armchairs.html' }
+      - waitFor: '.ProductCard:has-text("Owen")'
+    clip: '.ProductCard:has-text("Owen")'
