@@ -1,0 +1,40 @@
+# The components of "Pack salon Nigel" (state bundle-salon-a-pack): the Nigel sofa (blue) once and the
+# Victoria armchair twice, both required, and the Nibbler stool, optional, from 0 to 2.
+# One step per component: each one reloads the sheet, so the pickers are wired before the first choice.
+done:
+  url: '/admin/products/update?product_id={{bundle_product_id}}&current_tab=bundle&edit_language_id=1'
+  selector: '[data-testid="datatable-product-bundle-items-row"]:has-text("Nibbler")'
+steps:
+  # Nigel sofa (Canapés), blue combination
+  - url: '/admin/products/update?product_id={{bundle_product_id}}&current_tab=bundle&edit_language_id=1'
+    actions:
+      - waitFor: '#tab-bundle.show [data-testid="product-bundle-add-form"]'
+      - select: { selector: '[data-testid="product-bundle-category"]', value: '6' }
+      - select: { selector: '[data-testid="product-bundle-product"]', value: '6' }
+      - select: { selector: '[data-testid="product-bundle-combination"]', value: '23' }
+      - fill: { selector: '[data-testid="product-bundle-quantity"]', value: '1' }
+      - click: '[data-testid="product-bundle-add"]'
+      - waitFor: '#tab-bundle.show [data-testid="datatable-product-bundle-items-row"]:has-text("Nigel")'
+  # Victoria armchair (Fauteuils), twice
+  - url: '/admin/products/update?product_id={{bundle_product_id}}&current_tab=bundle&edit_language_id=1'
+    actions:
+      - waitFor: '#tab-bundle.show [data-testid="product-bundle-add-form"]'
+      - select: { selector: '[data-testid="product-bundle-category"]', value: '5' }
+      - select: { selector: '[data-testid="product-bundle-product"]', value: '12' }
+      - select: { selector: '[data-testid="product-bundle-combination"]', value: '49' }
+      - fill: { selector: '[data-testid="product-bundle-quantity"]', value: '2' }
+      - click: '[data-testid="product-bundle-add"]'
+      - waitFor: '#tab-bundle.show [data-testid="datatable-product-bundle-items-row"]:has-text("Victoria")'
+  # Nibbler stool (Tabourets), optional, 0 to 2
+  - url: '/admin/products/update?product_id={{bundle_product_id}}&current_tab=bundle&edit_language_id=1'
+    actions:
+      - waitFor: '#tab-bundle.show [data-testid="product-bundle-add-form"]'
+      - select: { selector: '[data-testid="product-bundle-category"]', value: '4' }
+      - select: { selector: '[data-testid="product-bundle-product"]', value: '29' }
+      - select: { selector: '[data-testid="product-bundle-combination"]', value: '95' }
+      - fill: { selector: '[data-testid="product-bundle-quantity"]', value: '1' }
+      - fill: { selector: '[data-testid="product-bundle-min"]', value: '0' }
+      - fill: { selector: '[data-testid="product-bundle-max"]', value: '2' }
+      - uncheck: '[data-testid="product-bundle-required"]'
+      - click: '[data-testid="product-bundle-add"]'
+      - waitFor: '#tab-bundle.show [data-testid="datatable-product-bundle-items-row"]:has-text("Nibbler")'

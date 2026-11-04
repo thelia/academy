@@ -1,0 +1,58 @@
+# Screens of src/content/docs/catalog/create-bundle.md, replayed by "npm run capture".
+page: catalog/create-bundle
+login: admin
+prepare: [bundle-salon-a-pack, bundle-salon-b-composition]
+shots:
+  - name: bundle-settings
+    url:
+      fr: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=1'
+      en: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=2'
+    waitFor: '[data-testid="product-edit-bundle"] [data-testid="product-edit-bundle-discount"]'
+    highlight: '[data-testid="product-edit-is-bundle"]'
+    clip: '[data-testid="product-edit-bundle"]'
+  - name: composition-tab
+    url:
+      fr: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=1&current_tab=bundle'
+      en: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=2&current_tab=bundle'
+    waitFor: '#tab-bundle.show [data-testid="product-bundle-summary"]'
+    highlight: '[data-testid="product-tab-bundle"]'
+    clip: '.bo-tab-bar'
+  - name: add-component
+    url:
+      fr: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=1&current_tab=bundle'
+      en: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=2&current_tab=bundle'
+    waitFor: '#tab-bundle.show [data-testid="product-bundle-add-form"]'
+    actions:
+      - select: { selector: '[data-testid="product-bundle-category"]', value: '6' }
+      - select: { selector: '[data-testid="product-bundle-product"]', value: '6' }
+      - select: { selector: '[data-testid="product-bundle-combination"]', value: '24' }
+    highlight: '[data-testid="product-bundle-add-form"]'
+    clip: '.card:has(> .card-body > [data-testid="product-bundle-add-form"])'
+  - name: components
+    url:
+      fr: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=1&current_tab=bundle'
+      en: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=2&current_tab=bundle'
+    waitFor: '#tab-bundle.show [data-testid="datatable-product-bundle-items-table"]'
+    clip: '#tab-bundle .card:has([data-testid="datatable-product-bundle-items-table"])'
+  - name: edit-component
+    url:
+      fr: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=1&current_tab=bundle'
+      en: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=2&current_tab=bundle'
+    waitFor: '#tab-bundle.show [data-testid="datatable-product-bundle-items-table"]'
+    actions:
+      - click: '[data-testid="datatable-product-bundle-items-row"]:has-text("Nibbler") [data-testid^="datatable-action-edit"]'
+      - waitFor: '#product-bundle-edit.show [data-testid="product-bundle-edit-submit"]'
+    clip: '#product-bundle-edit .modal-content'
+  - name: summary
+    url:
+      fr: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=1&current_tab=bundle'
+      en: '/admin/products/update?product_id={{bundle_product_id}}&edit_language_id=2&current_tab=bundle'
+    waitFor: '#tab-bundle.show [data-testid="product-bundle-summary"]'
+    clip: '[data-testid="product-bundle-summary"]'
+  - name: shop-page
+    login: none
+    url:
+      fr: '/pack-salon-nigel.html'
+      en: '/nigel-living-room-set.html'
+    waitFor: '[data-testid="bundle-composition"]'
+    highlight: '[data-testid="bundle-composition"]'
