@@ -1,0 +1,29 @@
+# Screens of src/content/docs/catalog/import-catalog.md, replayed by "npm run capture".
+# The state import-simulation sends captures/_prepare/files/import-arts-de-la-table.csv and simulates it.
+page: catalog/import-catalog
+login: admin
+prepare: [import-simulation]
+shots:
+  - name: tools
+    url: /admin/tools
+    waitFor: '[data-testid="tools-link-csvimporter.index"]'
+    highlight: '[data-testid="tools-link-csvimporter.index"]'
+  - name: upload-form
+    url: /admin/csv-importer
+    waitFor: '[data-testid="csv-importer-upload-form"]'
+    clip: '.card:has([data-testid="csv-importer-upload-form"])'
+  # The file waiting for its mapping keeps its mapping form after the simulation.
+  - name: mapping
+    url: '/admin/csv-importer/job/{{import_draft_id}}'
+    waitFor: '[data-testid="csv-importer-mapping-form"]'
+    clip: '[data-testid="csv-importer-mapping-form"]'
+    highlight: '[data-testid="csv-importer-simulate"]'
+  - name: simulation
+    url: '/admin/csv-importer/job/{{import_simulation_id}}'
+    waitFor: '[data-testid="csv-importer-counts"]'
+    clip: '[data-testid="csv-importer-job-page"]'
+  - name: report-failed
+    url: '/admin/csv-importer/job/{{import_simulation_id}}?outcome=failed'
+    waitFor: '[data-testid="csv-importer-report"]'
+    clip: '[data-testid="csv-importer-report"]'
+    highlight: '[data-testid="csv-importer-filter-failed"]'

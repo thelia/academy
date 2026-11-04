@@ -1,0 +1,28 @@
+# The file captures/_prepare/files/import-arts-de-la-table.csv (4 products IMP-…, one with an unreadable price)
+# sent to Outils > Import du catalogue with a new profile "Fournisseur Maison Dorée", then simulated.
+# A simulation writes nothing to the catalog: only the profile and two jobs (the file to map, the simulation) are created.
+# Never run the real import here: the products would go online on the shared demo shop.
+done:
+  url: '/admin/csv-importer'
+  selector: 'tr[data-testid="csv-importer-job-row"]:has-text("import-arts-de-la-table.csv"):has-text("Simulation"):has-text("Terminé")'
+steps:
+  - url: '/admin/csv-importer'
+    actions:
+      - upload: { selector: '#csv-importer-file', file: 'import-arts-de-la-table.csv' }
+      - select: { selector: '#csv-importer-profile', value: 'new' }
+      - fill: { selector: '#csv-importer-profile-name', value: 'Fournisseur Maison Dorée' }
+      - select: { selector: '#csv-importer-mode', value: 'create_or_update' }
+      - click: '[data-testid="csv-importer-upload-submit"]'
+      - waitFor: '[data-testid="csv-importer-mapping-form"]'
+      - click: '[data-testid="csv-importer-simulate"]'
+      # The simulation runs in the background; the page refreshes itself every 3 seconds until the report.
+      - waitFor: '[data-testid="csv-importer-simulation-notice"]'
+vars:
+  import_simulation_id:
+    selector: 'tr[data-testid="csv-importer-job-row"]:has-text("import-arts-de-la-table.csv"):has-text("Simulation") a'
+    attribute: href
+    pattern: 'job/(\d+)'
+  import_draft_id:
+    selector: 'tr[data-testid="csv-importer-job-row"]:has-text("import-arts-de-la-table.csv"):has-text("À associer") a'
+    attribute: href
+    pattern: 'job/(\d+)'
