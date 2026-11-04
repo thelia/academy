@@ -1,0 +1,32 @@
+# A new customer group "Professionnels" (code pro-b2b): 10 % off, prices shown without taxes,
+# registration link open. Title and description saved in French, then in English.
+# Named group-a-… so it plays before group-b-pro-member, which reads its id.
+done:
+  url: '/admin/configuration/customer-groups'
+  selector: '[data-customer-group-label="Professionnels"]'
+steps:
+  - url: '/admin/configuration/customer-groups'
+    actions:
+      - click: '[data-testid="customer-group-create-button"]'
+      - waitFor: '#customer-group-create-modal.show [data-testid="customer-group-create-submit"]'
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[code]"]', value: 'pro-b2b' }
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[title]"]', value: 'Professionnels' }
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[description]"]', value: 'Architectes, décorateurs et hôtels qui achètent pour leurs clients.' }
+      - fill: { selector: '#customer-group-create-modal [name="thelia_customer_group_creation[discount]"]', value: '10' }
+      - uncheck: '#customer-group-create-modal [name="thelia_customer_group_creation[display_taxed_price]"]'
+      - click: '[data-testid="customer-group-create-submit"]'
+      - waitFor: '[data-testid="customer-group-edit-form"]'
+      - click: '[data-testid="customer-group-registration-open"]'
+      - waitFor: '[data-testid="customer-group-registration-url"]'
+      - click: '[data-testid="bo-language-switcher-en"]'
+      - waitForUrl: 'edit_language_id=2'
+      - waitFor: '[data-testid="customer-group-edit-form"]'
+      - fill: { selector: '[name="thelia_customer_group_modification[title]"]', value: 'Professionals' }
+      - fill: { selector: '[name="thelia_customer_group_modification[description]"]', value: 'Architects, interior designers and hotels buying for their clients.' }
+      - click: '[data-testid="customer-group-edit-submit"]'
+      - waitFor: '[data-testid="customer-group-edit-form"]'
+vars:
+  pro_group_id:
+    selector: '[data-customer-group-label="Professionnels"]'
+    attribute: data-customer-group-id
+    pattern: '(\d+)'

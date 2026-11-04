@@ -1,0 +1,11 @@
+# Greta Müller (demo customer 8, used by no other manifest) moved to the group of group-a-pro.
+done:
+  url: '/admin/customer/update?customer_id=8'
+  selector: '[name="thelia_customer_update[customer_group_id]"] option[value="{{pro_group_id}}"][selected]'
+steps:
+  - url: '/admin/customer/update?customer_id=8'
+    actions:
+      - waitFor: '[data-testid="customer-edit-form"]'
+      - select: { selector: '[name="thelia_customer_update[customer_group_id]"]', value: '{{pro_group_id}}' }
+      - click: '[data-testid="customer-edit-submit"]'
+      - waitFor: '[data-testid="customer-edit-form"]'
