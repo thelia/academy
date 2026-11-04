@@ -53,14 +53,17 @@ async function adminLogin(page) {
 	await Promise.all([page.waitForURL((url) => !url.pathname.endsWith('/login')), page.getByTestId('login-submit').click()]);
 }
 
-async function runAction(page, action) {
-	if (action.goto) await page.goto(baseUrl + action.goto);
+// `goto` takes one path, or one per locale ({ fr, en }) when the page shown depends on it.
+async function runAction(page, action, locale = 'fr') {
+	if (action.goto) await page.goto(baseUrl + (typeof action.goto === 'object' ? action.goto[locale] : action.goto));
 	if (action.click) await page.locator(action.click).first().click();
 	if (action.hover) await page.locator(action.hover).first().hover();
 	if (action.fill) await page.locator(action.fill.selector).first().fill(String(action.fill.value));
 	if (action.select) await page.locator(action.select.selector).first().selectOption(String(action.select.value));
 	if (action.check) await page.locator(action.check).first().check();
 	if (action.uncheck) await page.locator(action.uncheck).first().uncheck();
+	// The file is read from captures/_prepare/files/, so a state ships the sample it sends.
+	if (action.upload) await page.locator(action.upload.selector).first().setInputFiles(join(CAPTURES_SRC, '_prepare', 'files', action.upload.file));
 	if (action.waitFor) await page.locator(action.waitFor).first().waitFor();
 	if (action.waitForUrl) await page.waitForURL(new RegExp(action.waitForUrl));
 }
@@ -107,7 +110,7 @@ async function prepareState(page, name, state, vars) {
 
 async function shoot(page, shot, locale, output) {
 	await page.goto(urlFor(shot.url, locale));
-	for (const action of shot.actions ?? []) await runAction(page, action);
+	for (const action of shot.actions ?? []) await runAction(page, action, locale);
 	if (shot.waitFor) await page.locator(shot.waitFor).first().waitFor();
 	await page.addStyleTag({
 		content: [
