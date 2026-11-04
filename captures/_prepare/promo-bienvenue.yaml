@@ -1,0 +1,28 @@
+# Promo code BIENVENUE10: 10 % off, combines with the others, priority 20.
+# Its incompatibility with SOLDES20 is declared on SOLDES20 (state promo-soldes), and shows here too.
+done:
+  url: '/admin/coupon'
+  selector: '[data-coupon-label="BIENVENUE10"]'
+steps:
+  - url: '/admin/coupon/create?edit_language_id=1'
+    actions:
+      - select: { selector: '#coupon-type', value: 'thelia.coupon.type.remove_x_percent' }
+      - waitFor: '#coupon-percent'
+      - fill: { selector: '#coupon-percent', value: '10' }
+      - fill: { selector: '#coupon-code', value: 'BIENVENUE10' }
+      - fill: { selector: '#coupon-title', value: 'Bienvenue : 10 % sur la première commande' }
+      - check: '[data-testid="coupon-stacking-cumulative"]'
+      - fill: { selector: '[data-testid="coupon-priority"]', value: '20' }
+      - click: '[data-testid="coupon-save-stay"]'
+      - waitFor: '[data-testid="coupon-stacking"]'
+      - click: '[data-testid="bo-language-switcher-en"]'
+      - waitForUrl: 'edit_language_id=2'
+      - waitFor: '[data-testid="coupon-stacking"]'
+      - fill: { selector: '#coupon-title', value: 'Welcome: 10% off the first order' }
+      - click: '[data-testid="coupon-save-stay"]'
+      - waitFor: '[data-testid="coupon-stacking"]'
+vars:
+  promo_bienvenue_id:
+    selector: '[data-coupon-label="BIENVENUE10"]'
+    attribute: data-coupon-id
+    pattern: '(\d+)'
