@@ -26,7 +26,8 @@ if (options.stamp) {
 		console.error(`No French/English pair for "${id}".`);
 		process.exit(1);
 	}
-	const stamped = `translatedFrom: ${fingerprint(source)}`;
+	// Quoted: a fingerprint made of digits and one "e" (8576632e6529) would read back as a number.
+	const stamped = `translatedFrom: '${fingerprint(source)}'`;
 	const text = /^translatedFrom:.*$/m.test(target.raw)
 		? target.text.replace(/^translatedFrom:.*$/m, stamped)
 		: target.text.replace(/^---\n/, `---\n${stamped}\n`);
