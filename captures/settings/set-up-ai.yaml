@@ -1,0 +1,15 @@
+# Screens of src/content/docs/settings/set-up-ai.md, replayed by "npm run capture".
+# Not yet played: the page carries no image until these are taken on an instance that has the 1.3.2 theme.
+# The instance needs no connection saved, and at least one module that offers an AI feature.
+page: settings/set-up-ai
+login: admin
+shots:
+  - name: connect
+    url: /admin/configuration/ai/setup
+    waitFor: '[data-testid="ai-setup-page"]'
+    clip: '[data-testid="ai-setup-step-1"]'
+    highlight: '[data-testid="ai-setup-connection-save"]'
+  - name: features
+    url: /admin/configuration/ai/setup
+    waitFor: '[data-testid="ai-setup-page"]'
+    clip: '[data-testid="ai-setup-step-3"]'
