@@ -58,7 +58,8 @@ async function runAction(page, action, locale = 'fr') {
 	if (action.goto) await page.goto(baseUrl + (typeof action.goto === 'object' ? action.goto[locale] : action.goto));
 	if (action.click) await page.locator(action.click).first().click();
 	if (action.hover) await page.locator(action.hover).first().hover();
-	if (action.fill) await page.locator(action.fill.selector).first().fill(String(action.fill.value));
+	// `value` takes one text, or one per locale ({ fr, en }) when what is typed depends on it.
+	if (action.fill) await page.locator(action.fill.selector).first().fill(String(typeof action.fill.value === 'object' ? action.fill.value[locale] : action.fill.value));
 	if (action.select) await page.locator(action.select.selector).first().selectOption(String(action.select.value));
 	if (action.check) await page.locator(action.check).first().check();
 	if (action.uncheck) await page.locator(action.uncheck).first().uncheck();
