@@ -1,0 +1,52 @@
+# Screens of src/content/docs/orders/schedule-email-reports.md, replayed by "npm run capture".
+page: orders/schedule-email-reports
+# The French label of the export field ("Exporter") is a known wording defect: thelia-templates/default-twig#210.
+login: admin
+prepare: [report-a-monthly]
+shots:
+  - name: menu
+    url: '/admin/export'
+    waitFor: '[data-testid="bo-nav-scheduled-reports"]'
+    clip: '[data-testid="bo-nav-tools"]'
+  - name: list
+    url: '/admin/scheduled-reports'
+    waitFor: '[data-testid="scheduled-reports-page"] table'
+    highlight: '[data-testid="scheduled-report-create-button"]'
+    clip: '[data-testid="scheduled-reports-page"]'
+  - name: form
+    url: '/admin/scheduled-reports/new'
+    waitFor: '[data-testid="scheduled-report-form"]'
+    actions:
+      - fill: { selector: '#thelia_scheduled_report_title', value: { fr: 'Chiffre d’affaires du mois', en: 'Monthly revenue' } }
+      - select: { selector: '#thelia_scheduled_report_export_ref', value: 'thelia.export.orders' }
+      - select: { selector: '#thelia_scheduled_report_period', value: 'previous_month' }
+      - select: { selector: '#thelia_scheduled_report_frequency', value: 'monthly' }
+      - select: { selector: '#thelia_scheduled_report_day_of_month', value: '1' }
+      - select: { selector: '#thelia_scheduled_report_send_hour', value: '8' }
+    clip: '[data-testid="scheduled-report-form"]'
+  - name: recipients
+    url: '/admin/scheduled-reports/new'
+    waitFor: '[data-testid="scheduled-report-form"]'
+    actions:
+      - check: '[data-testid="report-administrators"] input[type="checkbox"]'
+      - fill: { selector: '[data-testid="report-other-recipients"]', value: { fr: 'comptabilite@example.com', en: 'accounting@example.com' } }
+      - check: '#thelia_scheduled_report_confirm_external'
+    highlight: '[data-testid="report-other-recipients"]'
+    clip: '[data-testid="scheduled-report-form"]'
+  - name: send-now
+    url: '/admin/scheduled-reports'
+    waitFor: '[data-testid="scheduled-reports-page"] table'
+    actions:
+      - click: '[data-testid="scheduled-reports-page"] tr [data-testid^="datatable-action-send"]'
+      - waitFor: '#scheduled-report-send-modal.show .modal-content'
+    clip: '#scheduled-report-send-modal .modal-content'
+  - name: delivery
+    url: '/admin/scheduled-reports'
+    waitFor: '[data-testid="scheduled-reports-settings"]'
+    highlight: '[data-testid="scheduled-reports-settings"]'
+    clip: '[data-testid="scheduled-reports-settings"]'
+  - name: scheduling
+    url: '/admin/scheduled-reports'
+    waitFor: '[data-testid="scheduled-reports-scheduling"]'
+    highlight: '[data-testid="scheduled-reports-scheduling"]'
+    clip: '[data-testid="scheduled-reports-scheduling"]'
