@@ -1,0 +1,48 @@
+# Screens of src/content/docs/catalog/sell-on-preorder.md, replayed by "npm run capture".
+page: catalog/sell-on-preorder
+login: admin
+prepare: [preorder-a-combinations]
+shots:
+  - name: stock-fields
+    url:
+      fr: '/admin/products/update?product_id=3&edit_language_id=1&current_tab=pse'
+      en: '/admin/products/update?product_id=3&edit_language_id=2&current_tab=pse'
+    waitFor: '#tab-pse.show [data-testid="combinations-table"]'
+    highlight: '[data-testid="combinations-stock-fields-12"]'
+    clip: '[data-testid="combinations-row-12"]'
+  - name: store-settings
+    url: '/admin/configuration/store'
+    waitFor: '[data-testid="config-store-stock"]'
+    highlight: '[data-testid="config-store-stock"]'
+    clip: '[data-testid="config-store-stock"]'
+  - name: menu
+    url: '/admin/products'
+    waitFor: '[data-testid="bo-nav-catalog"]'
+    actions:
+      - waitFor: '[data-testid="bo-nav-catalog-preorders"]'
+    clip: '[data-testid="bo-nav-catalog"]'
+  - name: tracking
+    url: '/admin/preorders'
+    waitFor: '[data-testid="preorder-tracking-page"] table'
+    clip: '[data-testid="preorder-tracking-page"]'
+  - name: shop-page
+    login: none
+    url:
+      fr: '/stacy-1.html'
+      en: '/stacy.html?lang=en_US'
+    waitFor: '.PseSelector-heading'
+    highlight: '.PseSelector-heading'
+    clip: '.PseSelector'
+  - name: cart
+    login: none
+    url:
+      fr: '/stacy-1.html'
+      en: '/stacy.html?lang=en_US'
+    actions:
+      - waitFor: '.PseSelector-form button[type="submit"]'
+      - click: '.PseSelector-form button[type="submit"]'
+      - waitFor: '.AddToCartToast:not(.hidden) a[href*="/checkout/cart"]'
+      - goto: { fr: '/checkout/cart', en: '/checkout/cart' }
+      - waitFor: '.CartItem-restock'
+    highlight: '.CartItem-restock'
+    clip: '.CartItem'

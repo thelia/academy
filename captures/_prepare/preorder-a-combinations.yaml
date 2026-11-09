@@ -1,0 +1,23 @@
+# Two combinations of the demo product "Stacy" (PROD003, which no other manifest shows), set to sell below zero stock:
+# PROD003-0 at stock 0, preorder up to 10 units, restock date and its own low stock threshold (the grid shows the fields);
+# PROD003-1 already sold 3 units below zero (the preorder follow-up lists it).
+# One save of the grid sets both rows; "done" tests the last one.
+done:
+  url: '/admin/products/update?product_id=3&edit_language_id=1&current_tab=pse'
+  waitFor: '#tab-pse.show [data-testid="combinations-table"]'
+  selector: '[data-testid="combinations-policy-13"] option[value="2"][selected]'
+steps:
+  - url: '/admin/products/update?product_id=3&edit_language_id=1&current_tab=pse'
+    actions:
+      - waitFor: '#tab-pse.show [data-testid="combinations-table"]'
+      - fill: { selector: '[data-testid="combinations-row-12"] input[name="quantity[]"]', value: '0' }
+      - select: { selector: '[data-testid="combinations-policy-12"]', value: '2' }
+      - fill: { selector: '[data-testid="combinations-preorder-limit-12"]', value: '10' }
+      - fill: { selector: '[data-testid="combinations-restock-date-12"]', value: '2027-03-01' }
+      - fill: { selector: '[data-testid="combinations-low-stock-threshold-12"]', value: '3' }
+      - fill: { selector: '[data-testid="combinations-row-13"] input[name="quantity[]"]', value: '-3' }
+      - select: { selector: '[data-testid="combinations-policy-13"]', value: '2' }
+      - fill: { selector: '[data-testid="combinations-preorder-limit-13"]', value: '10' }
+      - fill: { selector: '[data-testid="combinations-restock-date-13"]', value: '2027-03-15' }
+      - click: '[data-testid="combinations-submit"]'
+      - waitFor: '[data-testid="combinations-row-13"] input[name="quantity[]"][value="-3"]'
