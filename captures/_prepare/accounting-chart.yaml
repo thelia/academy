@@ -1,0 +1,23 @@
+# The chart of accounts of a French shop: customer 411000, shipping 708500, sales and collected tax at 20 % and 5.5 %, commercial credit notes 709000.
+# The install leaves it empty, and the accounting exports refuse to run without it.
+done:
+  url: '/admin/configuration/accounting'
+  waitFor: '[data-testid="accounting-form"]'
+  selector: '#accounting-customer-account[value="411000"]'
+steps:
+  - url: '/admin/configuration/accounting'
+    actions:
+      - waitFor: '[data-testid="accounting-form"]'
+      - fill: { selector: '#accounting-journal-code', value: 'VE' }
+      - fill: { selector: '#accounting-journal-label', value: 'Ventes' }
+      - fill: { selector: '#accounting-customer-account', value: '411000' }
+      - fill: { selector: '#accounting-shipping-account', value: '708500' }
+      - fill: { selector: 'input[name="rates[0][rate]"]', value: '20' }
+      - fill: { selector: 'input[name="rates[0][product]"]', value: '706200' }
+      - fill: { selector: 'input[name="rates[0][tax]"]', value: '445720' }
+      - fill: { selector: 'input[name="rates[1][rate]"]', value: '5.5' }
+      - fill: { selector: 'input[name="rates[1][product]"]', value: '706055' }
+      - fill: { selector: 'input[name="rates[1][tax]"]', value: '445705' }
+      - fill: { selector: '#accounting-commercial-credit-account', value: '709000' }
+      - click: '[data-testid="accounting-save"]'
+      - waitFor: '#accounting-customer-account'

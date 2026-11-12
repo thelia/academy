@@ -1,0 +1,13 @@
+# Order 12 (ORD000000000012, "Non payée" in the demo data) paid: the shop gives it an invoice reference and an invoice date,
+# so the sales journal of the current month has an invoice to book.
+done:
+  url: '/admin/order/update/12'
+  waitFor: '[data-testid="order-status-badge"]'
+  selector: '[data-testid="order-status-badge"]:text-is("Payée")'
+steps:
+  - url: '/admin/order/update/12'
+    actions:
+      - waitFor: '[data-testid="order-status-form"]'
+      - select: { selector: '#order-status-select', value: '2' }
+      - click: '[data-testid="order-status-submit"]'
+      - waitFor: '[data-testid="order-status-badge"]'
