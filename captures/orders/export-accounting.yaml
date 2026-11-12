@@ -1,0 +1,40 @@
+# Screens of src/content/docs/orders/export-accounting.md, replayed by "npm run capture".
+page: orders/export-accounting
+login: admin
+prepare: [accounting-chart, invoiced-order]
+shots:
+  - name: configuration
+    url: '/admin/configuration'
+    waitFor: '[data-testid="configuration-link-admin.accounting.edit"]'
+    highlight: '[data-testid="configuration-link-admin.accounting.edit"]'
+    clip: '[data-testid="configuration-link-admin.accounting.edit"]'
+  - name: accounts
+    url: '/admin/configuration/accounting'
+    waitFor: '[data-testid="accounting-form"]'
+    clip: '[data-testid="accounting-form"] .card:nth-of-type(1)'
+  - name: rates
+    url: '/admin/configuration/accounting'
+    waitFor: '[data-testid="accounting-form"]'
+    clip: '[data-testid="accounting-form"] .card:nth-of-type(2)'
+  - name: credit-notes
+    url: '/admin/configuration/accounting'
+    waitFor: '[data-testid="accounting-form"]'
+    clip: '[data-testid="accounting-form"] .card:nth-of-type(3)'
+  - name: list
+    url: '/admin/export'
+    waitFor: '[data-testid="export-page"] table'
+    clip: '[data-testid="export-page"] .col-md-6:has(a[href$="/admin/export/12"])'
+    highlight: 'tr:has(a[href$="/admin/export/12"])'
+  # The export of the sales journal is number 12 of the install, the tax summary 13.
+  - name: form
+    url: '/admin/export/12'
+    waitFor: '[data-testid="export-form"]'
+    actions:
+      - select: { selector: 'select[name="range_date_start[year]"]', value: '2026' }
+      - select: { selector: 'select[name="range_date_start[month]"]', value: '10' }
+      - select: { selector: 'select[name="range_date_end[year]"]', value: '2026' }
+      - select: { selector: 'select[name="range_date_end[month]"]', value: '12' }
+      - select: { selector: '#bo-export-serializer', value: 'thelia.fec' }
+    # The description above the form follows the default language of the shop, not the language of the screen.
+    hide: ['[data-testid="export-form"] .alert-info']
+    clip: '[data-testid="export-form"]'
