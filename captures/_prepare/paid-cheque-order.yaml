@@ -1,0 +1,12 @@
+# Order 9 (ORD000000000009, "not paid" in the demo data, paid by cheque) marked paid by the administrator:
+# its payment journal gets one capture line for the whole total.
+done:
+  url: '/admin/order/update/9'
+  selector: '[data-testid="order-payment-line"]'
+steps:
+  - url: '/admin/order/update/9'
+    actions:
+      - waitFor: '[data-testid="order-status-select"]'
+      - select: { selector: '[data-testid="order-status-select"]', value: 'Payée' }
+      - click: '[data-testid="order-status-submit"]'
+      - waitFor: '[data-testid="order-payment-line"]'
