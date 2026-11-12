@@ -1,0 +1,10 @@
+# Screens of src/content/docs/orders/payment-journal.md, replayed by "npm run capture".
+page: orders/payment-journal
+login: admin
+prepare: [paid-cheque-order]
+shots:
+  - name: payment-card
+    url: /admin/order/update/9
+    waitFor: '[data-testid="order-payment-journal"]'
+    highlight: '[data-testid="order-payment-journal"]'
+    clip: '[data-testid="order-payment"]'
