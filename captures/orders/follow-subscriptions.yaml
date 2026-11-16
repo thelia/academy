@@ -1,0 +1,33 @@
+# Screens of src/content/docs/orders/follow-subscriptions.md, replayed by "npm run capture".
+# Reads the six subscriptions of the capture instance (see captures/_prepare/subscription-plans.yaml).
+page: orders/follow-subscriptions
+login: admin
+prepare: [subscription-plans]
+shots:
+  - name: menu
+    url: '/admin/subscriptions'
+    waitFor: '[data-testid="subscriptions-page"]'
+    highlight: '[data-testid="bo-nav-subscription"]'
+    clip: '[data-testid="bo-nav-subscription"]'
+  - name: list
+    url: '/admin/subscriptions'
+    waitFor: '[data-testid="subscriptions-page"] table'
+    highlight: '[data-testid="subscription-quick-filters"]'
+    clip: '[data-testid="subscriptions-page"]'
+  - name: filter
+    url: '/admin/subscriptions?status[]=payment_failed&status[]=suspended'
+    waitFor: '[data-testid="subscriptions-page"] table'
+    highlight: '[data-testid="subscription-active-chips"]'
+    clip: '[data-testid="subscriptions-page"]'
+  - name: detail
+    url: '/admin/subscriptions/2'
+    waitFor: '[data-testid="subscription-detail-page"]'
+    highlight: '[data-testid="subscription-actions"]'
+    clip: '[data-testid="subscription-detail-page"]'
+  - name: cancel
+    url: '/admin/subscriptions/2'
+    waitFor: '[data-testid="subscription-detail-page"]'
+    actions:
+      - click: '[data-bs-target="#subscription-cancel-modal"]'
+      - waitFor: '#subscription-cancel-modal.show .modal-content'
+    clip: '#subscription-cancel-modal .modal-content'
