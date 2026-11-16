@@ -1,0 +1,45 @@
+# Screens of src/content/docs/orders/read-sales-reports.md, replayed by "npm run capture".
+# Reads the demonstration orders of the capture instance (no preparation needed).
+page: orders/read-sales-reports
+login: admin
+shots:
+  - name: menu
+    url: '/admin/reports/sales/category'
+    waitFor: '[data-testid="report-sales"]'
+    highlight: '[data-testid="bo-nav-sales-report"]'
+    clip: '[data-testid="bo-nav-reports"]'
+  - name: period
+    url: '/admin/reports/sales/category?period=90days'
+    waitFor: '[data-testid="report-category-tree"]'
+    highlight: '[data-testid="report-period-options"]'
+    clip: '[data-testid="report-sales"]'
+  - name: scope
+    url: '/admin/reports/sales/category?period=90days&scope=paid'
+    waitFor: '[data-testid="report-category-tree"]'
+    highlight: '[data-testid="report-scope-options"]'
+    clip: '[data-testid="report-sales"]'
+  - name: category
+    url: '/admin/reports/sales/category?period=90days'
+    waitFor: '[data-testid="report-category-tree"]'
+    highlight: '[data-testid="report-category-tree"]'
+    clip: '[data-testid="report-sales"]'
+  - name: reconciliation
+    url: '/admin/reports/sales/category?period=90days'
+    waitFor: '[data-testid="report-reconciliation"]'
+    highlight: '[data-testid="report-reconciliation"]'
+    clip: '[data-testid="report-reconciliation"]'
+  - name: product
+    url: '/admin/reports/sales/product?period=90days'
+    waitFor: '[data-testid="report-product-table"]'
+    highlight: '[data-testid="report-product-table"]'
+    clip: '[data-testid="report-sales"]'
+  - name: customer
+    url: '/admin/reports/sales/customer?period=90days'
+    waitFor: '[data-testid="report-sales"] table'
+    highlight: '[data-testid="report-sales"] table'
+    clip: '[data-testid="report-sales"]'
+  - name: export
+    url: '/admin/reports/sales/product?period=90days&scope=paid'
+    waitFor: '[data-testid="report-product-table"]'
+    highlight: '[data-testid="report-export-button"]'
+    clip: '[data-testid="report-sales"]'
