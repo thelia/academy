@@ -58,7 +58,7 @@ La barre du haut contient les outils disponibles sur toutes les pages :
 
 ![Barre du haut du back-office](../../../assets/captures/fr/getting-started/back-office-tour/top-bar.png)
 
-- le champ **Rechercher...** pour retrouver un produit, une rubrique, une marque, un contenu, un client ou une commande ;
+- le champ **Rechercher...** pour retrouver un produit, une rubrique, une marque, un contenu, un client ou une commande (voir [Rechercher dans le back-office](/getting-started/search-back-office/)) ;
 - la version de Thelia installée, à indiquer quand vous demandez de l'aide ;
 - la **langue de l'interface** : cliquez sur le drapeau pour passer le back-office dans une autre langue ;
 - l'œil : **Voir le site**, ouvre votre boutique dans un nouvel onglet ;

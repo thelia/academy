@@ -1,0 +1,21 @@
+# Screens of src/content/docs/getting-started/search-back-office.md, replayed by "npm run capture".
+page: getting-started/search-back-office
+login: admin
+shots:
+  - name: field
+    url: '/admin'
+    waitFor: '[data-testid="bo-search-form"]'
+    highlight: '[data-testid="bo-search-form"]'
+    clip: '[data-testid="bo-top-nav"]'
+  - name: results
+    url: '/admin/search?search_term=PROD001'
+    waitFor: '[data-testid="search-page"]'
+    clip: '[data-testid="search-page"]'
+  - name: customer
+    url: '/admin/search?search_term=benali'
+    waitFor: '[data-testid="search-page"]'
+    clip: '[data-testid="search-page"]'
+  - name: too-short
+    url: '/admin/search?search_term=a'
+    waitFor: '[data-testid="search-too-short"]'
+    clip: '[data-testid="search-page"]'

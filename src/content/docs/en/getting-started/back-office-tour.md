@@ -1,5 +1,5 @@
 ---
-translatedFrom: 3a343c2c0203
+translatedFrom: '584301a612f8'
 title: Discover the back office
 description: Log in to the store administration and read the dashboard.
 sidebar:
@@ -49,7 +49,7 @@ The top bar holds the tools available on every page:
 
 ![Back office top bar](../../../../assets/captures/en/getting-started/back-office-tour/top-bar.png)
 
-- the **Search...** field, to find a product, a category, a brand, a content, a customer or an order;
+- the **Search...** field, to find a product, a category, a brand, a content, a customer or an order (see [Search the back office](/en/getting-started/search-back-office/));
 - the installed Thelia version, to give when you ask for help;
 - the **interface language**: click the flag to switch the back office to another language;
 - the eye: **View site**, opens your store in a new tab;
