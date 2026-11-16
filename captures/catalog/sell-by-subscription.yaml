@@ -1,0 +1,31 @@
+# Screens of src/content/docs/catalog/sell-by-subscription.md, replayed by "npm run capture".
+page: catalog/sell-by-subscription
+login: admin
+prepare: [subscription-plans]
+shots:
+  - name: tab
+    url: '/admin/products/update?product_id=1&current_tab=subscription-plans'
+    waitFor: '[data-testid="subscription-plans-tab"]'
+    highlight: '[data-testid="product-tab-subscription-plans"]'
+  - name: plans
+    url: '/admin/products/update?product_id=1&current_tab=subscription-plans'
+    waitFor: '[data-testid="subscription-plans-tab"] table'
+    highlight: '[data-testid="subscription-plan-new"]'
+    clip: '[data-testid="subscription-plans-tab"]'
+  - name: form
+    url: '/admin/products/update?product_id=1&current_tab=subscription-plans&plan=new'
+    waitFor: '[data-testid="subscription-plan-form"]'
+    actions:
+      - fill: { selector: '[data-testid="subscription-plan-title-fr_FR"]', value: 'Abonnement trimestriel' }
+      - fill: { selector: '[data-testid="subscription-plan-title-en_US"]', value: 'Quarterly subscription' }
+      - fill: { selector: '[data-testid="subscription-plan-price-EUR"]', value: '35' }
+      - select: { selector: '[data-testid="subscription-plan-period-unit"]', value: 'quarter' }
+      - fill: { selector: '[data-testid="subscription-plan-commitment-count"]', value: '2' }
+    clip: '[data-testid="subscription-plan-form"]'
+  - name: shop
+    login: none
+    url:
+      fr: '/horatio-1.html'
+      en: '/horatio.html?lang=en_US'
+    waitFor: '[data-testid="subscription-plans"]'
+    clip: '[data-testid="subscription-plans"]'
