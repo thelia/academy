@@ -80,7 +80,7 @@ Paying with a credit note is a payment, not a discount: the invoice keeps its fu
 - If the credit notes of the cart changed while the customer was on the payment step, the order is refused once. They come back to the payment step, read the new amounts and confirm again.
 - Cancelling an order paid with a credit note gives the credit note back. Refunding it does not: if needed, create a new credit note.
 - A customer group limited to certain payment methods must have CreditNote in its list to use its credit notes.
-- The "paid by credit note" line under the total of the PDF invoice will come with the next version of the PDF theme.
+- The PDF invoice of an order paid with credit notes prints, under its total, one line per credit note with the amount it paid, then the balance the other payment method charged. This needs version 1.4.2 of the PDF theme, or a later one.
 
 ## The result
 

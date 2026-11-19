@@ -79,7 +79,7 @@ Régler avec un avoir est un paiement, pas une réduction : la facture garde son
 - Si les avoirs du panier ont changé pendant que le client regardait l'étape de paiement, la commande est refusée une fois. Il revient à l'étape de paiement, lit les nouveaux montants et valide de nouveau.
 - Annuler une commande payée avec un avoir rend l'avoir. La rembourser ne le rend pas : si besoin, créez un nouvel avoir.
 - Un groupe de clients limité à certains moyens de paiement doit avoir CreditNote dans sa liste pour utiliser ses avoirs.
-- La ligne « payé par avoir » sous le total de la facture PDF viendra avec la prochaine version du thème PDF.
+- La facture PDF d'une commande réglée par avoir affiche, sous son total, une ligne par avoir avec le montant qu'il a réglé, puis le solde encaissé par l'autre moyen de paiement. Il faut la version 1.4.2 du thème PDF, ou une plus récente.
 
 ## Le résultat
 
