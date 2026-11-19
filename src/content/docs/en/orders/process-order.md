@@ -1,17 +1,20 @@
 ---
-translatedFrom: a81970aa7676
+translatedFrom: 'e5516c5d7dba'
 title: Move an order forward (change its status)
 description: Change an order's status, for example from Paid to Sent, and know what that change triggers.
 sidebar:
   order: 30
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/process-order
   - thelia-templates/default-twig:order/detail.html.twig:38-58
   - thelia-templates/default-twig:src/Controller/Order/OrderController.php:249
   - thelia-templates/default-twig:src/Controller/Order/OrderController.php:276
   - thelia-templates/default-twig:src/Service/Order/OrderStatusChangeContextBuilder.php:74
+  - thelia-templates/default-twig:src/Service/Order/OrderStatusChangeContextBuilder.php:100
+  - thelia/thelia:setup/insert.sql:2184
+  - thelia/thelia:setup/insert.sql:15688
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderStatusTransitionGraph.php:20
   - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderStatusTransitionGraph.php:39
@@ -55,7 +58,7 @@ The status is changed at the top of the page, under the order reference.
 2. Open the dropdown list. It first shows the current status (here **Paid**), then the statuses you can choose.
 3. Click the status you want, for example **Processing** to say you are preparing the parcel.
 
-The statuses shipped with Thelia are **Not paid**, **Paid**, **Processing**, **Sent**, **Canceled**, **Refunded** and **Partially shipped**.
+The statuses shipped with Thelia are **Not paid**, **Paid**, **Processing**, **Sent**, **Canceled**, **Refunded**, **Partially shipped** and **Awaiting capture**. The last one is used when the payment provider has authorized the payment without taking the money yet: a payment module puts the order there.
 
 ## Step 3: save the change
 
@@ -82,6 +85,7 @@ Depending on the store's configuration, the list does not always offer every sta
 - As long as no transition is set from the current status, the order can go to any status.
 - As soon as at least one transition is set from that status, only the allowed statuses are listed. A line under the list says so: **Only the statuses allowed from the current status are listed.**
 - If no transition is allowed, the list and the button are grayed out and the line reads: **No transition is allowed from the current status.**
+- **Canceled** is not offered when the payment is authorized but not yet taken and your profile does not have the right to capture payments: cancelling would release the authorization at the provider. It is not offered either when the provider accepts a single capture and that capture is still waiting for its answer.
 
 This setting is not described here: if a status you need is missing, ask the person who administers the store.
 

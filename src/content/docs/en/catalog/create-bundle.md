@@ -1,11 +1,11 @@
 ---
-translatedFrom: '8576632e6529'
+translatedFrom: '03064ced9e29'
 title: Create a product bundle
 description: Sell several products together as one product, choose its price, set up its components and see what the customer sees.
 sidebar:
   order: 290
 thelia: '3.4'
-verified: 2026-11-04
+verified: 2026-11-19
 sources:
   - capture:catalog/create-bundle
   - thelia-templates/default-twig:catalog/product/edit.html.twig:155
@@ -18,8 +18,8 @@ sources:
   - thelia-templates/default-twig:src/Form/Product/ProductType.php:180
   - thelia-templates/default-twig:assets/controllers/bo-bundle-settings_controller.js
   - thelia-templates/default-twig:translations/messages.fr_FR.php:3177
-  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1035
-  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1037
+  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1042
+  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1040
   - thelia/thelia:core/lib/Thelia/Domain/Catalog/Bundle/BundlePriceMode.php:20
   - thelia/thelia:core/lib/Thelia/Domain/Catalog/Bundle/BundleDiscountType.php:19
   - thelia/thelia:core/lib/Thelia/Domain/Catalog/Bundle/BundleCompositionService.php:284
@@ -31,8 +31,8 @@ sources:
   - thelia/thelia:CHANGELOG.md:16
   - thelia-templates/flexy:components/Organisms/BundleComposition/Base.html.twig:41
   - thelia-templates/flexy:components/Organisms/BundleComposition/Base.html.twig:60
-  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:527
-  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:445
+  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:535
+  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:473
   - thelia-templates/flexy:translations/messages.fr_FR.yaml:680
   - thelia-templates/flexy:src/Service/BundleSelectionService.php:141
   - thelia-templates/pdf:invoice.html.twig:243

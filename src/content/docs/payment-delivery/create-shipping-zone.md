@@ -3,8 +3,8 @@ title: Créer une zone de livraison
 description: Regrouper des pays en une zone, pour dire à quels endroits vos transporteurs livrent.
 sidebar:
   order: 40
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/create-shipping-zone
   - thelia-templates/default-twig:configuration/index.html.twig:36
@@ -13,6 +13,7 @@ sources:
   - thelia-templates/default-twig:configuration/area/edit.html.twig:40
   - thelia-templates/default-twig:configuration/area/edit.html.twig:60
   - thelia-templates/default-twig:configuration/area/edit.html.twig:67
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1918
   - thelia-templates/default-twig:configuration/shipping-zone/list.html.twig:22
   - thelia-templates/default-twig:src/Controller/Configuration/AreaController.php:104
   - thelia-templates/default-twig:src/Controller/Configuration/AreaController.php:174
@@ -68,7 +69,7 @@ La page de la zone a deux colonnes. À gauche, les pays que vous pouvez ajouter.
 
 Certains pays se déplient en états ou provinces (par exemple Argentina, avec **Tous les états** puis la liste des états). Sélectionnez **Tous les états** pour livrer le pays entier, ou un état seulement pour ne livrer que cette partie du pays.
 
-Pour sélectionner d'un coup les pays qui ne sont dans aucune zone, cliquez sur **Selectionner les pays sans zone**, puis sur **Ajouter les pays sélectionnés**.
+Pour sélectionner d'un coup les pays qui ne sont dans aucune zone, cliquez sur **Sélectionner les pays sans zone**, puis sur **Ajouter les pays sélectionnés**.
 
 ## Étape 4 : retirer un pays ou renommer la zone
 

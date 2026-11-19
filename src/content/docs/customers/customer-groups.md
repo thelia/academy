@@ -4,7 +4,7 @@ description: Réunir des clients dans un groupe qui a sa remise, ses prix HT ou 
 sidebar:
   order: 130
 thelia: '3.4'
-verified: 2026-11-04
+verified: 2026-11-19
 sources:
   - capture:customers/customer-groups
   - thelia-templates/default-twig:configuration/index.html.twig:61
@@ -38,6 +38,9 @@ sources:
   - thelia-templates/email:order_confirmation.html.twig
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:370
   - thelia/thelia:docs/customer-groups.md:78
+  - thelia/thelia:core/lib/Thelia/Domain/Pricing/PriceList/PriceListResolver.php:29
+  - thelia/thelia:core/lib/Thelia/Domain/Pricing/PriceList/ApplicablePriceLists.php:25
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:3488
 ---
 
 Un groupe de clients réunit des clients qui achètent aux mêmes conditions. Par exemple, vos clients professionnels ont 10 % de remise et voient leurs prix hors taxes, pendant que les particuliers paient le prix affiché toutes taxes comprises.
@@ -134,7 +137,8 @@ Une fois créé, le groupe apparaît dans d'autres écrans :
 
 - sur la fiche d'un produit, onglet **Combinaisons**, le bloc **Prix par groupe de clients** donne au groupe un prix à lui, hors taxes, à la place de la remise du groupe (la remise propre du client s'applique encore) ;
 - dans un code promo, la condition **Valable pour un ou plusieurs groupes de clients** le réserve à certains groupes ;
-- une règle de prix catalogue ou une promotion peut être réservée à certains groupes.
+- une règle de prix catalogue ou une promotion peut être réservée à certains groupes ;
+- une grille tarifaire (menu **Prix et assortiments**, puis **Grilles tarifaires**) peut être attribuée à un groupe. Son prix est définitif : ni la remise du groupe, ni la remise propre du client, ni une promotion ne s'y ajoutent.
 
 Quand une règle de prix ou une promotion réservée donne un autre prix que celui du groupe, le client paie le moins cher des deux.
 

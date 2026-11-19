@@ -3,8 +3,8 @@ title: Créer un produit
 description: Ajouter un produit au catalogue avec sa référence, son titre, sa catégorie et son prix de base.
 sidebar:
   order: 20
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:catalog/create-product
   - thelia-templates/default-twig:catalog/product/list.html.twig:22
@@ -29,6 +29,9 @@ sources:
   - thelia-templates/default-twig:catalog/product/edit.html.twig:383
   - thelia-templates/default-twig:catalog/product/_related_tab.html.twig
   - thelia-templates/default-twig:catalog/product/_create_modal.html.twig:29
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:190
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:979
+  - thelia-templates/default-twig:catalog/product/edit.html.twig:136
 ---
 
 Un produit est un article que vous vendez, avec sa référence, son titre, son prix et sa catégorie. Ce tutoriel crée la fiche d'un produit avec un premier prix. Les photos, et le détail du prix et du stock, se règlent ensuite dans leurs propres pages.
@@ -66,7 +69,7 @@ Champs facultatifs :
 - **Poids (kg)** : par exemple `0,2`.
 - **Stock** : le nombre d'unités disponibles, par exemple `50`.
 
-Sur la boutique de démonstration, cette fenêtre affiche certains noms en anglais alors que l'interface est en français : **Living Room** pour la catégorie **Salon**, **Default Tax Rule** pour la règle de taxe par défaut. Ce sont les mêmes éléments.
+Sur la boutique de démonstration, cette fenêtre peut afficher des noms de catégorie dans une autre langue que l'interface, par exemple **Living Room** pour **Salon**. Les catégories suivent la langue de modification (voir l'étape 4), les règles de taxe celle de l'interface. Ce sont les mêmes éléments.
 
 Si un champ obligatoire reste vide, le produit n'est pas créé. Le prix TTC, la TVA et le stock se règlent plus finement dans [Fixer le prix, la TVA et le stock](/catalog/set-price-stock/).
 
@@ -84,7 +87,7 @@ Le drapeau surligné à côté de **Modifier en** indique la langue dans laquell
 
 ![Fiche d'un produit, onglet Général](../../../assets/captures/fr/catalog/create-product/result.png)
 
-Dans cet onglet, vous renseignez le **Résumé** (une ou deux phrases) et la **Description détaillée** (le texte complet). Cliquez sur **Enregistrer**, plus bas dans la page, pour garder vos changements.
+Dans cet onglet, vous renseignez le **Résumé** (une ou deux phrases) et la **Description détaillée** (le texte complet). Cliquez sur **Enregistrer**, en haut ou en bas de la page, pour garder vos changements.
 
 Les autres onglets servent à compléter la fiche :
 

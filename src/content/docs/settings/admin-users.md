@@ -3,8 +3,8 @@ title: Ajouter un administrateur
 description: Donner à un collaborateur son propre accès au back-office, avec un compte à son nom.
 sidebar:
   order: 100
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/admin-users
   - thelia-templates/default-twig:configuration/index.html.twig:64

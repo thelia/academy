@@ -1,11 +1,11 @@
 ---
-translatedFrom: 75637c212c54
+translatedFrom: '2a31b5c9169b'
 title: Print the invoice and the delivery slip
 description: Display, print or download as PDF an order's invoice and its delivery slip.
 sidebar:
   order: 50
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/print-documents
   - thelia-templates/default-twig:order/detail.html.twig:64
@@ -17,6 +17,11 @@ sources:
   - thelia-templates/default-twig:src/Service/Pdf/OrderPdfRenderer.php:134
   - thelia-templates/default-twig:assets/controllers/bo-print-iframe_controller.js:9
   - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:336
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:422
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:454
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:2655
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:2656
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1759
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1039
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1042
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1668
@@ -76,7 +81,7 @@ The **Delivery slip** group works the same way.
 
 The delivery slip shows the invoice date, the order number, the customer number and both addresses. It is always available, whether the order is paid or not.
 
-The tooltips of these three buttons say "purchase order" (**View purchase order as PDF**): it is the same document.
+The tooltips of these three buttons are **View delivery slip as PDF**, **Print delivery slip** and **Download delivery slip as PDF**.
 
 ## Step 4: understand when the invoice is available
 
@@ -95,7 +100,7 @@ The invoice number is assigned at that moment, in sequence: `2026-000001`, `2026
 
 When a paid order has no recorded invoice number, the PDF builds one from the order number. This is the case for the demo orders: the invoice of ORD000000000004 carries the number `FA000000000004`.
 
-To find the documents without opening the order, the order list offers the same PDFs in the **ACTIONS** column: **Download invoice PDF** and **Download delivery slip PDF**. Note that the list offers the invoice even for an unpaid order: that PDF has no invoice date and no invoice number.
+To find the documents without opening the order, the order list offers the same PDFs in the menu of the **ACTIONS** column (the three-dot button): **Download invoice PDF** and **Download delivery slip PDF**. The invoice is listed only for an order that has an invoice, by the same rule as on the order sheet.
 
 ## The result
 

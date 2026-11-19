@@ -3,8 +3,8 @@ title: Régler la TVA (taxes et règles de taxes)
 description: Comprendre la différence entre une taxe et une règle de taxe, et appliquer 20 % de TVA à vos produits.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/tax-rules
   - thelia-templates/default-twig:configuration/tax-rule/list.html.twig:22
@@ -18,6 +18,10 @@ sources:
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:877
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:203
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:38
+  - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:332
+  - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:692
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:190
+  - thelia-templates/default-twig:configuration/tax-rule/_matrix.html.twig:16
   - thelia/thelia:core/lib/Thelia/Action/ProductSaleElement.php:134
   - thelia/thelia:core/lib/Thelia/Domain/Taxation/TaxEngine/Calculator.php:398
   - thelia/thelia:core/lib/Thelia/Model/TaxRuleQuery.php:84
@@ -80,15 +84,15 @@ Chaque produit porte une **Règle de taxe**. Elle se choisit à la création du 
 1. Dans le menu de gauche, cliquez sur **Catalogue**.
 2. Cliquez sur **Produits**.
 3. Cliquez sur **Ajouter un nouveau produit** : la fenêtre **Créer un nouveau produit** s'ouvre.
-4. Dans **Règle de taxe**, choisissez la règle à appliquer, par exemple **Default Tax Rule**.
+4. Dans **Règle de taxe**, choisissez la règle à appliquer, par exemple **Règle de taxes par défaut**.
 
-Cette liste affiche les règles dans la langue par défaut de la boutique : dans la démonstration, l'anglais. **Default Tax Rule** y est donc la **Règle de taxes par défaut**.
+Cette liste affiche les noms des règles dans la langue de l'interface.
 
 ![Champ Règle de taxe à la création d'un produit](../../../assets/captures/fr/settings/tax-rules/product-modal.png)
 
 Le prix saisi dans **Prix de base HT** est un prix hors taxes : la règle choisie sert à calculer le prix TTC. La création complète d'un produit est décrite dans le tutoriel du catalogue.
 
-Pour changer la règle d'un produit existant, ouvrez-le, puis l'onglet **Combinaisons** : le champ **Règle de taxe** s'y trouve, avec le bouton **Enregistrer**. Ce champ n'apparaît que si le produit n'a pas de combinaison (tailles, couleurs). Sinon, l'écran ne permet pas de changer sa règle.
+Pour changer la règle d'un produit existant, ouvrez-le, puis l'onglet **Combinaisons** : le champ **Règle de taxe** s'y trouve. Pour un produit qui a des combinaisons (tailles, couleurs), il est au-dessus de leur liste et se valide avec **Enregistrer les modifications**. Pour un produit sans combinaison, il est dans le formulaire du produit et se valide avec **Enregistrer**.
 
 ## Étape 4 : créer une taxe (si besoin)
 
@@ -108,7 +112,7 @@ La taxe n'est appliquée à aucun produit tant qu'elle n'est pas placée dans un
 
 1. Ouvrez la règle avec le crayon, puis l'onglet **Taxes**.
 2. Dans **Choisissez un pays**, choisissez le pays concerné, par exemple **France métropolitaine**.
-3. Glissez la taxe depuis **Taxes disponibles** vers **Gérer les règles de taxe et leur ordre d'application**. Déposée sur un groupe existant (zone **Drop tax here**), elle rejoint ce groupe. Déposée sur **Déposer une taxe ici afin de créer un groupe de taxe**, elle forme un nouveau groupe, placé en dessous.
+3. Glissez la taxe depuis **Taxes disponibles** vers **Gérer les règles de taxe et leur ordre d'application**. Déposée sur un groupe existant (zone **Déposer une taxe ici**), elle rejoint ce groupe. Déposée sur **Déposer une taxe ici afin de créer un groupe de taxe**, elle forme un nouveau groupe, placé en dessous.
 4. Cliquez sur **Appliquer**.
 5. Dans la fenêtre **Mettre à jour les taxes de la règle de taxe**, cliquez sur **Enregistrer la règle de taxes**.
 

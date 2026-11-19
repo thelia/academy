@@ -3,8 +3,8 @@ title: Renseigner les informations de sa boutique
 description: Saisir le nom, l'adresse, les e-mails et le logo de la boutique dans le back-office.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/store-info
   - thelia-templates/default-twig:configuration/store/index.html.twig:25
@@ -35,6 +35,9 @@ sources:
   - thelia-templates/email:order_shipped.html.twig:7
   - thelia/thelia:core/lib/Thelia/Domain/Order/EventListener/SendShippingEmailListener.php:104
   - thelia-modules/CustomDelivery:EventListeners/CustomDeliveryEvents.php:75
+  - thelia-templates/flexy:base.html.twig:76
+  - thelia-templates/default-twig:configuration/store/index.html.twig:20
+  - thelia-templates/default-twig:src/Form/Configuration/ConfigStoreType.php:286
 ---
 
 Cet écran regroupe l'identité de votre boutique : son nom, son adresse, ses adresses e-mail et son logo. Ces informations servent dans les e-mails envoyés à vos clients et sur vos documents : remplissez-les en premier.
@@ -94,7 +97,7 @@ Les destinataires de notifications reçoivent le message qui annonce chaque nouv
 
 Ces deux champs sont facultatifs. Une fois le fichier choisi, un aperçu de l'image s'affiche à côté du champ, ou dessous pour la bannière.
 
-Laissez **Image favicon** vide : avec le thème de boutique livré par défaut, l'icône de l'onglet du navigateur vient des fichiers du thème, pas de ce champ.
+**Image favicon** est l'icône de l'onglet du navigateur (fichier PNG ou ICO). Avec le thème de boutique livré par défaut, l'image enregistrée ici remplace l'icône du thème. Laissez le champ vide pour garder celle du thème.
 
 ## Étape 6 : saisir l'adresse et le téléphone
 
@@ -114,7 +117,7 @@ Laissez **Image favicon** vide : avec le thème de boutique livré par défaut, 
 - Cliquez sur **Enregistrer et fermer** pour revenir à la page **Configuration**.
 - Cliquez sur **Annuler** pour quitter sans enregistrer.
 
-Plus bas, l'écran contient d'autres blocs (tunnel de commande, administrateurs, cache des pages publiques, vidéos). Ils ne concernent pas ce tutoriel.
+Plus bas, l'écran contient d'autres blocs (tunnel de commande, stock, administrateurs, prix, cache des pages publiques, vidéos). Ils ne concernent pas ce tutoriel.
 
 ## Le résultat
 

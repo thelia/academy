@@ -3,8 +3,8 @@ title: Mettre un produit en ligne ou hors ligne
 description: Cacher un produit à vos clients sans le supprimer, ou le rendre visible à nouveau.
 sidebar:
   order: 50
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:catalog/publish-product
   - thelia-templates/default-twig:catalog/product/list.html.twig:213
@@ -17,6 +17,7 @@ sources:
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:281
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:590
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:331
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:685
   - thelia/thelia:core/lib/Thelia/Action/Product.php:524
   - thelia/thelia:core/lib/Thelia/Action/Product.php:1143
   - thelia/thelia:core/lib/Thelia/Action/Product.php:1162
@@ -41,7 +42,7 @@ Un produit hors ligne reste dans votre catalogue, mais vos clients ne peuvent pl
 
 Le changement est immédiat : il n'y a ni confirmation ni bouton **Enregistrer**. Pour revenir en arrière, cliquez à nouveau sur la pastille.
 
-Sur cette capture, le produit **TAB-CHENE-01**, créé pour l'exemple, est hors ligne : sa pastille est un rond gris vide. La liste affiche les titres dans la langue par défaut de la boutique, ici l'anglais.
+Sur cette capture, le produit **TAB-CHENE-01**, créé pour l'exemple, est hors ligne : sa pastille est un rond gris vide. La liste affiche les titres dans la langue du back-office.
 
 ![Un produit hors ligne dans la liste, avec son rond gris](../../../assets/captures/fr/catalog/publish-product/offline.png)
 

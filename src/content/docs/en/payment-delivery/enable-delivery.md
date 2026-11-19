@@ -4,8 +4,8 @@ title: Enable a delivery method and attach zones to it
 description: Enable a delivery method, then tell it which zones it delivers to, so your customers can choose it.
 sidebar:
   order: 50
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/enable-delivery
   - thelia-templates/default-twig:module/list.html.twig:110

@@ -3,8 +3,8 @@ title: Imprimer la facture et le bon de livraison
 description: Afficher, imprimer ou télécharger en PDF la facture d'une commande et son bon de livraison.
 sidebar:
   order: 50
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/print-documents
   - thelia-templates/default-twig:order/detail.html.twig:64
@@ -16,6 +16,11 @@ sources:
   - thelia-templates/default-twig:src/Service/Pdf/OrderPdfRenderer.php:134
   - thelia-templates/default-twig:assets/controllers/bo-print-iframe_controller.js:9
   - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:336
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:422
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:454
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:2655
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:2656
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1759
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1039
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1042
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1668
@@ -75,7 +80,7 @@ Le groupe **Bon de livraison** fonctionne de la même façon.
 
 Le bon de livraison reprend la date de facturation, le numéro de commande, le numéro de client et les deux adresses. Il est toujours disponible, que la commande soit payée ou non.
 
-Les info-bulles de ces trois boutons parlent de « bon de commande » (**Voir le bon de commande en PDF**) : il s'agit du même document.
+Les info-bulles de ces trois boutons sont **Voir le bon de livraison en PDF**, **Imprimer le bon de livraison** et **Télécharger le bon de livraison en PDF**.
 
 ## Étape 4 : comprendre quand la facture est disponible
 
@@ -94,7 +99,7 @@ Le numéro de facture est attribué à ce moment-là, dans l'ordre : `2026-00000
 
 Quand une commande payée n'a pas de numéro de facture enregistré, le PDF en fabrique un à partir du numéro de commande. C'est le cas des commandes de démonstration : la facture de ORD000000000004 porte le numéro `FA000000000004`.
 
-Pour retrouver les documents sans ouvrir la commande, la liste des commandes propose les mêmes PDF dans la colonne **ACTIONS** : **Télécharger la facture PDF** et **Télécharger le bon de livraison PDF**. Attention, la liste propose la facture même pour une commande non payée : ce PDF n'a alors ni date de facturation ni numéro de facture.
+Pour retrouver les documents sans ouvrir la commande, la liste des commandes propose les mêmes PDF dans le menu de la colonne **ACTIONS** (le bouton à trois points) : **Télécharger la facture PDF** et **Télécharger le bon de livraison PDF**. La facture n'y figure que pour une commande qui a une facture, selon la même règle que sur la fiche de la commande.
 
 ## Le résultat
 

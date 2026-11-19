@@ -3,8 +3,8 @@ title: Ajouter des images à un produit
 description: Téléverser des photos sur une fiche produit, choisir leur ordre et renseigner leur texte alternatif.
 sidebar:
   order: 40
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:catalog/add-product-images
   - thelia-templates/default-twig:catalog/product/edit.html.twig:71
@@ -34,6 +34,9 @@ sources:
   - thelia/thelia:core/lib/Thelia/Domain/Media/AltTextResolver.php:21
   - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:710
   - thelia-templates/default-twig:file/image-edit.html.twig:108
+  - thelia-templates/default-twig:file/_list.html.twig:13
+  - thelia-templates/default-twig:assets/controllers/bo-file-list_controller.js:259
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:712
 ---
 
 Les images sont les photos de votre produit : sans elles, le client ne voit que du texte. Ce tutoriel montre comment en ajouter, les classer et décrire chacune.
@@ -94,7 +97,7 @@ Chaque carte a son propre bouton **Enregistrer** : il n'enregistre que les champ
 En bas de chaque carte, deux boutons à icône :
 
 - l'œil masque l'image sans la supprimer : elle n'apparaît plus sur la boutique (survolez-le pour lire **Masquer**, ou **Afficher** si l'image est déjà masquée). Une image masquée porte le badge **Masqué** ;
-- la corbeille supprime l'image après une demande de confirmation (le message du navigateur est affiché en anglais : **Are you sure?**).
+- la corbeille supprime l'image après une demande de confirmation (le message du navigateur : **Êtes-vous sûr ?**).
 
 ## Le résultat
 

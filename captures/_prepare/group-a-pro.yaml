@@ -18,6 +18,7 @@ steps:
       - waitFor: '[data-testid="customer-group-edit-form"]'
       - click: '[data-testid="customer-group-registration-open"]'
       - waitFor: '[data-testid="customer-group-registration-url"]'
+      - click: '[data-testid="bo-language-switcher-toggle"]'
       - click: '[data-testid="bo-language-switcher-en"]'
       - waitForUrl: 'edit_language_id=2'
       - waitFor: '[data-testid="customer-group-edit-form"]'

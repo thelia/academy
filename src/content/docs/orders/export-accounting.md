@@ -4,7 +4,7 @@ description: Renseigner le plan de comptes, puis exporter le journal des ventes 
 sidebar:
   order: 80
 thelia: '3.4'
-verified: 2026-11-12
+verified: 2026-11-19
 sources:
   - capture:orders/export-accounting
   - thelia/docs:docs/features/accounting-exports.md:15
@@ -85,12 +85,12 @@ Cliquez sur **Enregistrer**. Le message **Le plan de comptes a été enregistré
 ## Étape 5 : choisir le journal des ventes
 
 1. Dans le menu, cliquez sur **Outils**, puis sur **Exporter**.
-2. Dans la carte **Commandes**, repérez **12 - Journal des ventes**.
+2. Dans la carte **Commandes**, repérez **Journal des ventes**. Le numéro devant le nom dépend de votre installation.
 3. Cliquez sur le bouton de téléchargement de cette ligne.
 
 ![Les exports de la carte Commandes](../../../assets/captures/fr/orders/export-accounting/list.png)
 
-La ligne juste dessous, **13 - Récapitulatif des taxes**, fait l'objet de la dernière section de cette page.
+La ligne juste dessous, **Récapitulatif des taxes**, fait l'objet de la dernière section de cette page.
 
 ## Étape 6 : choisir la période et le format
 
@@ -122,7 +122,7 @@ Si vous remettez le fichier à votre comptable ou à l'administration, gardez-en
 
 ## Récapitulatif des taxes
 
-Pour recouper une déclaration de TVA, refaites l'étape 5 avec **13 - Récapitulatif des taxes**. Il donne une ligne par mois et par taux : la base taxée, la taxe et le nombre de pièces. Il est lu dans les mêmes pièces que le journal des ventes, ses montants de taxe en sont donc la somme exacte. Le format FEC ne lui est pas proposé : choisissez CSV.
+Pour recouper une déclaration de TVA, refaites l'étape 5 avec **Récapitulatif des taxes**. Il donne une ligne par mois et par taux : la base taxée, la taxe et le nombre de pièces. Il est lu dans les mêmes pièces que le journal des ventes, ses montants de taxe en sont donc la somme exacte. Le format FEC ne lui est pas proposé : choisissez CSV.
 
 ## Le résultat
 

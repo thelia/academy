@@ -4,7 +4,7 @@ description: Donner à un groupe de clients ou à un client ses propres prix, lu
 sidebar:
   order: 330
 thelia: '3.4'
-verified: 2026-11-13
+verified: 2026-11-19
 sources:
   - thelia-templates/default-twig:_side_nav.html.twig:156
   - thelia-templates/default-twig:pricing/price-list/list.html.twig

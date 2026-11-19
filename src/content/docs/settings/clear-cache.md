@@ -3,8 +3,8 @@ title: Vider le cache de la boutique
 description: Utiliser les trois boutons de la page Configuration avancée et savoir ce que chacun vide.
 sidebar:
   order: 120
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/clear-cache
   - thelia-templates/default-twig:src/Controller/Configuration/AdvancedConfigurationController.php:59
@@ -12,6 +12,10 @@ sources:
   - thelia-templates/default-twig:src/Controller/Configuration/AdvancedConfigurationController.php:75
   - thelia-templates/default-twig:src/Controller/Configuration/AdvancedConfigurationController.php:85
   - thelia-templates/default-twig:src/Controller/Configuration/AdvancedConfigurationController.php:95
+  - thelia-templates/default-twig:src/Controller/Configuration/AdvancedConfigurationController.php:45
+  - thelia-templates/default-twig:configuration/advanced/index.html.twig:40
+  - thelia-templates/default-twig:configuration/advanced/index.html.twig:82
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:3879
   - thelia-templates/default-twig:src/Controller/Configuration/AdvancedConfigurationController.php:139
   - thelia-templates/default-twig:configuration/advanced/index.html.twig
   - thelia-templates/default-twig:configuration/index.html.twig:81
@@ -23,7 +27,7 @@ sources:
   - thelia/thelia:core/lib/Thelia/Core/Template/Assets/AssetManager.php:194
   - thelia-templates/default-twig:config/packages/asset_mapper.yaml:1
   - thelia-templates/flexy:docs/stimulus-and-assets.md:209
-  - thelia-templates/flexy:components/Organisms/ProductCard/Base.html.twig:39
+  - thelia-templates/flexy:components/Organisms/ProductCard/Base.html.twig:48
 ---
 
 Le cache est une copie de pages et de fichiers que la boutique garde de côté pour s'afficher plus vite. Quand vous changez quelque chose, il arrive que l'ancienne copie reste affichée : vider le cache la supprime, et la boutique la refait à la demande.
@@ -42,12 +46,12 @@ La page propose trois cartes, chacune avec son bouton.
 ## Étape 2 : choisir le bon bouton
 
 - **Vider le cache** (carte **Cache applicatif**) : supprime le répertoire de cache de l'application. Le texte de la carte précise : templates, conteneur, routage. Une fenêtre de confirmation prévient que les pages suivantes se chargent plus lentement le temps que le cache se reconstruise.
-- **Vider les assets** (carte **Assets compilés**) : supprime les fichiers du dossier `public/assets` de la boutique. La fenêtre de confirmation le dit : **Vider les assets compilés ? Les fichiers de public/assets sont supprimés.**
+- **Vider les assets** (carte **Assets des modules et des thèmes**) : supprime les copies des assets des modules et des thèmes, rangées dans les dossiers `frontOffice`, `backOffice`, `pdf` et `email` de `public/assets`. La fenêtre de confirmation le dit : **Vider les copies des assets des modules et des thèmes ? Les assets compilés sont conservés.** Ces copies sont refaites quand une page en a besoin.
 - **Vider les images/documents** (carte **Images et documents**) : supprime les copies d'images et de documents déjà générées, par défaut dans `public/cache/images` et `public/cache/documents`. Les fichiers d'origine sont conservés, comme le dit la fenêtre de confirmation. Les copies sont refaites à l'affichage suivant.
 
 N'utilisez **Vider les assets** que si la personne qui s'occupe de votre site vous le demande.
 
-Sur une boutique en production (le site ouvert à vos clients) dont les styles et les scripts ont été préparés à la mise en ligne, ce dossier les contient pour la boutique et le back-office. Ils ne se recréent pas seuls : le site et le back-office peuvent s'afficher sans leur mise en forme tant qu'ils ne sont pas préparés à nouveau.
+Les assets compilés, c'est-à-dire les styles et les scripts préparés à la mise en ligne pour la boutique et le back-office, sont conservés : ce bouton ne les supprime pas.
 
 ## Étape 3 : vider
 

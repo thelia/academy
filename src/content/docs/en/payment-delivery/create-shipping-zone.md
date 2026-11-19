@@ -1,11 +1,11 @@
 ---
-translatedFrom: 9d95c45e4efa
+translatedFrom: '8e3f2d491857'
 title: Create a shipping zone
 description: Group countries into a zone, to say where your carriers deliver.
 sidebar:
   order: 40
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/create-shipping-zone
   - thelia-templates/default-twig:configuration/index.html.twig:36

@@ -1,5 +1,5 @@
 ---
-translatedFrom: a837ea5c1225
+translatedFrom: 'fe898680ddf3'
 title: Enable a payment method
 description: Choose which of the installed payment modules your customers can use to pay for an order.
 sidebar:
@@ -14,6 +14,7 @@ sources:
   - thelia-templates/default-twig:module/list.html.twig:192
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:73
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:82
+  - thelia-modules/FreeOrder:Config/module.xml:11
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:184
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:135
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:165
@@ -64,7 +65,7 @@ In the screenshot, two payment methods are active: **Cheque** and **PayzenEmbedd
 In the demo store, three payment methods are installed:
 
 - **Cheque**: the customer pays by check. It is offered when the order total is greater than 0.
-- **FreeOrder**: "There's nothing to pay for this order". It is offered when the order total is exactly 0, for example after a promo code that covers everything. It marks the order as paid, without the customer having to pay anything.
+- **FreeOrder**: "There's nothing to pay for this order" (the list shows module titles in the back office language). It is offered when the order total is exactly 0, for example after a promo code that covers everything. It marks the order as paid, without the customer having to pay anything.
 - **PayzenEmbedded**: payment by credit card, with the payment provider PayZen. It requires an account with that provider. It is offered only once configured (see step 4), and when the order total is between the minimum and maximum amounts you set. Until it is in production mode, only visitors whose IP address is allowed in its settings can see it.
 
 ## Step 3: enable or disable a module

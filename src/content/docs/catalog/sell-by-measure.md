@@ -4,7 +4,7 @@ description: Exiger une quantité minimale, vendre par lot de 6 ou au poids, aff
 sidebar:
   order: 320
 thelia: '3.4'
-verified: 2026-11-13
+verified: 2026-11-19
 sources:
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:28
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:177

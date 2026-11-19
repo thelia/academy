@@ -1,5 +1,5 @@
 ---
-translatedFrom: cbc4fd14061e
+translatedFrom: '03b902c2dd2d'
 title: Put a product online or offline
 description: Hide a product from your customers without deleting it, or make it visible again.
 sidebar:
@@ -18,6 +18,7 @@ sources:
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:281
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:590
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:331
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:685
   - thelia/thelia:core/lib/Thelia/Action/Product.php:524
   - thelia/thelia:core/lib/Thelia/Action/Product.php:1143
   - thelia/thelia:core/lib/Thelia/Action/Product.php:1162
@@ -42,7 +43,7 @@ An offline product stays in your catalog, but your customers can no longer open 
 
 The change is immediate: there is no confirmation and no **Save** button. To undo it, click the dot again.
 
-In this screenshot, the product **TAB-CHENE-01**, created for this example, is offline: its dot is an empty gray circle. The list shows titles in the store's default language, here English.
+In this screenshot, the product **TAB-CHENE-01**, created for this example, is offline: its dot is an empty gray circle. The list shows titles in the back office language.
 
 ![An offline product in the list, with its gray circle](../../../../assets/captures/en/catalog/publish-product/offline.png)
 

@@ -4,7 +4,7 @@ description: Retrouver un produit, une combinaison, un client, une commande ou u
 sidebar:
   order: 90
 thelia: '3.4'
-verified: 2026-11-16
+verified: 2026-11-19
 sources:
   - capture:getting-started/search-back-office
   - thelia-templates/default-twig:_top_nav.html.twig:30

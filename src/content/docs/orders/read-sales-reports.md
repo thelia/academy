@@ -4,7 +4,7 @@ description: Ouvrir le rapport des ventes, choisir une période, lire le chiffre
 sidebar:
   order: 100
 thelia: '3.4'
-verified: 2026-11-16
+verified: 2026-11-19
 sources:
   - capture:orders/read-sales-reports
   - thelia-templates/default-twig:_side_nav.html.twig:105
@@ -27,7 +27,7 @@ sources:
   - thelia-templates/default-twig:src/Service/Report/SalesReportProvider.php:61
   - thelia-templates/default-twig:src/Service/Report/SalesReportProvider.php:102
   - thelia-templates/default-twig:src/Service/Report/SalesReportProvider.php:381
-  - thelia-templates/default-twig:translations/messages.fr_FR.php:149
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:146
   - thelia/thelia:CHANGELOG.md:153
   - thelia/thelia:CHANGELOG.md:156
   - thelia/thelia:core/lib/Thelia/Domain/Report/Sales/StatusScope.php:22
@@ -79,7 +79,7 @@ Une phrase à droite des boutons rappelle ce qui est compté. Un statut que vous
 
 ![Arbre des catégories encadré](../../../assets/captures/fr/orders/read-sales-reports/category.png)
 
-Chaque ligne est une catégorie, avec son **Chiffre d'affaires TTC**, la **Période précédente**, le **Changement**, la **Quantité** vendue, le nombre de **Commandes** et sa **Part** du total. Une catégorie additionne ses sous-catégories : **Salon** inclut **Canapés** et **Fauteuils**. Cliquez sur la flèche d'une catégorie pour replier ses sous-catégories.
+Chaque ligne est une catégorie, avec son **Chiffre d'affaires TTC**, la **Période précédente**, l'**Évolution**, la **Quantité** vendue, le nombre de **Commandes** et sa **Part** du total. Une catégorie additionne ses sous-catégories : **Salon** inclut **Canapés** et **Fauteuils**. Cliquez sur la flèche d'une catégorie pour replier ses sous-catégories.
 
 Trois règles à connaître :
 
@@ -97,7 +97,7 @@ Sous l'arbre, le tableau **Rapprochement avec le chiffre d'affaires** passe du *
 
 ![Tableau des produits encadré](../../../assets/captures/fr/orders/read-sales-reports/product.png)
 
-Chaque produit vendu apparaît avec sa **Référence**, la **Quantité**, le **Chiffre d'affaires TTC**, la **Période précédente**, le **Changement** et sa **Part**. Les meilleures ventes sont en tête, 25 produits par page. Les montants sont ceux des lignes de commande, avant remises et frais de port. Une quantité vendue au poids garde ses décimales : 0,4 kg s'affiche 0,4.
+Chaque produit vendu apparaît avec sa **Référence**, la **Quantité**, le **Chiffre d'affaires TTC**, la **Période précédente**, l'**Évolution** et sa **Part**. Les meilleures ventes sont en tête, 25 produits par page. Les montants sont ceux des lignes de commande, avant remises et frais de port. Une quantité vendue au poids garde ses décimales : 0,4 kg s'affiche 0,4.
 
 Cliquez sur le nom d'un produit pour ouvrir sa fiche, si votre profil peut voir les produits.
 
@@ -107,7 +107,7 @@ Cliquez sur le nom d'un produit pour ouvrir sa fiche, si votre profil peut voir 
 
 ![Tableau des clients encadré](../../../assets/captures/fr/orders/read-sales-reports/customer.png)
 
-Chaque client qui a commandé sur la période apparaît avec son nombre de **Commandes**, son **Total TTC**, son **Panier moyen** (le total divisé par le nombre de commandes), sa **Dernière commande**, la **Période précédente** et le **Changement**. Le plus gros total est en tête, 25 clients par page. Cliquez sur un titre de colonne pour trier dessus, et sur le nom d'un client pour ouvrir sa fiche.
+Chaque client qui a commandé sur la période apparaît avec son nombre de **Commandes**, son **Total TTC**, son **Panier moyen** (le total divisé par le nombre de commandes), sa **Dernière commande**, la **Période précédente** et l'**Évolution**. Le plus gros total est en tête, 25 clients par page. Cliquez sur un titre de colonne pour trier dessus, et sur le nom d'un client pour ouvrir sa fiche.
 
 ## Étape 7 : exporter
 

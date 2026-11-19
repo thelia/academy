@@ -1,11 +1,11 @@
 ---
-translatedFrom: 6c13e59adb1f
+translatedFrom: 'a1f21cad6268'
 title: Create a category
 description: Add a category, or a subcategory, to organize your products by department.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:catalog/create-category
   - thelia-templates/default-twig:_side_nav.html.twig:142
@@ -14,6 +14,7 @@ sources:
   - thelia-templates/default-twig:catalog/category/list.html.twig:163
   - thelia-templates/default-twig:src/Form/Catalog/CategoryType.php:35
   - thelia-templates/default-twig:src/Form/Catalog/CategoryType.php:47
+  - thelia-templates/default-twig:src/Form/Catalog/CategoryType.php:43
   - thelia-templates/default-twig:src/Controller/Catalog/CategoryController.php:93
   - thelia-templates/default-twig:src/Controller/Catalog/CategoryController.php:109
   - thelia-templates/default-twig:src/Controller/Catalog/CategoryController.php:435
@@ -49,18 +50,18 @@ A **Create a new category** window opens.
 ![Create a new category window](../../../../assets/captures/en/catalog/create-category/modal.png)
 
 1. In **Category title**, enter the name your customers will see, for example `Shoes`. This field is required (it has an asterisk).
-2. Tick **This category is online** if customers should see it right away. If left unticked, the category is created offline: customers cannot open its page.
+2. Leave **This category is online** ticked (it is ticked by default) if customers should see it right away. If left unticked, the category is created offline: customers cannot open its page.
 3. Click **Create**.
 
 To close the window without creating anything, click **Cancel**.
 
-The numeric field with no label under the checkbox (it shows `0`) holds the parent category. Leave it as is: `0` creates a top-level category.
+From the top-level list, the new category is a top-level category. The form has no field for the parent category.
 
 ## Step 4: complete the category page
 
 After you click **Create**, the category page opens. It is shown here with the demo's **Living Room** category.
 
-The highlighted flag next to **Edit in** shows the language of the page. It is not always the interface language: the page can open in another language. If the title you just entered does not appear, click the flag of your language, for example **EN**.
+The highlighted flag next to **Edit in** shows the language of the page. It is not always the interface language. The title you just entered is saved in that language. To enter it in another one, click the flag of that language, for example **EN**.
 
 ![Category page](../../../../assets/captures/en/catalog/create-category/result.png)
 
@@ -72,7 +73,7 @@ A subcategory is a category placed inside another one, for example **Armchairs**
 
 1. In the category list, click the title of the parent category, for example **Living Room**.
 2. Click **Add a new category**.
-3. Fill in the window as in step 3. The parent category is already set: the numeric field shows its number, for example `1` for **Living Room** (**ID** column of the list).
+3. Fill in the window as in step 3. The parent category is already set, with no field to fill in: the new category is created inside **Living Room**.
 
 ![Contents of the Living Room category, with its subcategories](../../../../assets/captures/en/catalog/create-category/subcategory.png)
 

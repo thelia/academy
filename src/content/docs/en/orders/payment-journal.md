@@ -1,11 +1,11 @@
 ---
-translatedFrom: 'b5d8c0d00688'
+translatedFrom: 'aab79b58c862'
 title: Follow an order's payments and capture an authorization
 description: Read the payment journal of an order, and take all or part of a payment the bank authorized but did not charge.
 sidebar:
   order: 80
 thelia: '3.4'
-verified: 2026-11-12
+verified: 2026-11-19
 sources:
   - capture:orders/payment-journal
   - thelia-templates/default-twig:order/_payment_journal.html.twig:19
@@ -91,7 +91,7 @@ Without this right, an administrator sees the card and the journal but not the *
 
 ## Cancel an authorized order
 
-Cancelling an order whose authorization still holds an amount releases that amount: a **Void** line is added to the journal, and **Released** appears in the totals. You need the right to capture for this.
+Cancelling an order whose authorization still holds an amount releases that amount: a **Void** line is added to the journal, and **Voided** appears in the totals. You need the right to capture for this.
 
 ## The result
 

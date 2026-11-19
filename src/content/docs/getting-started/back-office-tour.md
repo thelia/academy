@@ -3,8 +3,8 @@ title: Découvrir le back-office
 description: Se connecter à l'administration de la boutique et lire le tableau de bord.
 sidebar:
   order: 1
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/back-office-tour
   - thelia-templates/default-twig:login.html.twig
@@ -17,6 +17,11 @@ sources:
   - thelia-templates/default-twig:src/DTO/Dashboard/DateRange.php:64
   - thelia-templates/default-twig:src/Service/Search/SearchResultsPresenter.php:38
   - thelia-modules/HookAdminHome:Hook/AdminHook.php:48
+  - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:148
+  - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:176
+  - thelia-templates/default-twig:src/Repository/ProductRepository.php:155
+  - thelia-templates/default-twig:components/Dashboard/Dashboard.html.twig:176
+  - thelia/thelia:core/lib/Thelia/Domain/Catalog/Stock/StockSettings.php:39
 ---
 
 Le back-office est l'espace d'administration de votre boutique. C'est là que vous gérez les produits, les commandes et les clients. Ce tutoriel vous montre comment y entrer et comment lire la première page.
@@ -45,10 +50,10 @@ De haut en bas :
 - **Les compteurs** : nombre de clients, de rubriques, de produits (en ligne et hors ligne) et de commandes.
 - **La période** : les boutons **Aujourd'hui**, **7 jours**, **30 jours**, **90 jours**, **Ce mois-ci** et **Cette année** changent la période des chiffres en dessous.
 - **Les alertes** : par exemple les commandes impayées depuis plus de 48 heures ou en attente d'envoi. Cliquez sur une alerte pour ouvrir la liste des commandes concernées. Une alerte n'apparaît que s'il y a quelque chose à traiter.
-- **Les indicateurs** : chiffre d'affaires, commandes, panier moyen et nouveaux clients. Le pourcentage compare la période choisie à la période précédente de même durée.
+- **Les indicateurs** : chiffre d'affaires, commandes, panier moyen et nouveaux clients, plus le **Revenu mensuel récurrent** si votre boutique propose des abonnements et que votre profil peut les voir. Le pourcentage compare la période choisie à la période précédente de même durée.
 - **Les graphiques** : l'évolution du chiffre d'affaires jour par jour et la répartition des commandes par statut.
 
-Plus bas, faites défiler la page pour voir les **Commandes récentes**, les **Meilleures ventes** et le **Stock faible** (les 5 stocks les plus bas parmi ceux à 5 unités ou moins, une ligne par variante de produit).
+Plus bas, faites défiler la page pour voir les **Commandes récentes**, les **Meilleures ventes** et le **Stock faible** (les 5 stocks les plus bas parmi ceux qui ont atteint leur seuil d'alerte, 5 unités par défaut, une ligne par variante de produit).
 
 ## Étape 3 : se repérer dans le menu
 

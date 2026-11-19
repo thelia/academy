@@ -1,5 +1,5 @@
 ---
-translatedFrom: 8a2e9adf478b
+translatedFrom: '04ac4e7f82d0'
 title: Add a language to the store
 description: Add a language, choose whether it is offered to visitors and know what to translate next.
 sidebar:
@@ -42,6 +42,8 @@ sources:
   - thelia-templates/default-twig:components/DataTable/cells/toggle.html.twig:7
   - thelia/thelia:local/config/schema.xml:538
   - thelia-templates/flexy:components/Organisms/LangSelect/Base.php:38
+  - thelia-templates/default-twig:components/LanguageSwitcher/LanguageSwitcher.html.twig:20
+  - thelia-templates/flexy:components/Organisms/LangSelect/Base.php:41
 ---
 
 Selling in several languages, for example French and English, lets you welcome customers from other countries. This tutorial shows you how to add a language, make it available on the site and what is left to translate afterwards.
@@ -97,8 +99,8 @@ On the language's row, click the dot in the column you want. The change applies 
 
 What each box changes:
 
-- **Active**: the language appears in the site's language selector (if the store has at least two active languages) and in the back office's editing languages (step 4). An inactive language is not accepted when a visitor requests it in the address (`?lang=`).
-- **Visible in front**: the language is marked as public. It counts for the list of language versions in the sitemap, when the matching module is active, and for choosing the language by domain (the card in step 5). On the demo's Flexy theme, the site's language selector follows the **Active** box, not this one.
+- **Active**: the language appears in the back office's editing languages (step 4) and, if it is also **Visible in front**, in the site's language selector. An inactive language is not accepted when a visitor requests it in the address (`?lang=`).
+- **Visible in front**: the language is marked as public. It counts for the list of language versions in the sitemap, when the matching module is active, and for choosing the language by domain (the card in step 5). On the demo's Flexy theme, the site's language selector lists the languages that are both **Active** and **Visible in front**, and only if there are at least two.
 - **Default**: clicking the dot of another language makes it the default language, and ticks **Active** and **Visible in front**. It is the language served to a visitor who has not chosen anything.
 
 A common error: the default language cannot be deactivated, hidden or deleted. To remove the demo's English, first choose another default language.
@@ -107,12 +109,12 @@ When the language is created, and again when you tick **Active**, Thelia adds th
 
 ## Step 4: translate your products and content
 
-Activating a language translates nothing: your products, categories and pages stay in their original language. Each form has an editing language selector, **Edit in**, which lists the active languages.
+Activating a language translates nothing: your products, categories and pages stay in their original language. Each form has an editing language selector: a button showing the flag and code of the current language, for example **FR**. It opens an **Edit in** menu that lists the active languages.
 
 ![Editing language selector on a product form](../../../../assets/captures/en/settings/languages/edit-language.png)
 
 1. Open the form, for example a product.
-2. Click the flag of the language to fill in.
+2. Click the selector button, then the language to fill in.
 3. Enter the title and the descriptions in that language, then save.
 
 Repeat for each language. The selector only appears if there are at least two active languages.

@@ -1,5 +1,5 @@
 ---
-translatedFrom: 'f2f5dd15e8d3'
+translatedFrom: 'c7d8f1cb2584'
 title: Sell on preorder and follow your stock
 description: Choose what happens when a product runs out of stock, set a restock date, reserve the stock of carts and follow the preorders.
 sidebar:
@@ -96,8 +96,6 @@ The three options:
 With the last option, an empty field appears below it, with the grayed hint **Preorder limit**, which disappears when you enter a number. Enter the number of units that can be sold below zero, for example 10. With a stock of 0 and a limit of 10, you sell 10 units, then the 11th is refused.
 
 For a product without combinations, the same fields are in the **Stock** block of the **Combinations** tab.
-
-In the list, the label of the last option may appear cut off. This is a known display defect: the option itself is the right one.
 
 ## Step 2: give the restock date
 

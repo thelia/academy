@@ -1,11 +1,11 @@
 ---
-translatedFrom: 4b7caeb46874
+translatedFrom: 'ed0389305cca'
 title: Set up VAT (taxes and tax rules)
 description: Understand the difference between a tax and a tax rule, and apply 20% VAT to your products.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/tax-rules
   - thelia-templates/default-twig:configuration/tax-rule/list.html.twig:22
@@ -19,6 +19,10 @@ sources:
   - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:877
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:203
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:38
+  - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:332
+  - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:692
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:190
+  - thelia-templates/default-twig:configuration/tax-rule/_matrix.html.twig:16
   - thelia/thelia:core/lib/Thelia/Action/ProductSaleElement.php:134
   - thelia/thelia:core/lib/Thelia/Domain/Taxation/TaxEngine/Calculator.php:398
   - thelia/thelia:core/lib/Thelia/Model/TaxRuleQuery.php:84
@@ -83,13 +87,13 @@ Each product carries a **Tax rule**. You choose it when you create the product.
 3. Click **Add a new product**: the **Create a new product** window opens.
 4. In **Tax rule**, choose the rule to apply, for example **Default Tax Rule**.
 
-This list shows the rule names in the store's default language: in the demo, English.
+This list shows the rule names in the interface language.
 
 ![Tax rule field when creating a product](../../../../assets/captures/en/settings/tax-rules/product-modal.png)
 
 The price entered in **Base price (excluding taxes)** is a price excluding tax: the chosen rule is used to calculate the price including tax. Creating a product in full is described in the catalog tutorial.
 
-To change the rule of an existing product, open it, then the **Combinations** tab: the **Tax rule** field is there, with the **Save** button. This field only appears if the product has no combination (sizes, colors). Otherwise, the screen does not let you change its rule.
+To change the rule of an existing product, open it, then the **Combinations** tab: the **Tax rule** field is there. For a product with combinations (sizes, colors), it sits above their list and is validated with **Save changes**. For a product without combination, it is in the product form and is validated with **Save**.
 
 ## Step 4: create a tax (if needed)
 

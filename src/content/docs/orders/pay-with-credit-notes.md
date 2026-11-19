@@ -3,7 +3,7 @@ title: Accorder un avoir et le faire utiliser
 description: Créer un avoir à partir d'une commande facturée, choisir comment le client peut le dépenser, et savoir ce qui se passe quand il règle une commande avec.
 sidebar:
   order: 110
-thelia: '3.3'
+thelia: '3.4'
 verified: 2026-11-19
 sources:
   - thelia-modules/CreditNote:Readme.md

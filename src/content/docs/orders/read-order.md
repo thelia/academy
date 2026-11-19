@@ -3,8 +3,8 @@ title: Lire le détail d'une commande
 description: Retrouver dans une commande ce que le client a acheté, où l'envoyer, ce qu'il a payé et où en est l'expédition.
 sidebar:
   order: 20
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/read-order
   - thelia-templates/default-twig:src/Controller/Order/OrderController.php:129
@@ -35,6 +35,11 @@ sources:
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1565
   - thelia/thelia:core/lib/Thelia/Model/Order.php:147
+  - thelia-templates/default-twig:order/detail.html.twig:154
+  - thelia-templates/default-twig:order/detail.html.twig:162
+  - thelia-templates/default-twig:order/detail.html.twig:183
+  - thelia-templates/default-twig:src/Service/Order/OrderEditContextBuilder.php:55
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:3839
 ---
 
 Une commande rassemble tout ce qu'il faut pour préparer un colis : les produits achetés, les adresses, le paiement et la livraison. Ce tutoriel vous guide dans cet écran bloc par bloc, avec la commande de démonstration ORD000000000004.
@@ -69,7 +74,11 @@ L'onglet **Produits commandés** est ouvert d'office. Il liste ce que le client 
 
 ![Onglet Produits commandés](../../../assets/captures/fr/orders/read-order/products.png)
 
-Chaque ligne indique le produit, avec sa référence, par exemple **PROD010**. Un clic sur le nom ouvre la fiche du produit. Les colonnes se lisent ainsi :
+Chaque ligne indique le produit, avec sa référence, par exemple **PROD010**. Un clic sur le nom ouvre la fiche du produit. Un badge **Précommande** marque un produit commandé en précommande. Un badge **Pack** marque un pack ; ses produits sont listés dessous avec le badge **Inclus dans le pack** et sans prix.
+
+Au-dessus du tableau, le bouton **Modifier la commande** apparaît quand la commande peut encore être modifiée. Sinon, une ligne en donne la raison : **Cette commande ne peut plus être modifiée : une facture a été émise.** ou **Cette commande ne peut plus être modifiée : son statut ne le permet pas.**
+
+Les colonnes se lisent ainsi :
 
 - **QUANTITÉ** : le nombre d'exemplaires commandés ;
 - **EXPÉDIÉE** : le nombre déjà parti ;

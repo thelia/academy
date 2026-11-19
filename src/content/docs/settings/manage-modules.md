@@ -3,8 +3,8 @@ title: Installer, activer ou désactiver un module
 description: Lire la liste des modules, en activer ou en désactiver un, ouvrir sa configuration et installer un module depuis une archive.
 sidebar:
   order: 130
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/manage-modules
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:73
@@ -13,6 +13,7 @@ sources:
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:244
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:251
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:279
+  - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:193
   - thelia-templates/default-twig:src/Controller/Module/ModuleConfigureController.php:36
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:75
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:85
@@ -20,6 +21,7 @@ sources:
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:163
   - thelia-templates/default-twig:src/Service/Module/ModuleCapabilityChecker.php:38
   - thelia-templates/default-twig:module/list.html.twig:27
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1327
   - thelia-templates/default-twig:module/list.html.twig:45
   - thelia-templates/default-twig:module/list.html.twig:113
   - thelia-templates/default-twig:module/list.html.twig:195
@@ -28,6 +30,8 @@ sources:
   - thelia-templates/default-twig:assets/controllers/bo-modules-list_controller.js:60
   - thelia/thelia:core/lib/Thelia/Action/Module.php:72
   - thelia/thelia:core/lib/Thelia/Action/Module.php:116
+  - thelia/thelia:core/lib/Thelia/Action/Module.php:120
+  - thelia/thelia:core/lib/Thelia/Action/Module.php:180
   - thelia/thelia:core/lib/Thelia/Action/Module.php:519
   - thelia/thelia:core/lib/Thelia/Domain/Module/Payment/PaymentModuleService.php:52
   - thelia/thelia:core/lib/Thelia/Domain/Shipping/ShippingFacade.php:417
@@ -48,7 +52,7 @@ Un module est une extension qui ajoute une fonction à votre boutique, par exemp
 
 ![Liste des modules et résumé du nombre de modules](../../../assets/captures/fr/settings/manage-modules/list.png)
 
-Sous le titre **Gestion des modules**, une ligne résume le nombre de modules : le total, les actifs et les inactifs. Sur le bac de démonstration, elle affiche « 16 modules · 15 actifs · 1 inactifs » : la faute d'accord est celle de l'écran.
+Sous le titre **Gestion des modules**, une ligne résume le nombre de modules : le total, les actifs et les inactifs. Sur le bac de démonstration, elle affiche « 15 modules · 14 actifs · 1 inactif ».
 
 Chaque ligne de la liste montre :
 
@@ -82,6 +86,8 @@ Le clic agit tout de suite : aucune fenêtre ne demande de confirmation. La page
 Ce qui change dans la boutique : un module de paiement ou de livraison désactivé disparaît des choix proposés au client à la commande, car seuls les modules actifs sont listés. Thelia vide aussi son cache à chaque changement : le cache, ce sont les données que Thelia garde de côté pour afficher les pages plus vite.
 
 Un module obligatoire a un interrupteur bloqué : il ne peut pas être désactivé.
+
+Thelia refuse aussi de désactiver un module dont un autre module actif dépend : désactivez d'abord ce dernier. Il refuse d'activer un module qui demande une version de Thelia plus récente ou un module qui manque. Le module garde alors son état.
 
 Pour aller plus loin avec un moyen de paiement, voir [Activer un moyen de paiement](/payment-delivery/enable-payment/). Pour un mode de livraison, voir [Activer un mode de livraison et lui associer des zones](/payment-delivery/enable-delivery/).
 

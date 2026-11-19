@@ -4,7 +4,7 @@ description: Retrouver les abonnements de la boutique, lire leurs échéances et
 sidebar:
   order: 90
 thelia: '3.4'
-verified: 2026-11-16
+verified: 2026-11-19
 sources:
   - capture:orders/follow-subscriptions
   - thelia-templates/default-twig:_side_nav.html.twig:120

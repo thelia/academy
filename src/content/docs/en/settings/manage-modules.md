@@ -1,11 +1,11 @@
 ---
-translatedFrom: 13159de3e460
+translatedFrom: '8de967183036'
 title: Install, enable or disable a module
 description: Read the list of modules, enable or disable one, open its configuration and install a module from an archive.
 sidebar:
   order: 130
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/manage-modules
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:73
@@ -49,7 +49,7 @@ A module is an extension that adds a feature to your store, for example a paymen
 
 ![List of modules and summary of the number of modules](../../../../assets/captures/en/settings/manage-modules/list.png)
 
-Under the title **Modules management**, one line sums up the number of modules: the total, the active ones and the inactive ones. On the demo store, it shows "16 modules · 15 active · 1 inactive".
+Under the title **Modules management**, one line sums up the number of modules: the total, the active ones and the inactive ones. On the demo store, it shows "15 modules · 14 active · 1 inactive".
 
 Each row of the list shows:
 
@@ -83,6 +83,8 @@ The click takes effect immediately: no window asks for confirmation. The page re
 What changes in the store: a disabled payment or delivery module disappears from the choices offered to the customer at checkout, because only active modules are listed. Thelia also clears its cache on every change: the cache is the data Thelia keeps aside to display pages faster.
 
 A required module has a locked switch: it cannot be disabled.
+
+Thelia also refuses to disable a module that another active module depends on: disable the latter first. It refuses to enable a module that needs a more recent version of Thelia or a module that is missing. The module then keeps its status.
 
 To go further with a payment method, see [Enable a payment method](/en/payment-delivery/enable-payment/). For a delivery method, see [Enable a delivery method and attach zones to it](/en/payment-delivery/enable-delivery/).
 

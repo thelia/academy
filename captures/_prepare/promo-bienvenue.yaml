@@ -15,6 +15,7 @@ steps:
       - fill: { selector: '[data-testid="coupon-priority"]', value: '20' }
       - click: '[data-testid="coupon-save-stay"]'
       - waitFor: '[data-testid="coupon-stacking"]'
+      - click: '[data-testid="bo-language-switcher-toggle"]'
       - click: '[data-testid="bo-language-switcher-en"]'
       - waitForUrl: 'edit_language_id=2'
       - waitFor: '[data-testid="coupon-stacking"]'

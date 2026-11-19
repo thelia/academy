@@ -1,11 +1,11 @@
 ---
-translatedFrom: ca22b915583b
+translatedFrom: 'e3ec8c08f708'
 title: Fill in your store information
 description: Enter the store name, address, e-mail addresses and logo in the back office.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/store-info
   - thelia-templates/default-twig:configuration/store/index.html.twig:25
@@ -95,7 +95,7 @@ The notification recipients receive the message announcing each new order. An em
 
 Both fields are optional. Once the file is chosen, a preview of the image appears next to the field, or below it for the banner.
 
-Leave **Favicon image** empty: with the store theme delivered by default, the browser tab icon comes from the theme files, not from this field.
+**Favicon image** is the browser tab icon (a PNG or ICO file). With the store theme delivered by default, the image saved here replaces the theme icon. Leave the field empty to keep the theme icon.
 
 ## Step 6: enter the address and phone number
 
@@ -115,7 +115,7 @@ Leave **Favicon image** empty: with the store theme delivered by default, the br
 - Click **Save and close** to go back to the **Configuration** page.
 - Click **Cancel** to leave without saving.
 
-Further down, the screen has other blocks (checkout, administrators, public page cache, videos). They are not part of this tutorial.
+Further down, the screen has other blocks (checkout, stock, administrators, prices, public page cache, videos). They are not part of this tutorial.
 
 ## The result
 

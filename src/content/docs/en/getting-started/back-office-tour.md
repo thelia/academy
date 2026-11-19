@@ -1,11 +1,11 @@
 ---
-translatedFrom: '584301a612f8'
+translatedFrom: '4ed1a2e5ad7c'
 title: Discover the back office
 description: Log in to the store administration and read the dashboard.
 sidebar:
   order: 1
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/back-office-tour
 ---
@@ -36,10 +36,10 @@ From top to bottom:
 - **The counters**: number of customers, categories, products (online and offline) and orders.
 - **The period**: the **Today**, **7 days**, **30 days**, **90 days**, **This month** and **This year** buttons change the period of the figures below.
 - **The alerts**: for example orders unpaid for more than 48 hours, or awaiting shipment. Click an alert to open the list of the orders concerned. An alert only shows up when there is something to handle.
-- **The indicators**: revenue, orders, average order and new customers. The percentage compares the selected period with the previous period of the same length.
+- **The indicators**: revenue, orders, average order and new customers, plus the **Monthly recurring revenue** if your store offers subscriptions and your profile can see them. The percentage compares the selected period with the previous period of the same length.
 - **The charts**: daily revenue trend and the split of orders by status.
 
-Further down, scroll to see **Recent orders**, **Top selling products** and **Low stock** (the 5 lowest stocks among those with 5 units or fewer, one line per product variant).
+Further down, scroll to see **Recent orders**, **Top selling products** and **Low stock** (the 5 lowest stocks among those that have reached their alert threshold, 5 units by default, one line per product variant).
 
 ## Step 3: find your way in the menu
 

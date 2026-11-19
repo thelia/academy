@@ -8,4 +8,4 @@ steps:
       - click: '[data-testid="shipping-configuration-create-btn"]'
       - fill: { selector: '#shipping-configuration-create-modal input[type="text"]', value: 'Suisse' }
       - click: '#shipping-configuration-create-modal button[type="submit"]'
-      - waitFor: '[data-testid="datatable-shipping-configuration-row"]:has-text("Suisse")'
+      - waitForUrl: 'shipping_configuration/update/'

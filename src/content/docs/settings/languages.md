@@ -3,8 +3,8 @@ title: Ajouter une langue à la boutique
 description: Ajouter une langue, choisir si elle est proposée aux visiteurs et savoir quoi traduire ensuite.
 sidebar:
   order: 90
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/languages
   - thelia-templates/default-twig:configuration/index.html.twig:64
@@ -41,6 +41,8 @@ sources:
   - thelia-templates/default-twig:components/DataTable/cells/toggle.html.twig:7
   - thelia/thelia:local/config/schema.xml:538
   - thelia-templates/flexy:components/Organisms/LangSelect/Base.php:38
+  - thelia-templates/default-twig:components/LanguageSwitcher/LanguageSwitcher.html.twig:20
+  - thelia-templates/flexy:components/Organisms/LangSelect/Base.php:41
 ---
 
 Vendre en plusieurs langues, par exemple en français et en anglais, permet d'accueillir des clients d'autres pays. Ce tutoriel vous montre comment ajouter une langue, la rendre disponible sur le site et ce qu'il reste à traduire ensuite.
@@ -96,8 +98,8 @@ Dans la ligne de la langue, cliquez sur la pastille de la colonne voulue. Le cha
 
 Ce que chaque case change :
 
-- **Actif** : la langue apparaît dans le sélecteur de langue du site (si la boutique a au moins deux langues actives) et dans les langues d'édition du back-office (étape 4). Une langue inactive n'est pas acceptée quand un visiteur la demande dans l'adresse (`?lang=`).
-- **Visible en front** : la langue est marquée comme publique. Elle compte pour la liste des versions de langue du plan de site, quand le module correspondant est actif, et pour le choix de la langue selon le domaine (carte de l'étape 5). Sur le thème Flexy de la démo, le sélecteur de langue du site suit la case **Actif**, pas celle-ci.
+- **Actif** : la langue apparaît dans les langues d'édition du back-office (étape 4) et, si elle est aussi **Visible en front**, dans le sélecteur de langue du site. Une langue inactive n'est pas acceptée quand un visiteur la demande dans l'adresse (`?lang=`).
+- **Visible en front** : la langue est marquée comme publique. Elle compte pour la liste des versions de langue du plan de site, quand le module correspondant est actif, et pour le choix de la langue selon le domaine (carte de l'étape 5). Sur le thème Flexy de la démo, le sélecteur de langue du site liste les langues à la fois **Actif** et **Visible en front**, et seulement s'il y en a au moins deux.
 - **Défaut** : cliquer sur la pastille d'une autre langue en fait la langue par défaut, et la coche **Actif** et **Visible en front**. C'est la langue servie à un visiteur qui n'a rien choisi.
 
 Une erreur courante : la langue par défaut ne peut être ni désactivée, ni masquée, ni supprimée. Pour retirer l'anglais de la démo, choisissez d'abord une autre langue par défaut.
@@ -106,12 +108,12 @@ Une erreur courante : la langue par défaut ne peut être ni désactivée, ni ma
 
 ## Étape 4 : traduire vos produits et vos contenus
 
-Activer une langue ne traduit rien : vos produits, rubriques et pages restent dans leur langue d'origine. Chaque fiche porte un sélecteur de langue d'édition, **Modifier en**, qui liste les langues actives.
+Activer une langue ne traduit rien : vos produits, rubriques et pages restent dans leur langue d'origine. Chaque fiche porte un sélecteur de langue d'édition : un bouton avec le drapeau et le code de la langue en cours, par exemple **FR**. Il ouvre un menu **Modifier en** qui liste les langues actives.
 
 ![Sélecteur de langue d'édition sur une fiche produit](../../../assets/captures/fr/settings/languages/edit-language.png)
 
 1. Ouvrez la fiche, par exemple un produit.
-2. Cliquez sur le drapeau de la langue à remplir.
+2. Cliquez sur le bouton du sélecteur, puis sur la langue à remplir.
 3. Saisissez le titre et les descriptions dans cette langue, puis enregistrez.
 
 Répétez pour chaque langue. Le sélecteur n'apparaît que s'il y a au moins deux langues actives.

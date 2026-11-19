@@ -4,7 +4,7 @@ description: Décider quelle promotion passe en premier, lesquelles se cumulent 
 sidebar:
   order: 75
 thelia: '3.4'
-verified: 2026-11-04
+verified: 2026-11-19
 sources:
   - capture:marketing/promotion-priority
   - thelia-templates/default-twig:coupon/_stacking.html.twig:8
@@ -14,8 +14,8 @@ sources:
   - thelia-templates/default-twig:src/Controller/CouponController.php:563
   - thelia-templates/default-twig:src/Controller/CouponController.php:586
   - thelia-templates/default-twig:src/Service/Coupon/CouponStackingInput.php:54
-  - thelia-templates/default-twig:_side_nav.html.twig:191
-  - thelia-templates/default-twig:translations/messages.fr_FR.php:3333
+  - thelia-templates/default-twig:_side_nav.html.twig:232
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:3434
   - thelia/thelia:core/lib/Thelia/Domain/Promotion/Coupon/Service/PromotionSelector.php:57
   - thelia/thelia:core/lib/Thelia/Domain/Promotion/Coupon/Service/PromotionSelector.php:74
   - thelia/thelia:core/lib/Thelia/Domain/Promotion/Coupon/Service/PromotionSelector.php:86

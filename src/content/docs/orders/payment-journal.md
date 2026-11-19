@@ -4,7 +4,7 @@ description: Lire le journal des paiements d'une commande, et encaisser en tout 
 sidebar:
   order: 80
 thelia: '3.4'
-verified: 2026-11-12
+verified: 2026-11-19
 sources:
   - capture:orders/payment-journal
   - thelia-templates/default-twig:order/_payment_journal.html.twig:19
@@ -19,9 +19,9 @@ sources:
   - thelia-templates/default-twig:order/_payment_capture_modal.html.twig:27
   - thelia-templates/default-twig:order/_payment_capture_modal.html.twig:39
   - thelia-templates/default-twig:order/detail.html.twig:611
-  - thelia-templates/default-twig:translations/messages.fr_FR.php:1618
-  - thelia-templates/default-twig:translations/messages.fr_FR.php:1633
-  - thelia-templates/default-twig:translations/messages.fr_FR.php:1648
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1686
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1688
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:2783
   - thelia/thelia:CHANGELOG.md:51
   - thelia/thelia:CHANGELOG.md:53
   - thelia/thelia:CHANGELOG.md:57
@@ -86,11 +86,11 @@ Sans ce droit, un administrateur voit la carte et le journal mais pas le bouton 
 
 - **Refus.** La ligne passe **En échec**. Le code et le message du prestataire s'affichent en rouge dessous. Le montant reste capturable : vous pouvez réessayer.
 - **Pas de réponse.** La ligne reste **En attente** et la boutique ne la compte pas comme échouée. Quand le prestataire confirme, la ligne se règle d'elle-même.
-- **Réponse lue chez le prestataire.** Sur une ligne **En attente**, un administrateur qui a le droit de capturer peut saisir ce qu'il lit dans l'espace du prestataire. Dans **Issue constatée chez le prestataire**, il indique **Réussi** ou **Refusé**, avec la référence si elle est connue.
+- **Réponse lue chez le prestataire.** Sur une ligne **En attente**, un administrateur qui a le droit de capturer peut saisir ce qu'il lit dans l'espace du prestataire. Dans **Issue constatée chez le prestataire**, il indique **Réussi** ou **En échec**, avec la référence si elle est connue.
 
 ## Annuler une commande autorisée
 
-Annuler une commande dont l'autorisation réserve encore un montant libère ce montant : une ligne **Annulation** s'ajoute au journal, et **Libéré** apparaît dans les totaux. Il faut pour cela le droit de capturer.
+Annuler une commande dont l'autorisation réserve encore un montant libère ce montant : une ligne **Annulation** s'ajoute au journal, et **Annulé** apparaît dans les totaux. Il faut pour cela le droit de capturer.
 
 ## Le résultat
 

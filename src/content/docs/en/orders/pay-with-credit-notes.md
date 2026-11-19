@@ -1,10 +1,10 @@
 ---
-translatedFrom: '8346de6d289d'
+translatedFrom: '5daad223b179'
 title: Grant a credit note and let customers spend it
 description: Create a credit note from an invoiced order, choose how the customer can spend it, and know what happens when they pay an order with it.
 sidebar:
   order: 110
-thelia: '3.3'
+thelia: '3.4'
 verified: 2026-11-19
 sources:
   - thelia-modules/CreditNote:Readme.md

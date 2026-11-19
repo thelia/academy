@@ -1,11 +1,11 @@
 ---
-translatedFrom: 1be6592830d1
+translatedFrom: '2243a8d3ac9b'
 title: Check that the store sends emails
 description: Send a test email from the back office to find out whether the store's emails go out.
 sidebar:
   order: 110
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/mailing-test
   - thelia-templates/default-twig:src/Controller/Configuration/MailingSystemController.php:71
@@ -16,6 +16,8 @@ sources:
   - thelia-templates/default-twig:configuration/mailing-system/index.html.twig
   - thelia-templates/default-twig:assets/controllers/bo-mailing-system-test_controller.js:24
   - thelia-templates/default-twig:assets/controllers/bo-mailing-system-test_controller.js:57
+  - thelia-templates/default-twig:configuration/mailing-system/index.html.twig:23
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1716
   - thelia-templates/default-twig:configuration/index.html.twig:76
   - thelia-templates/default-twig:translations/messages.fr_FR.php
   - thelia/thelia:core/lib/Thelia/Model/ConfigQuery.php:418

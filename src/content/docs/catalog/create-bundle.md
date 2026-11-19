@@ -4,7 +4,7 @@ description: Vendre plusieurs produits ensemble sous un seul produit, choisir so
 sidebar:
   order: 290
 thelia: '3.4'
-verified: 2026-11-04
+verified: 2026-11-19
 sources:
   - capture:catalog/create-bundle
   - thelia-templates/default-twig:catalog/product/edit.html.twig:155
@@ -17,8 +17,8 @@ sources:
   - thelia-templates/default-twig:src/Form/Product/ProductType.php:180
   - thelia-templates/default-twig:assets/controllers/bo-bundle-settings_controller.js
   - thelia-templates/default-twig:translations/messages.fr_FR.php:3177
-  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1035
-  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1037
+  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1042
+  - thelia/thelia:core/lib/Thelia/Config/I18n/fr_FR.php:1040
   - thelia/thelia:core/lib/Thelia/Domain/Catalog/Bundle/BundlePriceMode.php:20
   - thelia/thelia:core/lib/Thelia/Domain/Catalog/Bundle/BundleDiscountType.php:19
   - thelia/thelia:core/lib/Thelia/Domain/Catalog/Bundle/BundleCompositionService.php:284
@@ -30,8 +30,8 @@ sources:
   - thelia/thelia:CHANGELOG.md:16
   - thelia-templates/flexy:components/Organisms/BundleComposition/Base.html.twig:41
   - thelia-templates/flexy:components/Organisms/BundleComposition/Base.html.twig:60
-  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:527
-  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:445
+  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:535
+  - thelia-templates/flexy:components/Layouts/ProductDetails/Base.php:473
   - thelia-templates/flexy:translations/messages.fr_FR.yaml:680
   - thelia-templates/flexy:src/Service/BundleSelectionService.php:141
   - thelia-templates/pdf:invoice.html.twig:243
@@ -52,7 +52,7 @@ Un pack est un produit comme un autre. Créez-le comme indiqué dans [Créer un 
 - **Titre du produit** : Pack salon Nigel
 - **Catégorie par défaut** : Salon
 
-Créez un produit neuf pour le pack. Un produit qui a déjà plusieurs combinaisons (par exemple plusieurs couleurs) ne peut pas devenir un pack. Les messages des packs appellent aussi une combinaison « déclinaison » : Thelia l'indique par le message **Le produit … a … déclinaisons : un pack n'en a qu'une, il ne peut donc pas devenir un pack.**
+Créez un produit neuf pour le pack. Un produit qui a déjà plusieurs combinaisons (par exemple plusieurs couleurs) ne peut pas devenir un pack : Thelia l'indique par le message **Le produit … a … combinaisons : un pack n'en a qu'une, il ne peut donc pas devenir un pack.**
 
 ## Étape 2 : en faire un pack et choisir son prix
 

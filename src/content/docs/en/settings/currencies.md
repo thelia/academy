@@ -1,5 +1,5 @@
 ---
-translatedFrom: a8261e4b2810
+translatedFrom: '52156bd3f346'
 title: Manage currencies
 description: "Understand the store's currencies, their exchange rate, the default currency and what the customer sees."
 sidebar:

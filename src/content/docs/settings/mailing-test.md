@@ -3,8 +3,8 @@ title: Vérifier l'envoi des e-mails de la boutique
 description: Envoyer un e-mail de test depuis le back-office pour savoir si les e-mails de la boutique partent.
 sidebar:
   order: 110
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/mailing-test
   - thelia-templates/default-twig:src/Controller/Configuration/MailingSystemController.php:71
@@ -15,6 +15,8 @@ sources:
   - thelia-templates/default-twig:configuration/mailing-system/index.html.twig
   - thelia-templates/default-twig:assets/controllers/bo-mailing-system-test_controller.js:24
   - thelia-templates/default-twig:assets/controllers/bo-mailing-system-test_controller.js:57
+  - thelia-templates/default-twig:configuration/mailing-system/index.html.twig:23
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1716
   - thelia-templates/default-twig:configuration/index.html.twig:76
   - thelia-templates/default-twig:translations/messages.fr_FR.php
   - thelia/thelia:core/lib/Thelia/Model/ConfigQuery.php:418
@@ -58,7 +60,7 @@ Le résultat s'affiche à droite du bouton, sans quitter la page.
 
 - Envoi réussi, en vert : **Votre configuration semble correcte. Vérifiez votre boîte de réception : vous@ma-boutique.fr**. Le message reçu porte l'objet **E-mail de test depuis : Nom de votre boutique**.
 - Adresse de la boutique absente, en rouge : **Vous devez d'abord configurer l'adresse e-mail de votre boutique !** Renseignez-la dans les informations de la boutique, puis recommencez.
-- Champ vide : la page affiche **Please enter an email** (message resté en anglais).
+- Champ vide : la page affiche **Veuillez saisir une adresse e-mail**.
 - Adresse mal formée, en rouge : un message en anglais reprend l'adresse saisie, par exemple `Email "vous@" does not comply with addr-spec of RFC 2822.` Corrigez l'adresse, puis recommencez.
 - Envoi refusé, en rouge : la page affiche la réponse du serveur de messagerie, ou **Le mail de test n'a pas pu être envoyé. Le détail est dans le journal du serveur.** Transmettez ce texte à la personne qui héberge votre site.
 

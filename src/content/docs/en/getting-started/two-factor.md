@@ -4,8 +4,8 @@ title: Turn on two-step verification for your account
 description: Protect your back-office login with a temporary code, on top of the password.
 sidebar:
   order: 70
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/two-factor
   - thelia-templates/default-twig:src/Controller/Configuration/AccountTwoFactorController.php:31

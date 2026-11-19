@@ -1,5 +1,5 @@
 ---
-translatedFrom: '092bac15f166'
+translatedFrom: '69641f373f3a'
 title: Export your sales for accounting
 description: Set the chart of accounts, then export the sales journal (FEC or CSV file) and the tax summary of a period.
 sidebar:
@@ -86,12 +86,12 @@ Click **Save**. The message **The chart of accounts has been saved.** appears.
 ## Step 5: choose the sales journal
 
 1. In the menu, click **Tools**, then **Export**.
-2. In the **Orders** card, find **12 - Sales journal**.
+2. In the **Orders** card, find **Sales journal**. The number in front of the name depends on your installation.
 3. Click the download button on that row.
 
 ![The exports of the Orders card](../../../../assets/captures/en/orders/export-accounting/list.png)
 
-The row just below, **13 - Tax summary**, is covered in the last section of this page.
+The row just below, **Tax summary**, is covered in the last section of this page.
 
 ## Step 6: choose the period and the format
 
@@ -123,7 +123,7 @@ If you hand the file to your accountant or to the tax administration, keep a cop
 
 ## Tax summary
 
-To check a VAT return, repeat step 5 with **13 - Tax summary**. It gives one row per month and per rate: the amount taxed, the tax and the number of pieces. It is read from the same pieces as the sales journal, so its tax amounts add up to it exactly. The FEC format is not offered for it: choose CSV.
+To check a VAT return, repeat step 5 with **Tax summary**. It gives one row per month and per rate: the amount taxed, the tax and the number of pieces. It is read from the same pieces as the sales journal, so its tax amounts add up to it exactly. The FEC format is not offered for it: choose CSV.
 
 ## The result
 

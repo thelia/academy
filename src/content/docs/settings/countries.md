@@ -3,8 +3,8 @@ title: Gérer les pays livrés
 description: Comprendre la liste des pays, ce que change un pays en ligne, le pays par défaut et le lien avec les zones de livraison.
 sidebar:
   order: 80
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - thelia/thelia:core/lib/Thelia/Domain/Shipping/Service/DeliveryModuleEligibilityChecker.php:89
   - thelia-modules/VirtualProductDelivery:VirtualProductDelivery.php:43
