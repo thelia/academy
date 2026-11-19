@@ -3,14 +3,16 @@ title: Gérer les devises
 description: Comprendre les devises de la boutique, leur taux de change, la devise par défaut et ce que voit le client.
 sidebar:
   order: 70
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:settings/currencies
   - thelia-templates/default-twig:configuration/currency/list.html.twig
   - thelia-templates/default-twig:configuration/currency/_form_fields.html.twig
   - thelia-templates/default-twig:src/Controller/Configuration/CurrencyController.php:67
   - thelia-templates/default-twig:src/Controller/Configuration/CurrencyController.php:215
+  - thelia-templates/default-twig:src/Controller/Configuration/CurrencyController.php:352
+  - thelia/thelia:setup/insert.sql:10090
   - thelia-templates/default-twig:src/Form/Currency/CurrencyType.php:62
   - thelia/thelia:core/lib/Thelia/Action/Currency.php:100
   - thelia/thelia:core/lib/Thelia/Action/Currency.php:112
@@ -25,7 +27,7 @@ sources:
   - thelia-templates/flexy:components/Organisms/CurrencySelect/Base.php:43
 ---
 
-Une devise est la monnaie dans laquelle vos prix s'affichent, par exemple l'euro ou le dollar. Pour afficher aussi vos prix en dollars, il suffit que la devise **United States Dollar** soit **Visible** : vos clients peuvent alors choisir de voir les prix dans cette monnaie.
+Une devise est la monnaie dans laquelle vos prix s'affichent, par exemple l'euro ou le dollar. Pour afficher aussi vos prix en dollars, il suffit que la devise **Dollar Américain** soit **Visible** : vos clients peuvent alors choisir de voir les prix dans cette monnaie.
 
 **Avant de commencer :** il vous faut un compte administrateur. Vous saisissez vos prix dans une seule devise, la devise par défaut ; les autres sont calculées.
 
@@ -46,7 +48,7 @@ Les prix des produits ne sont pas à ressaisir : chaque prix est calculé en mul
 
 Pour voir ou corriger un taux :
 
-1. Sur la ligne de la devise, par exemple **United States Dollar**, cliquez sur le bouton en forme de crayon.
+1. Sur la ligne de la devise, par exemple **Dollar Américain**, cliquez sur le bouton en forme de crayon.
 2. Lisez le champ **Taux de change**, dont l'aide rappelle la règle : prix dans la devise par défaut × taux = prix dans cette devise.
 
 ![Fiche d'une devise](../../../assets/captures/fr/settings/currencies/edit.png)

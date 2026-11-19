@@ -1,11 +1,11 @@
 ---
-translatedFrom: 48309971aed1
+translatedFrom: '944fea3d4795'
 title: Set your delivery rates by price or weight
 description: Set the shipping costs of the CustomDelivery method with slices of cart price or weight, zone by zone.
 sidebar:
   order: 60
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/custom-delivery-rates
   - thelia-templates/default-twig:module/configure.html.twig:17
@@ -92,7 +92,7 @@ When the customer chooses their delivery, the store compares their cart with the
 
 - It picks the smallest slice whose limits are **strictly** greater than the cart. With a slice "up to €50", a cart of €50.00 falls into the next slice.
 - The cart total is the total of the products excluding tax, after discounts. The weight is the weight of the products multiplied by their quantities.
-- A product's weight is entered when you create it, in **Weight (kg)** (see [Create a product](/en/catalog/create-product/)), or later in the **Combinations** tab of its page, in the **Weight** column (see [Set the price, VAT and stock of a product](/en/catalog/set-price-stock/)). A product with no weight counts as 0 kg.
+- A product's weight is entered when you create it, in **Weight (kg)** (see [Create a product](/en/catalog/create-product/)), or later in the **Combinations** tab of its page, in the **Stock and weight** column, **Weight** field (see [Set the price, VAT and stock of a product](/en/catalog/set-price-stock/)). A product with no weight counts as 0 kg.
 - With **Price and weight**, the slice must fit both the price and the weight.
 - If no slice fits, **CustomDelivery is not offered** to that customer: there is no default rate. If your slices stop at 5 kg, a cart of 8 kg does not get this delivery method.
 - A zone with no slice does not get this method either.

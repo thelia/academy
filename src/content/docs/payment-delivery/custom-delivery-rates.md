@@ -3,8 +3,8 @@ title: Fixer ses tarifs de livraison par prix ou par poids
 description: Régler les frais de port du mode CustomDelivery avec des tranches de prix du panier ou de poids, zone par zone.
 sidebar:
   order: 60
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/custom-delivery-rates
   - thelia-templates/default-twig:module/configure.html.twig:17
@@ -29,10 +29,10 @@ sources:
   - thelia-modules/CustomDelivery:CustomDelivery.php:448
   - thelia-modules/CustomDelivery:CustomDelivery.php:462
   - thelia-modules/CustomDelivery:I18n/backOffice/default/fr_FR.php:15
-  - thelia/thelia:core/lib/Thelia/Model/Cart.php:253
-  - thelia/thelia:core/lib/Thelia/Model/Cart.php:309
+  - thelia/thelia:core/lib/Thelia/Model/Cart.php:424
+  - thelia/thelia:core/lib/Thelia/Model/Cart.php:365
   - thelia-templates/default-twig:catalog/product/_create_modal.html.twig:67
-  - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:66
+  - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:261
 ---
 
 Avec le mode de livraison **CustomDelivery**, vous fixez vous-même le prix de la livraison. Il dépend du total du panier ou de son poids, et peut changer d'une zone à l'autre. Par exemple : 5,90 € jusqu'à 2 kg, 9,90 € jusqu'à 5 kg.
@@ -91,7 +91,7 @@ Quand le client choisit sa livraison, la boutique compare son panier aux tranche
 
 - Elle retient la plus petite tranche dont les limites sont **strictement** supérieures au panier. Avec une tranche « jusqu'à 50 € », un panier de 50,00 € passe dans la tranche suivante.
 - Le total du panier est celui des produits hors taxes, une fois les remises déduites. Le poids est celui des produits multiplié par les quantités.
-- Le poids d'un produit se saisit à sa création, dans **Poids (kg)** (voir [Créer un produit](/catalog/create-product/)), ou plus tard dans l'onglet **Combinaisons** de sa fiche, colonne **Poids** (voir [Fixer le prix, la TVA et le stock](/catalog/set-price-stock/)). Un produit sans poids compte pour 0 kg.
+- Le poids d'un produit se saisit à sa création, dans **Poids (kg)** (voir [Créer un produit](/catalog/create-product/)), ou plus tard dans l'onglet **Combinaisons** de sa fiche, colonne **Stock et poids**, champ **Poids** (voir [Fixer le prix, la TVA et le stock](/catalog/set-price-stock/)). Un produit sans poids compte pour 0 kg.
 - Avec **Prix et poids**, la tranche doit convenir pour le prix et pour le poids.
 - Si aucune tranche ne convient, **CustomDelivery n'est pas proposé** à ce client : il n'existe pas de tarif par défaut. Si vos tranches s'arrêtent à 5 kg, un panier de 8 kg n'a pas ce mode de livraison.
 - Une zone sans tranche n'a pas non plus ce mode.

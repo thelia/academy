@@ -4,7 +4,7 @@ description: Créer des plans d'abonnement sur un produit, choisir la période, 
 sidebar:
   order: 340
 thelia: '3.4'
-verified: 2026-11-16
+verified: 2026-11-19
 sources:
   - capture:catalog/sell-by-subscription
   - thelia-templates/default-twig:catalog/product/_plans_tab.html.twig:12

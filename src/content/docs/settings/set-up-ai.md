@@ -3,8 +3,8 @@ title: Mettre en route l'IA de la boutique
 description: Connecter un fournisseur d'IA, choisir ses modèles et débloquer les fonctions IA de vos modules depuis l'onglet Mise en route.
 sidebar:
   order: 130
-thelia: '3.3'
-verified: 2026-11-04
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - thelia-templates/default-twig:src/Controller/Configuration/Ai/AiSetupController.php:51
   - thelia-templates/default-twig:src/Controller/Configuration/Ai/AiSetupController.php:87

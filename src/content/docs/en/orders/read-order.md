@@ -1,5 +1,5 @@
 ---
-translatedFrom: 882ab865e260
+translatedFrom: '7479d9a6585e'
 title: Read an order's details
 description: Find in an order what the customer bought, where to send it, what they paid and how the shipment is going.
 sidebar:
@@ -36,6 +36,11 @@ sources:
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia-templates/default-twig:translations/messages.fr_FR.php:1565
   - thelia/thelia:core/lib/Thelia/Model/Order.php:147
+  - thelia-templates/default-twig:order/detail.html.twig:154
+  - thelia-templates/default-twig:order/detail.html.twig:162
+  - thelia-templates/default-twig:order/detail.html.twig:183
+  - thelia-templates/default-twig:src/Service/Order/OrderEditContextBuilder.php:55
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:3839
 ---
 
 An order gathers everything you need to prepare a parcel: the products bought, the addresses, the payment and the delivery. This tutorial walks you through the screen block by block, using the demo order ORD000000000004.
@@ -70,7 +75,11 @@ The **Ordered products** tab is open by default. It lists what the customer boug
 
 ![Ordered products tab](../../../../assets/captures/en/orders/read-order/products.png)
 
-Each line shows the product with its reference, for example **PROD010**. Click the name to open the product page. The columns read as follows:
+Each line shows the product with its reference, for example **PROD010**. Click the name to open the product page. A **Preorder** badge marks a product ordered on preorder. A **Bundle** badge marks a bundle; its products are listed below it with the **Included in the bundle** badge and no price.
+
+Above the table, the **Edit order** button appears when the order can still be edited. Otherwise, a line gives the reason: **This order can no longer be edited: an invoice has been issued for it.** or **This order can no longer be edited: its status does not allow it.**
+
+The columns read as follows:
 
 - **QUANTITY**: the number of copies ordered;
 - **SHIPPED**: the number already sent;

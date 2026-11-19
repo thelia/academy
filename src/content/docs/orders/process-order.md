@@ -3,14 +3,17 @@ title: Faire avancer une commande (changer son statut)
 description: Changer le statut d'une commande, par exemple de Payée à Envoyée, et savoir ce que ce changement déclenche.
 sidebar:
   order: 30
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/process-order
   - thelia-templates/default-twig:order/detail.html.twig:38-58
   - thelia-templates/default-twig:src/Controller/Order/OrderController.php:249
   - thelia-templates/default-twig:src/Controller/Order/OrderController.php:276
   - thelia-templates/default-twig:src/Service/Order/OrderStatusChangeContextBuilder.php:74
+  - thelia-templates/default-twig:src/Service/Order/OrderStatusChangeContextBuilder.php:100
+  - thelia/thelia:setup/insert.sql:2184
+  - thelia/thelia:setup/insert.sql:15688
   - thelia-templates/default-twig:order/_history_card.html.twig:17
   - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderStatusTransitionGraph.php:20
   - thelia/thelia:core/lib/Thelia/Domain/Order/Service/OrderStatusTransitionGraph.php:39
@@ -54,7 +57,7 @@ Le statut se change en haut de la page, sous la référence de la commande.
 2. Ouvrez la liste déroulante. Elle affiche d'abord le statut actuel (ici **Payée**), puis les statuts que vous pouvez choisir.
 3. Cliquez sur le statut voulu, par exemple **Traitement** pour dire que vous préparez le colis.
 
-Les statuts livrés avec Thelia sont **Non payée**, **Payée**, **Traitement**, **Envoyée**, **Annulée**, **Remboursé** et **Partiellement expédiée**.
+Les statuts livrés avec Thelia sont **Non payée**, **Payée**, **Traitement**, **Envoyée**, **Annulée**, **Remboursé**, **Partiellement expédiée** et **En attente de capture**. Ce dernier sert quand le prestataire de paiement a autorisé le paiement sans l'encaisser encore : c'est un module de paiement qui y place la commande.
 
 ## Étape 3 : enregistrer le changement
 
@@ -81,6 +84,7 @@ Selon la configuration de la boutique, la liste ne propose pas toujours tous les
 - Tant qu'aucun passage n'est réglé depuis le statut actuel, la commande peut aller vers n'importe quel statut.
 - Dès qu'au moins un passage est réglé depuis ce statut, seuls les statuts autorisés sont listés. Une ligne sous la liste l'indique : **Seuls les statuts autorisés depuis le statut actuel sont proposés.**
 - Si aucun passage n'est autorisé, la liste et le bouton sont grisés et la ligne indique : **Aucune transition n'est autorisée depuis le statut actuel.**
+- **Annulée** n'est pas proposé quand le paiement est autorisé mais pas encore encaissé et que votre profil n'a pas le droit de capturer les paiements : annuler libérerait l'autorisation chez le prestataire. Il ne l'est pas non plus quand le prestataire n'accepte qu'un encaissement et que celui-ci attend encore sa réponse.
 
 Ce réglage n'est pas décrit ici : si un statut dont vous avez besoin manque, demandez à la personne qui administre la boutique.
 

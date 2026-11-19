@@ -1,5 +1,5 @@
 ---
-translatedFrom: 'b1d563e9cd76'
+translatedFrom: '371285c78d41'
 title: Create customer groups
 description: Gather customers in a group that has its own discount, tax-excluded or tax-included prices, payment methods, categories and registration link.
 sidebar:
@@ -39,6 +39,9 @@ sources:
   - thelia-templates/email:order_confirmation.html.twig
   - thelia-templates/default-twig:catalog/product/_combinations_tab.html.twig:370
   - thelia/thelia:docs/customer-groups.md:78
+  - thelia/thelia:core/lib/Thelia/Domain/Pricing/PriceList/PriceListResolver.php:29
+  - thelia/thelia:core/lib/Thelia/Domain/Pricing/PriceList/ApplicablePriceLists.php:25
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:3488
 ---
 
 A customer group gathers customers who buy on the same terms. For example, your business customers get 10% off and see prices excluding tax, while individuals pay the displayed price including tax.
@@ -135,7 +138,8 @@ Once created, the group appears in other screens:
 
 - on a product's page, in the **Combinations** tab, the **Prices per customer group** block gives the group a price of its own, excluding tax, in place of the group's discount (the customer's own discount still applies);
 - in a promo code, the condition **For one or more customer groups** reserves it for certain groups;
-- a catalog price rule or a sale can be reserved for certain groups.
+- a catalog price rule or a sale can be reserved for certain groups;
+- a price list (menu **Prices and assortments**, then **Price lists**) can be assigned to a group. Its price is final: neither the group discount, nor the customer's own discount, nor a sale is added to it.
 
 When a price rule or a reserved sale gives a different price from the group's, the customer pays the lower of the two.
 

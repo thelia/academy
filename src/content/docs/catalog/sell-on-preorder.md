@@ -4,7 +4,7 @@ description: Choisir ce qui se passe quand un produit n'est plus en stock, fixer
 sidebar:
   order: 310
 thelia: '3.4'
-verified: 2026-11-09
+verified: 2026-11-19
 sources:
   - capture:catalog/sell-on-preorder
   - thelia-templates/default-twig:catalog/product/edit.html.twig:68
@@ -95,8 +95,6 @@ Les trois options :
 Avec la dernière option, un champ vide apparaît dessous, avec l'indication grisée **Limite de précommande**, qui disparaît quand vous saisissez un nombre. Saisissez le nombre d'unités vendables sous zéro, par exemple 10. Avec un stock de 0 et une limite de 10, vous vendez 10 unités, puis la 11e est refusée.
 
 Pour un produit sans combinaison, les mêmes champs sont dans le bloc **Stock** de l'onglet **Combinaisons**.
-
-Dans la liste, le libellé de la dernière option peut apparaître coupé. C'est un défaut d'affichage connu : l'option reste la bonne.
 
 ## Étape 2 : indiquer la date de réassort
 

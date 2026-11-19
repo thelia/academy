@@ -3,8 +3,8 @@ title: Activer un mode de livraison et lui associer des zones
 description: Activer un mode de livraison puis lui indiquer les zones où il livre, pour que vos clients puissent le choisir.
 sidebar:
   order: 50
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/enable-delivery
   - thelia-templates/default-twig:module/list.html.twig:110

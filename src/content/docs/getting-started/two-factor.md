@@ -3,8 +3,8 @@ title: Activer la double authentification de son compte
 description: Protéger sa connexion au back-office avec un code temporaire, en plus du mot de passe.
 sidebar:
   order: 70
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/two-factor
   - thelia-templates/default-twig:src/Controller/Configuration/AccountTwoFactorController.php:31
@@ -12,8 +12,8 @@ sources:
   - thelia-templates/default-twig:two-factor-setup.html.twig
   - thelia-templates/default-twig:two-factor-verify.html.twig
   - thelia-templates/default-twig:two-factor-backup-codes.html.twig
-  - thelia-templates/default-twig:_top_nav.html.twig:77
-  - thelia-templates/default-twig:configuration/store/index.html.twig:157
+  - thelia-templates/default-twig:_top_nav.html.twig:82
+  - thelia-templates/default-twig:configuration/store/index.html.twig:167
   - thelia/thelia:core/lib/Thelia/Domain/Admin/TwoFactor/AdminTwoFactorManager.php:26
   - thelia/thelia:core/lib/Thelia/Domain/Admin/TwoFactor/AdminTwoFactorManager.php:91
   - thelia/thelia:core/lib/Thelia/Domain/Admin/TwoFactor/AdminTwoFactorManager.php:127

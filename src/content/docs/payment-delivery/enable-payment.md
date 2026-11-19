@@ -3,16 +3,18 @@ title: Activer un moyen de paiement
 description: Choisir parmi les modules de paiement installés ceux que vos clients pourront utiliser pour régler une commande.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:payment-delivery/enable-payment
+  - thelia-templates/default-twig:module/list.html.twig:28
   - thelia-templates/default-twig:module/list.html.twig:90
   - thelia-templates/default-twig:module/list.html.twig:109
   - thelia-templates/default-twig:module/list.html.twig:113
   - thelia-templates/default-twig:module/list.html.twig:192
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:73
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:82
+  - thelia-modules/FreeOrder:Config/module.xml:11
   - thelia-templates/default-twig:src/Controller/Module/ModuleController.php:184
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:135
   - thelia-templates/default-twig:src/Service/Module/ModuleListPresenter.php:165
@@ -43,7 +45,7 @@ Un moyen de paiement est la façon dont vos clients règlent leur commande, par 
 1. Dans le menu de gauche, cliquez sur **Modules**.
 2. Dans le sous-menu, cliquez sur **Modules**.
 
-La page **Gestion des modules** liste tous les modules de la boutique. Sous le titre, une ligne donne le total, par exemple « 16 modules · 15 actifs · 1 inactifs ».
+La page **Gestion des modules** liste tous les modules de la boutique. Sous le titre, une ligne donne le total, par exemple « 16 modules · 15 actifs · 1 inactif ».
 
 ![Liste des modules de la boutique](../../../assets/captures/fr/payment-delivery/enable-payment/modules-list.png)
 
@@ -63,7 +65,7 @@ Sur la capture, deux moyens de paiement sont actifs : **Cheque** et **PayzenEmbe
 Dans la boutique de démonstration, trois moyens de paiement sont installés :
 
 - **Cheque** : le client paie par chèque. Ce moyen est proposé quand le total de la commande est supérieur à 0.
-- **FreeOrder** : « There's nothing to pay for this order » (la liste affiche les titres des modules dans la langue par défaut de la boutique, ici l'anglais). Il est proposé quand le total de la commande est exactement 0, par exemple après un code promo qui couvre tout. Il marque alors la commande comme payée, sans que le client ait à payer quoi que ce soit.
+- **FreeOrder** : « Vous n'avez rien à payer pour cette commande » (la liste affiche les titres des modules dans la langue du back-office). Il est proposé quand le total de la commande est exactement 0, par exemple après un code promo qui couvre tout. Il marque alors la commande comme payée, sans que le client ait à payer quoi que ce soit.
 - **PayzenEmbedded** : paiement par carte bancaire, avec le prestataire de paiement PayZen. Il demande un compte chez ce prestataire. Il n'est proposé qu'une fois réglé (voir l'étape 4), et quand le total de la commande est compris entre les montants minimum et maximum réglés. Tant qu'il n'est pas en mode production, seuls les visiteurs dont l'adresse IP est autorisée dans ses réglages le voient.
 
 ## Étape 3 : activer ou désactiver un module

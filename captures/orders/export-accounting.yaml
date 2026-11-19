@@ -23,11 +23,11 @@ shots:
   - name: list
     url: '/admin/export'
     waitFor: '[data-testid="export-page"] table'
-    clip: '[data-testid="export-page"] .col-md-6:has(a[href$="/admin/export/12"])'
-    highlight: 'tr:has(a[href$="/admin/export/12"])'
-  # The export of the sales journal is number 12 of the install, the tax summary 13.
+    clip: '[data-testid="export-page"] .col-md-6:has(a[href$="/admin/export/10"])'
+    highlight: 'tr:has(a[href$="/admin/export/10"])'
+  # The export of the sales journal is number 10 of a fresh 3.4 install, the tax summary 11.
   - name: form
-    url: '/admin/export/12'
+    url: '/admin/export/10'
     waitFor: '[data-testid="export-form"]'
     actions:
       - select: { selector: 'select[name="range_date_start[year]"]', value: '2026' }

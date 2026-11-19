@@ -18,6 +18,7 @@ steps:
       - fill: { selector: '#product-create-modal [name="thelia_product_creation[quantity]"]', value: '12' }
       - click: '[data-testid="product-create-submit"]'
       - waitFor: '[data-testid="product-edit-form"]'
+      - click: '[data-testid="bo-language-switcher-toggle"]'
       - click: '[data-testid="bo-language-switcher-en"]'
       - waitForUrl: 'edit_language_id=2'
       - waitFor: '[data-testid="product-edit-form"]'

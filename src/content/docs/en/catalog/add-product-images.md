@@ -1,5 +1,5 @@
 ---
-translatedFrom: bd7c41a21be3
+translatedFrom: '3491a6c092b5'
 title: Add images to a product
 description: Upload photos to a product page, choose their order and fill in their alternative text.
 sidebar:

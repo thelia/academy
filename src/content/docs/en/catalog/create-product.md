@@ -1,11 +1,11 @@
 ---
-translatedFrom: 14bab250b315
+translatedFrom: 'ff7c91563991'
 title: Create a product
 description: Add a product to the catalog with its reference, title, category and base price.
 sidebar:
   order: 20
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:catalog/create-product
   - thelia-templates/default-twig:catalog/product/list.html.twig:22
@@ -30,6 +30,9 @@ sources:
   - thelia-templates/default-twig:catalog/product/edit.html.twig:383
   - thelia-templates/default-twig:catalog/product/_related_tab.html.twig
   - thelia-templates/default-twig:catalog/product/_create_modal.html.twig:29
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:190
+  - thelia-templates/default-twig:src/Controller/Catalog/ProductController.php:979
+  - thelia-templates/default-twig:catalog/product/edit.html.twig:136
 ---
 
 A product is an item you sell, with its reference, title, price and category. This tutorial creates a product page with a first price. Photos, and the details of price and stock, are set later on their own pages.
@@ -67,7 +70,7 @@ Optional fields:
 - **Weight (kg)**: for example `0.2`.
 - **Stock**: the number of units available, for example `50`.
 
-On the demo store, this window can show some names in another language than the interface: here the category appears as **Salon**, while the category list shows **Living Room**. They are the same item.
+On the demo store, this window can show category names in another language than the interface, for example **Salon** for **Living Room**. Categories follow the editing language (see step 4), tax rules follow the interface language. They are the same items.
 
 If a required field stays empty, the product is not created. The price including tax, the VAT and the stock are set in more detail in [Set the price, VAT and stock](/en/catalog/set-price-stock/).
 
@@ -85,7 +88,7 @@ The highlighted flag next to **Edit in** shows the language in which you edit th
 
 ![Product page, General tab](../../../../assets/captures/en/catalog/create-product/result.png)
 
-In this tab, you fill in the **Summary** (one or two sentences) and the **Detailed description** (the full text). Click **Save**, lower on the page, to keep your changes.
+In this tab, you fill in the **Summary** (one or two sentences) and the **Detailed description** (the full text). Click **Save**, at the top or the bottom of the page, to keep your changes.
 
 The other tabs complete the page:
 

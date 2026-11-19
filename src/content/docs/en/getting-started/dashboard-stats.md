@@ -1,11 +1,11 @@
 ---
-translatedFrom: bea82f619797
+translatedFrom: '077a43305fa9'
 title: Read the dashboard statistics
 description: Know what each figure on the home page counts, over which period and with which orders.
 sidebar:
   order: 80
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/dashboard-stats
   - thelia-templates/default-twig:src/UiComponents/Dashboard/Dashboard.php:21
@@ -78,7 +78,7 @@ The exact dates are shown to the right of the buttons.
 
 - **Revenue**: total of the paid orders placed during the period. It includes all taxes and shipping costs, with discounts deducted.
 - **Orders**: number of orders placed during the period, whatever their status. Unpaid and canceled orders are counted.
-- **Average order**: **Revenue** divided by **Orders**. Because unpaid and canceled orders are in the denominator, it can be lower than the average amount of a paid order.
+- **Average order**: **Revenue** divided by the number of paid orders of the period, the only ones that count in the revenue. It is not the number shown on the **Orders** card, which also counts unpaid and canceled orders.
 - **New customers**: customer accounts created during the period.
 
 The percentage at the top of each card compares the period with the previous period of the same length, just before it. For **30 days**, that is the 30 days before.
@@ -87,11 +87,13 @@ It does not appear if the previous period is zero and the current period is abov
 
 Clicking **Revenue** or **Orders** opens the full list of orders, with no period filter, and **New customers** opens the customer list. **Average order** cannot be clicked.
 
+If your store offers subscriptions and your profile can see them, a **Monthly recurring revenue** card is added. It does not follow the period buttons and has no percentage. It adds up what the active subscriptions, and those whose last payment failed, bring in each month. Clicking it opens the subscription list.
+
 ## Step 3: read the charts
 
 ![The revenue chart](../../../../assets/captures/en/getting-started/dashboard-stats/revenue-chart.png)
 
-- **Revenue trend**: one point per day of the period. Each point is the revenue of the card, calculated for that day with the same paid orders. The subtitle on the screen is **Daily, TTC**.
+- **Revenue trend**: one point per day of the period. Each point is the revenue of the card, calculated for that day with the same paid orders. The subtitle on the screen is **Daily, incl. tax**.
 - **Order status**: number of orders per status, over the whole life of the store. This block does not follow the period buttons. A status with no orders is not listed.
 
 ## Step 4: read the lists
@@ -99,8 +101,8 @@ Clicking **Revenue** or **Orders** opens the full list of orders, with no period
 ![Top selling products](../../../../assets/captures/en/getting-started/dashboard-stats/top-products.png)
 
 - **Recent orders**: the last 8 orders placed, any status, whatever the period.
-- **Top selling products**: the 5 best-selling products during the period, ranked by quantity. The **sold** line gives the number of units. The amount below is the price of the order lines, excluding taxes, at the sale price if the product was on promotion, without deducting the order discount, shown without cents. All orders count, even unpaid or canceled ones.
-- **Low stock (≤ 5)**: a combination is a sellable variant of a product, for example a size or a color. The list shows up to 5 combinations, across all products, with a stock of 5 units or fewer, lowest first, whatever the period. Each line shows the product name, the combination reference and its stock. A product that is offline appears too.
+- **Top selling products**: the 5 best-selling products during the period, ranked by quantity. The **sold** line gives the number of units. The amount below is the price of the order lines, excluding taxes, at the sale price if the product was on promotion, without deducting the order discount, shown without cents. A product sold by weight keeps its decimals, up to three. All orders count, even unpaid or canceled ones.
+- **Low stock (Default threshold ≤ 5)**: a combination is a sellable variant of a product, for example a size or a color. The list shows up to 5 combinations, across all products, whose stock has reached the threshold, lowest first, whatever the period. The default threshold is 5 units; you change it in **Configuration**, **Store info**, **Stock** block, **Low stock threshold** field. A combination that has its own threshold is judged on that one. Each line shows the product name, the combination reference and its stock. A product that is offline appears too. Bundles do not: if some can no longer be ordered, an **Unsellable bundles** line gives their number and opens their list.
 
 ## Step 5: read the Sales statistics block
 

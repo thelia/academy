@@ -1,11 +1,11 @@
 ---
-translatedFrom: '0d8ff986f633'
+translatedFrom: '64b8152e963a'
 title: Read your sales by category, product and customer
 description: Open the sales report, choose a period, read the revenue by category, by product and by customer, and export what is shown.
 sidebar:
   order: 100
 thelia: '3.4'
-verified: 2026-11-16
+verified: 2026-11-19
 sources:
   - capture:orders/read-sales-reports
   - thelia-templates/default-twig:_side_nav.html.twig:105

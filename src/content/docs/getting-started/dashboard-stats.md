@@ -3,8 +3,8 @@ title: Lire les statistiques du tableau de bord
 description: Savoir ce que compte chaque chiffre de l'accueil, sur quelle période et avec quelles commandes.
 sidebar:
   order: 80
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:getting-started/dashboard-stats
   - thelia-templates/default-twig:src/UiComponents/Dashboard/Dashboard.php:21
@@ -48,6 +48,17 @@ sources:
   - thelia-modules/HookAdminHome:Controller/HomeController.php:58
   - thelia-modules/HookAdminHome:templates/backOffice/default-twig/block-statistics-js.html.twig:26
   - thelia-modules/HookAdminHome:templates/backOffice/default-twig/block-statistics-js.html.twig:76
+  - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:113
+  - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:148
+  - thelia-templates/default-twig:src/Service/Dashboard/DashboardStatsProvider.php:176
+  - thelia-templates/default-twig:src/Repository/OrderRepository.php:670
+  - thelia-templates/default-twig:src/Repository/ProductRepository.php:155
+  - thelia-templates/default-twig:src/Repository/SubscriptionRepository.php:269
+  - thelia-templates/default-twig:src/Form/Configuration/ConfigStoreType.php:272
+  - thelia-templates/default-twig:components/Dashboard/Dashboard.html.twig:159
+  - thelia-templates/default-twig:components/Dashboard/Dashboard.html.twig:176
+  - thelia-templates/default-twig:components/Dashboard/Dashboard.html.twig:192
+  - thelia/thelia:core/lib/Thelia/Domain/Catalog/Stock/StockSettings.php:126
 ---
 
 Le tableau de bord affiche plusieurs familles de chiffres qui ne comptent pas toutes les mêmes commandes ni sur la même période. Cette page dit, pour chaque chiffre, ce qu'il compte, pour que vous sachiez le lire sans vous tromper. Elle suppose que vous avez lu [Découvrir le back-office](/getting-started/back-office-tour/), qui présente l'écran et les boutons de période.
@@ -77,7 +88,7 @@ Les dates exactes s'affichent à droite des boutons.
 
 - **Chiffre d'affaires** : total des commandes payées passées pendant la période. Il est toutes taxes comprises, frais de port inclus, remises déduites.
 - **Commandes** : nombre de commandes passées pendant la période, tous statuts confondus. Les commandes non payées et annulées sont comptées.
-- **Panier moyen** : **Chiffre d'affaires** divisé par **Commandes**. Comme les commandes non payées et annulées sont au dénominateur, il peut être plus bas que le montant moyen d'une commande payée.
+- **Panier moyen** : **Chiffre d'affaires** divisé par le nombre de commandes payées de la période, les seules qui entrent dans le chiffre d'affaires. Ce n'est donc pas le nombre affiché sur la carte **Commandes**, qui compte aussi les commandes non payées et annulées.
 - **Nouveaux clients** : comptes clients créés pendant la période.
 
 Le pourcentage en haut de chaque carte compare la période à la période précédente de même durée, juste avant. Pour **30 jours**, ce sont les 30 jours d'avant.
@@ -85,6 +96,8 @@ Le pourcentage en haut de chaque carte compare la période à la période préc�
 Il n'apparaît pas si la période précédente est à zéro et que la période actuelle est supérieure à zéro. Sous 0,5 % d'écart, la flèche est remplacée par un tiret.
 
 Cliquer sur **Chiffre d'affaires** ou **Commandes** ouvre la liste complète des commandes, sans filtre de période, et **Nouveaux clients** la liste des clients. **Panier moyen** n'est pas cliquable.
+
+Si votre boutique propose des abonnements et que votre profil peut les voir, une carte **Revenu mensuel récurrent** s'ajoute. Elle ne suit pas les boutons de période et n'a pas de pourcentage. Elle additionne ce que rapportent chaque mois les abonnements actifs et ceux dont le dernier paiement a échoué. Cliquer dessus ouvre la liste des abonnements.
 
 ## Étape 3 : lire les graphiques
 
@@ -98,8 +111,8 @@ Cliquer sur **Chiffre d'affaires** ou **Commandes** ouvre la liste complète des
 ![Meilleures ventes](../../../assets/captures/fr/getting-started/dashboard-stats/top-products.png)
 
 - **Commandes récentes** : les 8 dernières commandes passées, tous statuts, quelle que soit la période.
-- **Meilleures ventes** : les 5 produits les plus vendus pendant la période, classés par quantité. La ligne **vendu(s)** donne le nombre d'unités ; le montant dessous est le prix des lignes de commande, hors taxes, au prix promo si le produit était en promotion, sans déduire la remise de la commande, affiché sans les centimes. Toutes les commandes comptent, même non payées ou annulées.
-- **Stock faible (≤ 5)** : une combinaison est une variante vendable d'un produit, par exemple une taille ou une couleur. La liste montre jusqu'à 5 combinaisons, tous produits confondus, dont le stock est de 5 unités ou moins, les plus basses d'abord, quelle que soit la période. Chaque ligne porte le nom du produit, la référence de la combinaison et son stock. Un produit hors ligne y figure aussi.
+- **Meilleures ventes** : les 5 produits les plus vendus pendant la période, classés par quantité. La ligne **vendu(s)** donne le nombre d'unités ; le montant dessous est le prix des lignes de commande, hors taxes, au prix promo si le produit était en promotion, sans déduire la remise de la commande, affiché sans les centimes. Un produit vendu au poids garde ses décimales, jusqu'à trois. Toutes les commandes comptent, même non payées ou annulées.
+- **Stock faible (Seuil par défaut ≤ 5)** : une combinaison est une variante vendable d'un produit, par exemple une taille ou une couleur. La liste montre jusqu'à 5 combinaisons, tous produits confondus, dont le stock a atteint le seuil, les plus basses d'abord, quelle que soit la période. Le seuil par défaut est de 5 unités ; vous le changez dans **Configuration**, **Informations de la boutique**, bloc **Stock**, champ **Seuil de stock bas**. Une combinaison qui a son propre seuil est jugée sur celui-ci. Chaque ligne porte le nom du produit, la référence de la combinaison et son stock. Un produit hors ligne y figure aussi. Les packs n'y figurent pas : s'il y en a qui ne peuvent plus être commandés, une ligne **Packs invendables** donne leur nombre et ouvre leur liste.
 
 ## Étape 5 : lire le bloc Statistiques de vente
 

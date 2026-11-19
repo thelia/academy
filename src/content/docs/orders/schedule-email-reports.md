@@ -4,7 +4,7 @@ description: Faire envoyer un export par e-mail, à jour et à l'heure choisis, 
 sidebar:
   order: 70
 thelia: '3.4'
-verified: 2026-11-09
+verified: 2026-11-19
 sources:
   - capture:orders/schedule-email-reports
   - thelia-templates/default-twig:_side_nav.html.twig:215
@@ -26,6 +26,8 @@ sources:
   - thelia-templates/default-twig:reports/scheduled-report/edit.html.twig:69
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:94
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:99
+  - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:104
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1219
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:107
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:114
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:119
@@ -85,7 +87,7 @@ Sur une ligne, l'interrupteur de la colonne **Actif** arrête ou relance un rapp
 
 1. Cliquez sur **Nouveau rapport**.
 2. Dans **Nom du rapport**, saisissez par exemple `Chiffre d’affaires du mois`. Ce nom sert d'objet à l'e-mail.
-3. Dans **Exporter**, choisissez l'export à envoyer, par exemple **Commandes complètes**.
+3. Dans **Export**, choisissez l'export à envoyer, par exemple **Commandes complètes**.
 4. Dans **Période couverte**, choisissez ce que le rapport contient, par exemple **Le mois précédent**.
 
 ![Formulaire d'un nouveau rapport, rempli pour un envoi le 1er de chaque mois à 08:00](../../../assets/captures/fr/orders/schedule-email-reports/form.png)

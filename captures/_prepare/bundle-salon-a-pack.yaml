@@ -25,6 +25,7 @@ steps:
       - select: { selector: '[data-testid="product-edit-bundle-discount-type"]', value: 'percent' }
       - click: '[data-testid="product-edit-save-stay"]'
       - waitFor: '[data-testid="product-tab-bundle"]'
+      - click: '[data-testid="bo-language-switcher-toggle"]'
       - click: '[data-testid="bo-language-switcher-en"]'
       - waitForUrl: 'edit_language_id=2'
       - waitFor: '[data-testid="product-edit-form"]'

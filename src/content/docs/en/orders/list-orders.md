@@ -1,5 +1,5 @@
 ---
-translatedFrom: 7a5fae428a67
+translatedFrom: 'e541daab0c36'
 title: Track your orders
 description: Find the orders you have received, spot the ones waiting for payment or shipment, and filter the list.
 sidebar:
@@ -30,6 +30,15 @@ sources:
   - thelia/thelia:core/lib/Thelia/Model/OrderStatus.php:36
   - thelia/thelia:core/lib/Thelia/Model/OrderStatus.php:81
   - thelia/thelia:core/lib/Thelia/Model/Order.php:149
+  - thelia-templates/default-twig:order/list.html.twig:303
+  - thelia-templates/default-twig:order/list.html.twig:398
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:258
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:275
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:433
+  - thelia-templates/default-twig:src/Service/Order/OrderFilters.php:39
+  - thelia-templates/default-twig:components/DataTable/cells/actions.html.twig:49
+  - thelia/thelia:setup/insert.sql:2184
+  - thelia/thelia:setup/insert.sql:15686
 ---
 
 An order arrives as soon as a customer confirms their cart on your store. The order list tells you which orders are waiting for payment, which ones are to be processed and which ones have shipped.
@@ -49,7 +58,7 @@ A line's counter gives the number of orders with that status. A status is the st
 
 ## Step 2: understand the statuses
 
-Each order has a status, shown in the **STATUS** column as a colored badge. These are the ones you see with a new store:
+Each order has a status, shown in the **Status** column as a colored badge. These are the ones you see with a new store:
 
 - **Not paid**: the order is recorded, but payment has not been received yet. An order placed more than 48 hours ago and still unpaid has a red triangle in front of its reference.
 - **Paid**: payment is recorded. The invoice date is set at that moment.
@@ -57,7 +66,10 @@ Each order has a status, shown in the **STATUS** column as a colored badge. Thes
 - **Sent**: the parcel has left. Thelia also counts it as paid.
 - **Canceled**: the order has been canceled.
 - **Refunded**: the order is marked as refunded to the customer.
-- **Partially shipped**: some of the parcels have left, the rest are still to come. Thelia also counts it as paid. This status only appears in the menu when an order has it.
+- **Partially shipped**: some of the parcels have left, the rest are still to come. Thelia also counts it as paid.
+- **Awaiting capture**: the payment is authorized, but not collected yet. Thelia counts it as not paid.
+
+The last two statuses only appear in the menu when an order has them.
 
 Your store may have other statuses that you added: they appear in the menu by themselves. To move an order from one status to another, see [Move an order forward](/en/orders/process-order/).
 
@@ -69,15 +81,15 @@ The list shows 25 orders per page, most recent first.
 
 Each row contains:
 
-- **ORDER**: the order reference, which opens its detail, and the date it was placed;
-- **CUSTOMER**: the customer's name and e-mail address;
-- **ITEMS**: the number of different products in the order. A product ordered in 3 copies counts as 1;
-- **STATUS**: the status;
-- **PAYMENT / DELIVERY**: the payment method chosen, for example Cheque, and the delivery method;
-- **TOTAL**: the total amount of the order;
-- **ACTIONS**: up to four buttons, in this order: **View order**, **Download invoice PDF**, **Download delivery slip PDF** and **Cancel order**, which is missing when the order can no longer be canceled.
+- a tick box at the start of the row, if you can edit orders;
+- **Order**: the order reference, which opens its detail, and the date it was placed;
+- **Customer**: the customer's name, preceded by the flag of their delivery country, and their e-mail address. This column disappears on a narrow screen;
+- **Total**: the total amount of the order, with the number of items underneath. An item is a different product in the order: a product ordered in 3 copies counts as 1. Hover over the number of items to read the reference and title of each product. A **Preorder** badge is shown below it when the order contains a preorder product;
+- **Status**: the status;
+- **Payment / Delivery**: the payment method chosen, for example Cheque, the delivery method and, if there is one, the parcel tracking number. This column disappears on a medium screen;
+- at the end, the **More actions** button, which opens a menu: **View order**, **Download invoice PDF** (only once the order is paid), **Download delivery slip PDF** and **Cancel order**, which is missing when the order can no longer be canceled.
 
-Click the **ORDER** header to sort the list by order date, or **TOTAL** to sort by amount.
+Click the **Order** header to sort the list by order date.
 
 To see only one status, click that status in the menu, for example **Paid**.
 
@@ -111,14 +123,15 @@ To go back to the full list, click **Reset**.
 
 The available criteria:
 
-- **STATUS**: tick one or more statuses;
-- **CREATED BETWEEN**: a start date and an end date;
-- **TOTAL AMOUNT (TTC)**: a minimum and a maximum. TTC means taxes included. The amount includes shipping costs and discounts;
-- **PAYMENT METHOD** and **DELIVERY METHOD**: tick the ones you want;
-- **DELIVERY COUNTRY**: a country from the list;
-- **NUMBER OF ITEMS**: a minimum and a maximum of different products;
-- **COUPON**: **All**, **With** or **Without** a promo code;
-- **TRACKING**: **All**, **With** or **Without** a parcel tracking number.
+- **Status**: tick one or more statuses;
+- **Created between**: a start date and an end date;
+- **Total amount (TTC)**: a minimum and a maximum. TTC means taxes included. The amount includes shipping costs and discounts;
+- **Payment method** and **Delivery method**: tick the ones you want;
+- **Delivery country**: a country from the list;
+- **Number of items**: a minimum and a maximum of different products;
+- **Coupon**: **All**, **With** or **Without** a promo code;
+- **Preorder**: **All**, **With** or **Without** a preorder product;
+- **Tracking**: **All**, **With** or **Without** a parcel tracking number.
 
 The filters in use appear in an **Active filters** strip. Click the cross on a filter to remove it, or **Clear all** to remove them all.
 

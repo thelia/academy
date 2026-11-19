@@ -3,8 +3,8 @@ title: Suivre ses commandes
 description: Retrouver les commandes reçues, repérer celles qui attendent un paiement ou un envoi, et filtrer la liste.
 sidebar:
   order: 10
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/list-orders
   - thelia-templates/default-twig:src/Controller/Order/OrderController.php:73
@@ -29,6 +29,15 @@ sources:
   - thelia/thelia:core/lib/Thelia/Model/OrderStatus.php:36
   - thelia/thelia:core/lib/Thelia/Model/OrderStatus.php:81
   - thelia/thelia:core/lib/Thelia/Model/Order.php:149
+  - thelia-templates/default-twig:order/list.html.twig:303
+  - thelia-templates/default-twig:order/list.html.twig:398
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:258
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:275
+  - thelia-templates/default-twig:src/Service/Order/OrderListRowPresenter.php:433
+  - thelia-templates/default-twig:src/Service/Order/OrderFilters.php:39
+  - thelia-templates/default-twig:components/DataTable/cells/actions.html.twig:49
+  - thelia/thelia:setup/insert.sql:2184
+  - thelia/thelia:setup/insert.sql:15686
 ---
 
 Une commande arrive dès qu'un client valide son panier sur votre boutique. La liste des commandes vous dit lesquelles attendent un paiement, lesquelles sont à traiter et lesquelles sont parties.
@@ -48,15 +57,18 @@ Le compteur d'une ligne donne le nombre de commandes qui portent ce statut. Un s
 
 ## Étape 2 : comprendre les statuts
 
-Chaque commande porte un statut, affiché dans la colonne **ETAT** et sous forme de pastille colorée. Voici ceux que vous voyez avec une boutique neuve :
+Chaque commande porte un statut, affiché dans la colonne **État** et sous forme de pastille colorée. Voici ceux que vous voyez avec une boutique neuve :
 
 - **Non payée** : la commande est enregistrée, le paiement n'est pas encore reçu. Une commande passée il y a plus de 48 heures et toujours non payée porte un triangle rouge devant sa référence.
 - **Payée** : le paiement est enregistré. La date de facture est posée à ce moment-là.
 - **Traitement** : la commande est payée et en cours de traitement. Thelia la compte comme payée.
 - **Envoyée** : le colis est parti. Thelia la compte aussi comme payée.
 - **Annulée** : la commande a été annulée.
-- **Remboursé** : la commande est marquée comme remboursée au client.
-- **Partiellement expédiée** : une partie des colis est partie, le reste est à venir. Thelia la compte aussi comme payée. Ce statut ne figure dans le menu que lorsqu'une commande l'a.
+- **Remboursée** : la commande est marquée comme remboursée au client.
+- **Partiellement expédiée** : une partie des colis est partie, le reste est à venir. Thelia la compte aussi comme payée.
+- **En attente de capture** : le paiement est autorisé, mais pas encore encaissé. Thelia la compte comme non payée.
+
+Ces deux derniers statuts ne figurent dans le menu que lorsqu'une commande les a.
 
 Votre boutique peut avoir d'autres statuts, ajoutés par vous : ils apparaissent d'eux-mêmes dans le menu. Pour faire passer une commande d'un statut à l'autre, voir [Faire avancer une commande](/orders/process-order/).
 
@@ -68,15 +80,15 @@ La liste affiche 25 commandes par page, les plus récentes en premier.
 
 Chaque ligne contient :
 
-- **COMMANDE** : la référence de la commande, qui ouvre son détail, et la date à laquelle elle a été passée ;
-- **CLIENT** : son nom et son adresse e-mail ;
-- **ARTICLES** : le nombre de produits différents de la commande. Un produit commandé en 3 exemplaires compte pour 1 ;
-- **ETAT** : le statut ;
-- **PAIEMENT / LIVRAISON** : le moyen de paiement choisi, par exemple Cheque, et le mode de livraison ;
-- **TOTAL** : le montant total de la commande ;
-- **ACTIONS** : jusqu'à quatre boutons, dans l'ordre : **Voir la commande**, **Télécharger la facture PDF**, **Télécharger le bon de livraison PDF** et **Annuler la commande**, absent quand la commande ne peut plus être annulée.
+- une case à cocher, au début de la ligne, si vous pouvez modifier les commandes ;
+- **Commande** : la référence de la commande, qui ouvre son détail, et la date à laquelle elle a été passée ;
+- **Client** : son nom, précédé du drapeau de son pays de livraison, et son adresse e-mail. Cette colonne disparaît sur un écran étroit ;
+- **Total** : le montant total de la commande, avec dessous le nombre d'articles. L'article est un produit différent de la commande : un produit commandé en 3 exemplaires compte pour 1. Passez la souris sur le nombre d'articles pour lire la référence et le titre de chaque produit. Un badge **Précommande** s'affiche dessous quand la commande contient un produit en précommande ;
+- **État** : le statut ;
+- **Paiement / Livraison** : le moyen de paiement choisi, par exemple Cheque, le mode de livraison et, s'il existe, le numéro de suivi du colis. Cette colonne disparaît sur un écran moyen ;
+- à la fin, le bouton **Autres actions**, qui ouvre un menu : **Voir la commande**, **Télécharger la facture PDF** (seulement une fois la commande payée), **Télécharger le bon de livraison PDF** et **Annuler la commande**, absent quand la commande ne peut plus être annulée.
 
-Un clic sur l'en-tête **COMMANDE** trie la liste par date de commande, un clic sur **TOTAL** par montant.
+Un clic sur l'en-tête **Commande** trie la liste par date de commande.
 
 Pour ne voir qu'un statut, cliquez sur ce statut dans le menu, par exemple **Payée**.
 
@@ -110,14 +122,15 @@ Pour revenir à la liste complète, cliquez sur **Remise à zéro**.
 
 Les critères proposés :
 
-- **ETAT** : cochez un ou plusieurs statuts ;
-- **CRÉÉES ENTRE** : une date de début et une date de fin ;
-- **MONTANT TOTAL (TTC)** : un minimum et un maximum. TTC veut dire taxes comprises. Le montant inclut les frais de port et les remises ;
-- **MODE DE PAIEMENT** et **MODE DE LIVRAISON** : cochez ceux qui vous intéressent ;
-- **PAYS DE LIVRAISON** : un pays dans la liste ;
-- **NOMBRE D'ARTICLES** : un minimum et un maximum de produits différents ;
-- **COUPON** : **Tous**, **Avec** ou **Sans** code promo ;
-- **SUIVI** : **Tous**, **Avec** ou **Sans** numéro de suivi de colis.
+- **État** : cochez un ou plusieurs statuts ;
+- **Créées entre** : une date de début et une date de fin ;
+- **Montant total (TTC)** : un minimum et un maximum. TTC veut dire taxes comprises. Le montant inclut les frais de port et les remises ;
+- **Mode de paiement** et **Mode de livraison** : cochez ceux qui vous intéressent ;
+- **Pays de livraison** : un pays dans la liste ;
+- **Nombre d'articles** : un minimum et un maximum de produits différents ;
+- **Coupon** : **Tous**, **Avec** ou **Sans** code promo ;
+- **Précommande** : **Tous**, **Avec** ou **Sans** produit en précommande ;
+- **Suivi** : **Tous**, **Avec** ou **Sans** numéro de suivi de colis.
 
 Les filtres en cours s'affichent dans une bande **Filtres actifs**. Cliquez sur la croix d'un filtre pour le retirer, ou sur **Tout effacer** pour les retirer tous.
 

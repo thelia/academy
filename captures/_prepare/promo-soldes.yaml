@@ -16,6 +16,7 @@ steps:
       - select: { selector: '[data-testid="coupon-excluded-select"]', value: '{{promo_bienvenue_id}}' }
       - click: '[data-testid="coupon-save-stay"]'
       - waitFor: '[data-testid="coupon-stacking"]'
+      - click: '[data-testid="bo-language-switcher-toggle"]'
       - click: '[data-testid="bo-language-switcher-en"]'
       - waitForUrl: 'edit_language_id=2'
       - waitFor: '[data-testid="coupon-stacking"]'

@@ -1,6 +1,8 @@
 ---
 title: L'éditeur de Thelia
 description: OpenStudio développe et maintient Thelia, et accompagne les marchands qui l'utilisent.
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - thelia/thelia:SECURITY.md:3
   - thelia/thelia:core/composer.json:5

@@ -3,8 +3,8 @@ title: Expédier une commande et saisir le suivi du colis
 description: Enregistrer le départ d'un colis avec son numéro de suivi, et savoir ce que le client reçoit.
 sidebar:
   order: 40
-thelia: '3.3'
-verified: 2026-10-30
+thelia: '3.4'
+verified: 2026-11-19
 sources:
   - capture:orders/ship-order
   - thelia-templates/default-twig:order/_shipments_tab.html.twig:103-163

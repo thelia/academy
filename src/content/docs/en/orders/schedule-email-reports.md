@@ -1,11 +1,11 @@
 ---
-translatedFrom: '7a93b6f7ca12'
+translatedFrom: '489789d6cea7'
 title: Schedule reports by e-mail
 description: Have an export sent by e-mail on the day and at the hour you choose, pick the recipients and set how the file is delivered.
 sidebar:
   order: 70
 thelia: '3.4'
-verified: 2026-11-09
+verified: 2026-11-19
 sources:
   - capture:orders/schedule-email-reports
   - thelia-templates/default-twig:_side_nav.html.twig:215
@@ -27,6 +27,8 @@ sources:
   - thelia-templates/default-twig:reports/scheduled-report/edit.html.twig:69
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:94
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:99
+  - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:104
+  - thelia-templates/default-twig:translations/messages.fr_FR.php:1219
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:107
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:114
   - thelia-templates/default-twig:src/Form/Reporting/ScheduledReportType.php:119
@@ -86,7 +88,7 @@ On a line, the switch in the **Active** column stops or restarts a report. The t
 
 1. Click **New report**.
 2. In **Name of the report**, enter for example `Monthly revenue`. This name is the subject of the e-mail.
-3. In **Export**, choose the export to send, for example **Full orders**.
+3. In **Export to send**, choose the export to send, for example **Full orders**.
 4. In **Period covered**, choose what the report contains, for example **The previous month**.
 
 ![New report form, filled in for a send on the 1st of every month at 08:00](../../../../assets/captures/en/orders/schedule-email-reports/form.png)

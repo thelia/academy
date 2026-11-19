@@ -5,7 +5,7 @@ description: Decide which promotion goes first, which ones combine and which one
 sidebar:
   order: 75
 thelia: '3.4'
-verified: 2026-11-04
+verified: 2026-11-19
 sources:
   - capture:marketing/promotion-priority
   - thelia-templates/default-twig:coupon/_stacking.html.twig:8
